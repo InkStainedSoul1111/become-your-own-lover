@@ -1,0 +1,45 @@
+export default function Home() {
+  return (
+    <div style={{
+      minHeight: '100vh',
+      backgroundImage: 'url(/bg.jpg)', // <-- CHANGE THIS TO YOUR IMAGE NAME
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '20px'
+    }}>
+      <div style={{
+        background: 'rgba(255,255,255,0.9)',
+        padding: '40px',
+        borderRadius: '20px',
+        maxWidth: '600px',
+        textAlign: 'center',
+        backdropFilter: 'blur(10px)'
+      }}>
+        <h1 style={{fontSize:'36px',marginBottom:'10px'}}>Become Your Own Lover</h1>
+        <p style={{fontSize:'18px',marginBottom:'30px'}}>Your self-healing space</p>
+        
+        {/* EXAMPLE: ADDING AN IMAGE INSIDE TOO */}
+        <img 
+          src="/hero.jpg"  // <-- CHANGE THIS TO YOUR IMAGE NAME
+          alt="Self love"
+          style={{width:'100%', borderRadius:'10px', margin:'20px 0'}}
+        />
+        
+        <div style={{background:'#fff',padding:'20px',borderRadius:'10px',margin:'20px 0'}}>
+          <h3>✨ Today's Free Prompt</h3>
+          <p>"What is one thing I can do to love myself today?"</p>
+        </div>
+
+        <a 
+          href="https://buy.stripe.com/14A8wPd059gPgQz0057bW01"
+          style={{background:'#000',color:'#fff',padding:'16px 32px',borderRadius:'10px',textDecoration:'none',fontWeight:'600',fontSize:'18px',display:'inline-block'}}
+        >
+          Get Full Access for $11.11
+        </a>
+      </div>
+    </div>
+  )
+}
