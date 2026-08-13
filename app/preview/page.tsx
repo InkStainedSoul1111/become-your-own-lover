@@ -19,7 +19,7 @@ export default function Preview() {
       <p style={{margin:'30px 0'}}>Want the full app with daily prompts, trackers, and tools?</p>
       
       <a 
-        href="https://buy.stripe.com/14A5kDbW1ct16bV6ot7bw00"
+        href="https://buy.stripe.com/14A8wPd059gPgQz0057bW01"
         style={{background:'#000',color:'#fff',padding:'16px 32px',borderRadius:'10px',textDecoration:'none',fontWeight:'600',fontSize:'18px',display:'inline-block'}}
       >
         Get Full Access for $11.11
