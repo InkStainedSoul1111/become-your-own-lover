@@ -1,13 +1,17 @@
 "use client"
 import { useState, useEffect, useRef } from 'react'
 export default function App() {
-const [hasUnlocked, setHasUnlocked] = useState(false);
-const [entryCount, setEntryCount] = useState(0);
-const [tab, setTab] = useState('journal');
-const [index, setIndex] = useState({journal:0,affirmation:0,prayer:0});
-const [journalText, setJournalText] = useState('');
-const [allEntries, setAllEntries] = useState([]);
-const data = {
+
+    
+  export default function App() {
+  const [started, setStarted] = useState(false)
+  const [activeTab, setActiveTab] = useState('manifest')
+  const [journalText, setJournalText] = useState('')
+  const [allEntries, setAllEntries] = useState<any[]>([])
+  const [musicPlaying, setMusicPlaying] = useState(true)
+  const [index, setIndex] = useState<any>({manifest:0, motivate:0, music:0, nature:0, fitness:0, food:0, selfcare:0, rituals:0, journal:0})
+  const audioContextRef = useRef<AudioContext | null>(null)
+    const data = {
   manifest: [
     {text:"I am worthy of deep, unconditional love — starting with my own.", img:"https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&w=800"},
     {text:"My body is a sacred vessel. I honor it with movement that feels like joy.", img:"https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpg?auto=compress&w=800"},
@@ -35,15 +39,6 @@ const data = {
     {text:"How can eating become a sacred act of self-care?"},
   ],
   selfcare: [
-    
-  export default function App() {
-  const [started, setStarted] = useState(false)
-  const [activeTab, setActiveTab] = useState('manifest')
-  const [journalText, setJournalText] = useState('')
-  const [allEntries, setAllEntries] = useState<any[]>([])
-  const [musicPlaying, setMusicPlaying] = useState(true)
-  const [index, setIndex] = useState<any>({manifest:0, motivate:0, music:0, nature:0, fitness:0, food:0, selfcare:0, rituals:0, journal:0})
-  const audioContextRef = useRef<AudioContext | null>(null)
 
   const initAudio = () => { if (!audioContextRef.current) audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)() }
   const playSound = () => { initAudio(); const ctx = audioContextRef.current; if(!ctx) return; const o = ctx.createOscillator(); const g = ctx.createGain(); o.connect(g); g.connect(ctx.destination); o.frequency.value = 220; g.gain.setValueAtTime(0.05, ctx.currentTime); g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 2); o.start(); o.stop(ctx.currentTime + 2); }
