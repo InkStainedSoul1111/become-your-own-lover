@@ -192,7 +192,7 @@ const data = {
       "https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"
     ] 
   },
-  food: { 
+  food: {
     prompts: [
       "Day 1: What does it mean to nourish yourself with love?",
       "Day 2: How can eating become a sacred act of self-care?",
@@ -222,15 +222,15 @@ const data = {
       "Day 26: How can you honor your hunger?",
       "Day 27: Cooking for yourself is self-love.",
       "Day 28: You nourish you. And that is powerful."
-    ], 
+    ],
     images: [
       "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800",
       "https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800",
       "https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800",
       "https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&w=800"
-    ] 
+    ]
   },
-  selfcare: { 
+  selfcare: {
     prompts: [
       "Day 1: What self-care ritual makes you feel most loved?",
       "Day 2: How can you turn self-care into a non-negotiable?",
@@ -260,15 +260,15 @@ const data = {
       "Day 26: What are you craving? Give it to yourself.",
       "Day 27: You are worthy of care every day.",
       "Day 28: Keep showing up for yourself."
-    ], 
+    ],
     images: [
       "https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800",
       "https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800",
       "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800",
       "https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"
-    ] 
+    ]
   },
-  rituals: { 
+  rituals: {
     prompts: [
       "Day 1: How can skincare become a ritual of self-love?",
       "Day 2: What is the power of flowers and softness?",
@@ -298,15 +298,15 @@ const data = {
       "Day 26: Move your body as ritual.",
       "Day 27: You are the ritual you've been waiting for.",
       "Day 28: Keep your promises to yourself."
-    ], 
+    ],
     images: [
       "https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800",
       "https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800",
       "https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800",
       "https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800"
-    ] 
+    ]
   },
-  journal: { 
+  journal: {
     prompts: [
       "Day 1: Describe the version of yourself you are becoming.",
       "Day 2: Write a love letter to yourself.",
@@ -336,13 +336,13 @@ const data = {
       "Day 26: What makes you feel alive?",
       "Day 27: What is your truth today?",
       "Day 28: Dear me: You did it. You're here."
-    ], 
+    ],
     images: [
       "https://images.pexels.com/photos/35537/pexels-photo.jpg?auto=compress&w=800",
       "https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&w=800",
       "https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpg?auto=compress&w=800",
       "https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"
-    ] 
+    ]
   }
 }
 
@@ -370,38 +370,38 @@ export default function App() {
   if (!started) {
     return (
       <div style={{
-        minHeight:'100vh', 
-        backgroundImage:"url('https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&w=1920')", 
+        minHeight:'100vh',
+        backgroundImage:"url('https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=1920')",
         backgroundSize:'cover',
         backgroundPosition: 'center',
-        display:'flex', 
-        alignItems:'center', 
-        justifyContent:'center', 
-        flexDirection:'column', 
-        color:'white', 
-        textAlign:'center', 
+        display:'flex',
+        alignItems:'center',
+        justifyContent:'center',
+        flexDirection:'column',
+        color:'white',
+        textAlign:'center',
         padding:'20px'
       }}>
         <h1 style={{fontSize:'48px', marginBottom:'16px', textShadow:'2px 2px 8px rgba(0,0,0,0.7)'}}>Become Your Own Lover</h1>
         <p style={{fontSize:'20px', marginBottom:'32px', textShadow:'1px 1px 4px rgba(0,0,0,0.7)'}}>A sacred space for inner connection and self love</p>
         <button onClick={()=>setStarted(true)} style={{
-          padding:'16px 32px', 
-          fontSize:'18px', 
-          background:'#f97316', 
-          border:'none', 
-          borderRadius:'8px', 
-          color:'white', 
-          marginBottom:'12px', 
+          padding:'16px 32px',
+          fontSize:'18px',
+          background:'#f97316',
+          border:'none',
+          borderRadius:'8px',
+          color:'white',
+          marginBottom:'12px',
           cursor:'pointer',
           fontWeight:'bold'
         }}>Start Free Preview</button>
         <button onClick={handleCheckout} style={{
-          padding:'16px 32px', 
-          fontSize:'18px', 
-          background:'#06b6d4', 
-          border:'none', 
-          borderRadius:'8px', 
-          color:'white', 
+          padding:'16px 32px',
+          fontSize:'18px',
+          background:'#06b6d4',
+          border:'none',
+          borderRadius:'8px',
+          color:'white',
           cursor:'pointer',
           fontWeight:'bold'
         }}>Unlock Full 28 Days - $21.21</button>
