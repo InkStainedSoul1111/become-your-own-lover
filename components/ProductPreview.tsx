@@ -2,26 +2,25 @@
 import React from 'react';
 
 export function ProductPreview() {
-  const handleCheckout = async () => {
-    // TODO: Integrate with Stripe checkout
-    console.log('Redirecting to checkout...');
-  };
-
   return (
-    <div className="preview-container">
+    <div className="product-preview">
       <div className="image-gallery">
-        <img 
+        <img
           src="/images/motivate.png"
           alt="Motivation preview"
           className="preview-image"
-/>
+        />
       </div>
-       <button 
-        onClick={handleCheckout}
-        className="checkout-button"
+
+      <a 
+        href="https://buy.stripe.com/14A8wPd059gPgQz0057bW01" 
+        target="_blank" 
+        rel="noopener noreferrer"
       >
-        Purchase Full Access
-      </button>
+        <button className="buy-button">
+          Purchase Full Access
+        </button>
+      </a>
     </div>
-  );
+  )
 }
