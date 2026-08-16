@@ -1,8 +1,6 @@
 "use client"
 import { useState, useEffect, useRef } from 'react'
-export default function App() {
 
-    
   export default function App() {
   const [started, setStarted] = useState(false)
   const [activeTab, setActiveTab] = useState('manifest')
