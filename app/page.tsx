@@ -139,7 +139,7 @@ export default function App() {
                  {allEntries.length===0?<p style={{color:'#5d4037',fontStyle:'italic'}}>Your sacred words will appear here like ink on parchment...</p>:allEntries.map((e,i)=>
                  <div key={i} style={{borderLeft:'3px solid #8d6e63',padding:'16px 0 16px 16px',marginBottom:'16px',background:'rgba(255,255,255,0.7)',borderRadius:'4px'}}>
                  <p style={{fontStyle:'italic',color:'#6d4c41',fontSize:'14px'}}>🪶 {e.prompt}</p>
-                 <p style={{color:'#3e2723', fontFamily: 'serif'}}>The ink remembers.</p>
+                 <p style={{color: '#3e2723', fontFamily: 'serif'}}>The ink remembers.</p>
 </div>
  ))}
 </div>
