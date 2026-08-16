@@ -10,18 +10,18 @@ export function ProductPreview() {
     <div className="preview-container">
       <div className="image-gallery">
         <img 
-          src="https://raw.githubusercontent.com/InkStainedSoul1111/become-your-own-lover/main/public/images/motivate.png" 
-          alt="Motivation preview" 
+          src="/images/motivate.png"
+          alt="Motivation preview"
           className="preview-image"
-        />
-        <img 
-          src="https://raw.githubusercontent.com/InkStainedSoul1111/become-your-own-lover/main/public/images/nature.png" 
-          alt="Nature preview" 
+/>
+        <img
+          src="/images/nature.png"
+          alt="Nature preview"
           className="preview-image"
+/>
         />
       </div>
-      
-      <button 
+       <button 
         onClick={handleCheckout}
         className="checkout-button"
       >
