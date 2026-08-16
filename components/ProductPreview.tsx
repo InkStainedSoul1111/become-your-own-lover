@@ -15,11 +15,6 @@ export function ProductPreview() {
           alt="Motivation preview"
           className="preview-image"
 />
-        <img
-          src="/images/nature.png"
-          alt="Nature preview"
-          className="preview-image"
-/>
       </div>
        <button 
         onClick={handleCheckout}
