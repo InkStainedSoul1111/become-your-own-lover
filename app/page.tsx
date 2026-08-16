@@ -38,8 +38,6 @@ const data = {
     {text:"What self-care ritual makes you feel most loved?", img:"https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800"},
     {text:"How can you turn self-care into a non-negotiable?"},
   ],
-  rituals: [
- 
   export default function App() {
   const [started, setStarted] = useState(false)
   const [activeTab, setActiveTab] = useState('manifest')
