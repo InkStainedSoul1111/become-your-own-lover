@@ -40,8 +40,7 @@ const data = {
   ],
   rituals: [
     {text:"How can skincare become a ritual of self-love?", img:"https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800"},
-    {text:"What is the power of flowers and softness?"},
-  ],
+  
   export default function App() {
   const [started, setStarted] = useState(false)
   const [activeTab, setActiveTab] = useState('manifest')
