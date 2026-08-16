@@ -12,7 +12,7 @@ const data = {
     {text:"Your dreams chose you for a reason."},
     {text:"Dare to name what you really want."},
   ],
-  music [
+  music: [
     {text:"How does dancing reset your nervous system?", img:"https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800"},
     {text:"What music makes you feel most alive?"},
   ],
