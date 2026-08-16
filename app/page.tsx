@@ -4,19 +4,50 @@ import { useState, useEffect, useRef } from 'react'
 const manifestPrompts = [
   {text:"I am worthy of deep, unconditional love — starting with my own.",cat:"emotional"},
   {text:"My body is a sacred vessel. I honor it with movement that feels like joy.",cat:"physical"},
+  {text:"I release the need for external validation. I am enough exactly as I am.",cat:"mental"},
+  {text:"Every cell in my body vibrates with confidence and purpose.",cat:"physical"},
+  {text:"I attract relationships that mirror the love I give myself.",cat:"emotional"},
+  {text:"My mind is clear, focused, and aligned with my highest vision.",cat:"mental"},
+  {text:"I give myself permission to take up space and shine brightly.",cat:"emotional"},
+  {text:"I am becoming the person my dreams need me to be.",cat:"mental"},
 ]
 
-const journalPrompts = ["Describe the version of yourself you are becoming.","Write a love letter to yourself."]
+const motivatePrompts = ["What would you do if you knew you could not fail?","Who are you when no one is watching?","Your dreams chose you for a reason.","What does fulfillment feel like in your body right now?","If your future self could send you one message, what would it be?","What are you tolerating that you no longer need to accept?","What lights you up so much that time disappears?","Dare to name what you really want."]
+
+const journalPrompts = ["Describe the version of yourself you are becoming.","Write a love letter to yourself.","What dream have you been too afraid to chase?","How do you want to feel one year from now?","What beliefs about yourself are you ready to release?","Describe a moment when you felt fully alive.","If you could design your ideal day, what would it look like?","What parts of yourself have you been hiding?"]
+
+const fitnessPrompts = ["What does your body want to express through movement today?","How does exercise make you feel in your spirit?","What form of movement brings you the most joy?","How can you honor your body as a vessel of strength?","What would it feel like to exercise for self-love?","Describe the strongest version of yourself.","How has your relationship with your body evolved?","What barriers keep you from moving freely?"]
+
+const foodPrompts = ["What does it mean to nourish yourself with love?","How do you want to feel in your body about food?","What foods make you feel vibrant and aligned?","Describe your relationship with food.","How can eating become a sacred act of self-care?","What cravings is your body really telling you about?","How do you practice gratitude for nourishment?","What would peace with food feel like?"]
+
+const selfcarePrompts = ["What does honoring your body as a temple mean to you?","What self-care ritual makes you feel most loved?","How can you turn self-care into a non-negotiable?","What does your ideal self-care day look like?","How has prioritizing yourself changed you?","What boundaries do you need to set?","Describe a time you felt pampered and whole.","What would it feel like to treat yourself with tenderness?"]
+
+const naturePrompts = ["How does being in nature shift your sense of self?","What does nature teach you about growth?","Describe a moment in nature that healed you.","How can you cultivate a daily relationship with nature?","What aspects of nature mirror who you are becoming?","How does time in nature calm your mind?","What would it feel like to be part of nature?","How can nature help you reconnect with yourself?"]
+
+const musicPrompts = ["How does dancing reset your nervous system?","What music makes you feel most alive?","Describe a moment when music freed your spirit.","How can you dance without judgment?","What does it mean to move as pure joy?","How has dancing changed your relationship with yourself?","How can music be daily medicine for your soul?","Which songs help you feel confident and sensual?"]
+
+const ritualsPrompts = ["How can skincare become a ritual of self-love?","What is the power of flowers and softness?","Describe how you feel applying lotion.","How can beauty rituals become self-appreciation?","What textures and scents make you feel cherished?","How do flowers and candles invite calm?","What books nourish your soul?","How can you honor your body as a temple daily?"]
 
 export default function FullApp() {
   const [started, setStarted] = useState(false)
   const [activeTab, setActiveTab] = useState('manifest')
   const [journalText, setJournalText] = useState('')
+  const [journalCategory, setJournalCategory] = useState('general')
+  const [saveMsg, setSaveMsg] = useState(false)
   const [allEntries, setAllEntries] = useState<any[]>([])
-  const [currentManifest, setCurrentManifest] = useState(0)
-  const [currentJournal, setCurrentJournal] = useState(0)
-  const [currentPromptText, setCurrentPromptText] = useState('')
+  const [musicPlaying, setMusicPlaying] = useState(true)
   const audioContextRef = useRef<AudioContext | null>(null)
+
+  const [currentManifest, setCurrentManifest] = useState(0)
+  const [currentMotivate, setCurrentMotivate] = useState(0)
+  const [currentJournal, setCurrentJournal] = useState(0)
+  const [currentFitness, setCurrentFitness] = useState(0)
+  const [currentFood, setCurrentFood] = useState(0)
+  const [currentSelfcare, setCurrentSelfcare] = useState(0)
+  const [currentNature, setCurrentNature] = useState(0)
+  const [currentMusic, setCurrentMusic] = useState(0)
+  const [currentRituals, setCurrentRituals] = useState(0)
+  const [currentPromptText, setCurrentPromptText] = useState('')
 
   const initAudio = () => { if (!audioContextRef.current) audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)() }
   const playAmbientStrings = () => {
@@ -32,31 +63,43 @@ export default function FullApp() {
   }
 
   const shuffleManifest = () => { const next = (currentManifest + 1) % manifestPrompts.length; setCurrentManifest(next); setCurrentPromptText(manifestPrompts[next].text) }
+  const shuffleMotivate = () => { const next = (currentMotivate + 1) % motivatePrompts.length; setCurrentMotivate(next); setCurrentPromptText(motivatePrompts[next]) }
   const shuffleJournal = () => { const next = (currentJournal + 1) % journalPrompts.length; setCurrentJournal(next); setCurrentPromptText(journalPrompts[next]) }
+  const shuffleFitness = () => { const next = (currentFitness + 1) % fitnessPrompts.length; setCurrentFitness(next); setCurrentPromptText(fitnessPrompts[next]) }
+  const shuffleFood = () => { const next = (currentFood + 1) % foodPrompts.length; setCurrentFood(next); setCurrentPromptText(foodPrompts[next]) }
+  const shuffleSelfcare = () => { const next = (currentSelfcare + 1) % selfcarePrompts.length; setCurrentSelfcare(next); setCurrentPromptText(selfcarePrompts[next]) }
+  const shuffleNature = () => { const next = (currentNature + 1) % naturePrompts.length; setCurrentNature(next); setCurrentPromptText(naturePrompts[next]) }
+  const shuffleMusic = () => { const next = (currentMusic + 1) % musicPrompts.length; setCurrentMusic(next); setCurrentPromptText(musicPrompts[next]) }
+  const shuffleRituals = () => { const next = (currentRituals + 1) % ritualsPrompts.length; setCurrentRituals(next); setCurrentPromptText(ritualsPrompts[next]) }
+
+  const toggleMusic = () => { setMusicPlaying(!musicPlaying); if (!musicPlaying) playAmbientStrings() }
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
     // @ts-ignore
-    const result = await window.dataSdk?.create({ entry_type: 'journal', prompt: currentPromptText, content: journalText, category: 'general', created_at: new Date().toISOString() })
-    if (result?.isOk) { setJournalText('') }
+    const result = await window.dataSdk?.create({ entry_type: 'journal', prompt: currentPromptText, content: journalText, category: journalCategory, created_at: new Date().toISOString() })
+    if (result?.isOk) { setJournalText(''); setSaveMsg(true); setTimeout(() => setSaveMsg(false), 2000) }
   }
 
   useEffect(() => {
     if (!started) return;
-    shuffleManifest(); shuffleJournal();
+    shuffleManifest(); shuffleMotivate(); shuffleJournal(); shuffleFitness(); shuffleFood(); shuffleSelfcare(); shuffleNature(); shuffleMusic(); shuffleRituals();
     playAmbientStrings()
     // @ts-ignore
     window.dataSdk?.init({ onDataChanged: (data) => setAllEntries(data) })
   }, [started])
 
   const tabs = [
-    {id: 'manifest', label: 'Manifest'}, {id: 'journal', label: 'Journal'}, {id: 'writings', label: 'My Writings'}
+    {id: 'manifest', label: 'Manifest'}, {id: 'motivate', label: 'Motivate'}, {id: 'music', label: 'Music & Dance'},
+    {id: 'nature', label: 'Nature'}, {id: 'fitness', label: 'Fitness'}, {id: 'food', label: 'Food'},
+    {id: 'selfcare', label: 'Self Care'}, {id: 'rituals', label: 'Rituals'}, {id: 'journal', label: 'Journal'},
+    {id: 'writings', label: 'My Writings'}
   ]
 
   return (
     <>
-      <style>{`body { font-family: 'Alegreya', serif; background: rgb(253, 248, 243); }.heading-font { font-family: 'Playfair Display', serif; }.tab-active { border-bottom: 3px solid #b45309; color: #b45309!important; }.tab-btn { transition: all 0.2s; }.tab-panel { display: none; }.tab-panel.active { display: block; }`}</style>
-      <link href="https://fonts.googleapis.com/css2?family=Alegreya&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+      <style>{`body { font-family: 'Alegreya', serif; background: rgb(253, 248, 243); }.heading-font { font-family: 'Playfair Display', serif; }.tab-active { border-bottom: 3px solid #b45309; color: #b45309!important; }.tab-btn { transition: all 0.2s; }.tab-panel { display: none; }.tab-panel.active { display: block; }.fade-in { animation: fadeIn 0.4s ease; } @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }.journal-textarea { min-height: 160px; }`}</style>
+      <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
 
       {!started? (
         <div className="relative overflow-hidden flex-1 flex-col h-screen">
@@ -64,46 +107,56 @@ export default function FullApp() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/60"></div>
           <div className="relative z-10 flex-col items-center justify-center text-center px-6 h-full">
             <h1 className="heading-font text-white drop-shadow-lg mb-3 text-[48px] font-bold">Become Your Own Lover</h1>
-            <button onClick={() => {setStarted(true); playAmbientStrings()}} className="px-8 py-3 bg-amber-700 text-white font-semibold rounded-lg">Start Your Journey</button>
+            <p className="text-white/95 max-w-sm drop-shadow mb-8 text-[18px]">A sacred space for inner connection and self-love</p>
+            <button onClick={() => {setStarted(true); playAmbientStrings()}} className="px-8 py-3 bg-amber-700 text-white font-semibold rounded-lg hover:bg-amber-800 transition shadow-lg">Start Your Journey</button>
           </div>
         </div>
       ) : (
         <div className="flex-1 flex-col bg-gradient-to-b from-stone-50 to-amber-50 min-h-screen">
-          <header className="bg-white border-b border-stone-200">
-            <div className="max-w-5xl mx-auto px-4 py-4">
+          <header className="bg-white border-b border-stone-200 sticky top-0 z-10 shadow-sm">
+            <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
               <h1 className="heading-font text-xl font-bold text-stone-900">Become Your Own Lover</h1>
+              <button onClick={toggleMusic} className="text-amber-700 hover:text-amber-800 text-sm font-medium">{musicPlaying? '🔊 Sound On' : '🔇 Sound Off'}</button>
             </div>
           </header>
-          <nav className="bg-white border-b border-stone-200">
+          <nav className="bg-white border-b border-stone-200 overflow-x-auto">
             <div className="max-w-5xl mx-auto px-4 flex space-x-6">
               {tabs.map(tab => (
-                <button key={tab.id} onClick={() => setActiveTab(tab.id)} className={`tab-btn py-4 px-1 text-sm font-medium ${activeTab === tab.id? 'tab-active text-amber-700' : 'text-stone-600'}`}>{tab.label}</button>
+                <button key={tab.id} onClick={() => setActiveTab(tab.id)} className={`tab-btn py-4 px-1 text-sm font-medium whitespace-nowrap ${activeTab === tab.id? 'tab-active text-amber-700' : 'text-stone-600 hover:text-stone-900'}`}>{tab.label}</button>
               ))}
             </div>
           </nav>
           <main className="max-w-5xl mx-auto px-4 py-6 flex-1">
-            <div className={`tab-panel ${activeTab === 'manifest'? 'active' : ''}`}>
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h2 className="heading-font text-2xl mb-4">Daily Manifestation</h2>
-                <p className="mb-4 italic">"{manifestPrompts[currentManifest].text}"</p>
-                <button onClick={shuffleManifest} className="px-4 py-2 bg-amber-700 text-white rounded-lg">Shuffle</button>
+            <div className={`tab-panel ${activeTab === 'manifest'? 'active' : ''} fade-in`}>
+              <div className="bg-white rounded-lg shadow-sm border border-stone-200 p-6">
+                <h2 className="heading-font text-2xl text-stone-900 mb-4">Daily Manifestation</h2>
+                <p className="text-stone-700 mb-4 italic">"{manifestPrompts[currentManifest].text}"</p>
+                <button onClick={shuffleManifest} className="px-4 py-2 bg-amber-700 text-white rounded-lg hover:bg-amber-800">Shuffle</button>
               </div>
             </div>
-            <div className={`tab-panel ${activeTab === 'journal'? 'active' : ''}`}>
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h2 className="heading-font text-2xl mb-4">Sacred Journal</h2>
-                <p className="mb-2 italic">"{journalPrompts[currentJournal]}"</p>
+            <div className={`tab-panel ${activeTab === 'motivate'? 'active' : ''} fade-in`}>
+              <div className="bg-white rounded-lg shadow-sm border-stone-200 p-6">
+                <h2 className="heading-font text-2xl text-stone-900 mb-4">Deep Motivation</h2>
+                <p className="text-stone-700 mb-4 italic">"{motivatePrompts[currentMotivate]}"</p>
+                <button onClick={shuffleMotivate} className="px-4 py-2 bg-amber-700 text-white rounded-lg hover:bg-amber-800">Shuffle</button>
+              </div>
+            </div>
+            <div className={`tab-panel ${activeTab === 'journal'? 'active' : ''} fade-in`}>
+              <div className="bg-white rounded-lg shadow-sm border border-stone-200 p-6">
+                <h2 className="heading-font text-2xl text-stone-900 mb-4">Sacred Journal</h2>
+                <p className="text-stone-700 mb-2 italic">"{journalPrompts[currentJournal]}"</p>
                 <form onSubmit={handleSave}>
-                  <textarea value={journalText} onChange={(e) => setJournalText(e.target.value)} className="w-full border rounded-lg p-3 mb-4 h-40" />
-                  <button type="submit" className="px-4 py-2 bg-amber-700 text-white rounded-lg">Save Entry</button>
+                  <textarea value={journalText} onChange={(e) => setJournalText(e.target.value)} placeholder="Write from your heart..." className="journal-textarea w-full border border-stone-300 rounded-lg p-3 mb-4" />
+                  <button type="submit" className="px-4 py-2 bg-amber-700 text-white rounded-lg hover:bg-amber-800">Save Entry</button>
                 </form>
-                <button onClick={shuffleJournal} className="mt-2 text-sm text-amber-700">New Prompt</button>
+                {saveMsg && <p className="text-green-600 mt-2">Saved!</p>}
+                <button onClick={shuffleJournal} className="mt-3 text-sm text-amber-700">New Prompt</button>
               </div>
             </div>
-            <div className={`tab-panel ${activeTab === 'writings'? 'active' : ''}`}>
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h2 className="heading-font text-2xl mb-4">My Writings</h2>
-                {allEntries.length === 0? <p>No entries yet.</p> : allEntries.map((entry, i) => <div key={i} className="border-b py-3">{entry.content}</div>)}
+            <div className={`tab-panel ${activeTab === 'writings'? 'active' : ''} fade-in`}>
+              <div className="bg-white rounded-lg shadow-sm border border-stone-200 p-6">
+                <h2 className="heading-font text-2xl text-stone-900 mb-4">My Writings</h2>
+                {allEntries.length === 0? <p className="text-stone-600">No entries yet. Start journaling.</p> : allEntries.map((entry, i) => <div key={i} className="border-b border-stone-200 py-3"><p className="text-sm text-stone-500 italic">{entry.prompt}</p><p className="text-stone-800">{entry.content}</p></div>)}
               </div>
             </div>
           </main>
