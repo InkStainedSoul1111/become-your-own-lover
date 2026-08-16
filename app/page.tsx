@@ -151,11 +151,10 @@ const data = {
     {text:"Day 26: You are allowed to rest between efforts."},
     {text:"Day 27: How can you move with compassion?"},
     {text:"Day 28: Your body is sacred. Honor it."}
-  ],
-  food: [
+  ],  food: [
     {text:"Day 1: What does it mean to nourish yourself with love?", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800"},
     {text:"Day 2: How can eating become a sacred act of self-care?"},
-    {text:"Day 3: What food makes you feel comforted?"}, // <-- FIXED HERE
+    {text:"Day 3: What food makes you feel comforted?"},
     {text:"Day 4: You deserve meals that feel like a hug."},
     {text:"Day 5: How can you slow down while you eat?"},
     {text:"Day 6: Nourish yourself like you would your child."},
@@ -281,7 +280,7 @@ export default function App() {
   const [journalText, setJournalText] = useState('')
   const [allEntries, setAllEntries] = useState<any[]>([])
   const [musicPlaying, setMusicPlaying] = useState(true)
-  const [index, setIndex] = useState<any>({manifest:0, motivate:0, music:0, nature:0, fitness:0, food:0, selfcare:0, rituals:0, journal:0})
+  const [index, setIndex] = useState<any>({manifest:0, motivate:0, 'Music/Dance':0, nature:0, fitness:0, food:0, selfcare:0, rituals:0, journal:0})
   const audioContextRef = useRef<AudioContext | null>(null)
 
   const initAudio = () => { if (!audioContextRef.current) audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)() }
@@ -332,7 +331,7 @@ export default function App() {
           </header>
           <nav style={{background:'white',borderBottom:'1px solid #e7e5e4'}}>
             <div style={{maxWidth:'1024px',margin:'0 auto',display:'flex',gap:'16px',overflowX:'auto',padding:'0 16px'}}>
-              {tabs.map(t=><button key={t} className={`tab ${activeTab===t?'active':''}`} onClick={()=>setActiveTab(t)}>{t.charAt(0).toUpperCase()+t.slice(1).replace('selfcare','Self Care').replace('music','Music & Dance')}</button>)}
+              {tabs.map(t=><button key={t} className={`tab ${activeTab===t?'active':''}`} onClick={()=>setActiveTab(t)}>{t.charAt(0).toUpperCase()+t.slice(1).replace('selfcare','Self Care').replace('Music/Dance','Music & Dance')}</button>)}
             </div>
           </nav>
           <main style={{maxWidth:'1024px',margin:'0 auto',padding:'24px 16px'}}>
@@ -355,4 +354,23 @@ export default function App() {
                 <img src="/journal-pastel.jpg" alt="Sacred Journal" style={{width: '100%', borderRadius: '12px', marginBottom: '20px', maxHeight: '400px', objectFit: 'cover'}} />
                 <form onSubmit={saveEntry}>
                   <div className="card" style={{ backgroundImage: "url('/scroll-paper.jpg')", backgroundSize: "cover", backgroundPosition: "center", padding: '24px', borderRadius: '12px', marginBottom: '16px' }} >
-                    <textarea value={journalText} onChange={e=>setJournalText(e.target.value)} class
+                    <textarea value={journalText} onChange={e=>setJournalText(e.target.value)} className="w-full h-80 bg-transparent border-none outline-none resize-none text-amber-900 placeholder-amber-700 font-serif text-lg leading-relaxed" placeholder="Dear Me, Today I choose to become my own lover by..." />
+                  </div>
+                  <button className={`btn ${!isPaid? 'btn-locked' : ''}`} type="submit">Save Entry</button>
+                </form>
+                <button onClick={()=>shuffle('journal')} style={{marginTop:'12px',background:'none',border:'none',color:'#b45309',cursor:'pointer'}}>New Prompt</button>
+              </div>
+            </div>
+            <div className={`panel ${activeTab==='writings'?'active':''}`}>
+              <div className="card" style={{position:'relative'}}>
+                <h2 className="heading" style={{fontSize:'24px',marginBottom:'16px'}}>My Writings</h2>
+                {!isPaid && <div className="overlay"><p>Your saved writings live here</p><button className="btn" onClick={()=>setIsPaid(true)}>Unlock $19</button></div>}
+                {allEntries.length===0?<p>No entries yet.</p>:allEntries.map((e,i)=><div key={i} style={{borderBottom:'1px solid #e7e5e4',padding:'16px 0'}}><p style={{fontStyle:'italic',color:'#78716c'}}>{e.prompt}</p><p>{e.content}</p></div>)}
+              </div>
+            </div>
+          </main>
+        </div>
+      )}
+    </>
+  )
+}
