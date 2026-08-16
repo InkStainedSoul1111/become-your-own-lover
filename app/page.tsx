@@ -126,8 +126,25 @@ export default function App() {
                 style={{width: '100%', borderRadius: '12px', marginBottom: '20px', maxHeight: '400px', objectFit: 'cover'}}
               />
                 <form onSubmit={saveEntry}>
-                  <textarea value={journalText} onChange={e=>setJournalText(e.target.value)} placeholder="Write from your heart..." style={{width:'100%',minHeight:'160px',border:'1px solid #d6d3d1',borderRadius:'8px',padding:'12px',marginBottom:'16px'}}/>
-                  <button className="btn" type="submit">Save Entry</button>
+                 <div 
+  className="card"
+  style={{
+    backgroundImage: "url('/scroll-paper.jpg')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    padding: '24px',
+    borderRadius: '12px',
+    marginBottom: '16px'
+  }}
+>
+  <textarea 
+    value={journalText} 
+    onChange={e=>setJournalText(e.target.value)}
+    className="w-full h-80 bg-transparent border-none outline-none resize-none text-amber-900 placeholder-amber-700 font-serif text-lg leading-relaxed"
+    placeholder="Dear Me, Today I choose to become my own lover by..."
+  />
+</div>
+<button className="btn" type="submit">Save Entry</button>
                 </form>
                 <button onClick={()=>shuffle('journal')} style={{marginTop:'12px',background:'none',border:'none',color:'#b45309',cursor:'pointer'}}>New Prompt</button>
               </div>
