@@ -142,7 +142,6 @@ export default function App() {
                 <p style={{color:'#3e2723',fontFamily:'Alegreya'}}>{e.content}</p>
             </div>
       )}
-    </div>
   </div>
 </main>
 </div>
