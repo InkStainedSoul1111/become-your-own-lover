@@ -19,7 +19,6 @@ export function ProductPreview() {
           alt="Nature preview"
           className="preview-image"
 />
-        />
       </div>
        <button 
         onClick={handleCheckout}
