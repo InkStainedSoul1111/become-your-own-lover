@@ -4,7 +4,6 @@ export default function HomePage() {
   return (
     <div style={{
       minHeight: '100vh',
-      backgroundImage: 'url(/images/healing-bg.jpg)',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       display: 'flex',
