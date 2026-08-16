@@ -1,6 +1,6 @@
 "use client"
 import { useState, useEffect, useRef } from 'react'
-export default function Home() {
+export default function App() {
 const [hasUnlocked, setHasUnlocked] = useState(false);
 const [entryCount, setEntryCount] = useState(0);
 const [tab, setTab] = useState('journal');
@@ -43,9 +43,8 @@ const data = {
     {text:"What is the power of flowers and softness?"},
   ],
   journal: ["Describe the version of yourself you are becoming.", "Write a love letter to yourself.", "What dream have you been too afraid to chase?"]
-}
-
-export default function App() {
+  
+  export default function App() {
   const [started, setStarted] = useState(false)
   const [activeTab, setActiveTab] = useState('manifest')
   const [journalText, setJournalText] = useState('')
