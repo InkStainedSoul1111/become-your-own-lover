@@ -115,5 +115,6 @@ export default function FullApp() {
       <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
 
       {!started? (
-        <div className="relative overflow-hidden flex-1 flex-col h-screen">
-          <img className="absolute inset-0 w-full h-full object-cover" src="https://images.pexels.com/photos/
+  <div className="relative overflow-hidden flex-1 flex-col h-screen">
+    <img className="absolute inset-0 w-full h-full object-cover" src="https://images.pexels.com/photos/1661296/pexels-photo-1661296.jpeg?auto=compress&cs=tinysrgb&w=1280" alt="sunset"/>
+    <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/60"></div>
