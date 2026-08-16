@@ -23,36 +23,36 @@ export default function App() {
 
   const data = {
     Manifest: [
-      {text:"I am worthy of deep, unconditional love — starting with my own.", img:""},
-      {text:"I choose me. Every single day."}
+      {text:"I am worthy of deep, unconditional love — starting with my own.", img:"https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg"},
+      {text:"I am my own safe place."}
     ],
     Motivate: [
-      {text:"What small act of self-love will you do today?", img:""},
-      {text:"You are not behind. You are becoming."}
+      {text:"What small act of self-love will you do today?", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg"},
+      {text:"You are allowed to take up space."}
     ],
     "Music/Dance": [
       {text:"What song makes your soul remember who you are?"},
-      {text:"Dance like your body is sacred."}
+      {text:"Let your body pray."}
     ],
     Nature: [
-      {text:"How does nature reflect the beauty you carry inside?", img:""},
-      {text:"You are wild and rooted and free."}
+      {text:"How does nature reflect the beauty you carry inside?", img:"https://images.pexels.com/photos/3608263/pexels-photo-3608263.jpeg"},
+      {text:"You are earth and sky."}
     ],
     Fitness: [
       {text:"What does your body want to express through movement today?"},
-      {text:"Strength is softness too."}
+      {text:"Move in ways that feel like love."}
     ],
     Food: [
-      {text:"What does it mean to nourish yourself with love?", img:""},
-      {text:"Feed yourself like you love yourself."}
+      {text:"What does it mean to nourish yourself with love?", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg"},
+      {text:"Nourish yourself like you would your child."}
     ],
     Selfcare: [
-      {text:"What self-care ritual makes you feel most loved?", img:""},
-      {text:"You deserve rest without guilt."}
+      {text:"What self-care ritual makes you feel most loved?", img:"https://images.pexels.com/photos/40568/melancholy-rain-drop-nature-40568.jpeg"},
+      {text:"Rest is resistance. Rest is love."}
     ],
     Rituals: [
       {text:"What ritual would make you feel most connected to yourself?"},
-      {text:"Create a ritual that feels like coming home to you."}
+      {text:"Light a candle and tell yourself the truth."}
     ],
     Journal: []
   }
@@ -62,16 +62,16 @@ export default function App() {
   const currentPrompt = currentPrompts[index % currentPrompts.length]
 
   return (
-    <div style={{background: '#faf8f3', minHeight: '100vh', fontFamily: 'serif', color: '#333', padding: '40px 20px'}}>
+    <div style={{background: '#faf8f3', minHeight: '100vh', fontFamily: 'Georgia, serif', color: '#333', padding: '40px 20px'}}>
       <div style={{maxWidth: '900px', margin: '0 auto'}}>
-        <h1 style={{fontSize: '36px', fontWeight: '400', marginBottom: '30px'}}>Become Your Own Lover</h1>
+        <h1 style={{fontSize: '40px', fontWeight: '400', marginBottom: '30px', letterSpacing: '1px'}}>Become Your Own Lover</h1>
         
-        <div style={{display: 'flex', gap: '30px', borderBottom: '1px solid #ddd', marginBottom: '30px', flexWrap: 'wrap'}}>
+        <div style={{display: 'flex', gap: '30px', borderBottom: '1px solid #d4c5a4', marginBottom: '30px', flexWrap: 'wrap'}}>
           {tabs.map(tab => (
             <button key={tab} onClick={() => {setActiveTab(tab); setIndex(0)}}
               style={{background: 'none', border: 'none', fontSize: '16px', padding: '10px 0', cursor: 'pointer',
-              borderBottom: activeTab === tab ? '2px solid #c49a6c' : '2px solid transparent',
-              color: activeTab === tab ? '#000' : '#666'}}>
+              borderBottom: activeTab === tab ? '3px solid #c49a6c' : '3px solid transparent',
+              color: activeTab === tab ? '#000' : '#777', fontWeight: activeTab === tab ? '600' : '400'}}>
               {tab}
             </button>
           ))}
@@ -79,23 +79,23 @@ export default function App() {
 
         {activeTab !== 'Journal' ? (
           <div>
-            <h2 style={{fontSize: '24px', fontWeight: '400', marginBottom: '20px'}}>{activeTab}</h2>
-            {currentPrompt.img && <img src={currentPrompt.img} style={{width: '100%', maxHeight: '400px', objectFit: 'cover', borderRadius: '8px', marginBottom: '20px'}} alt="" />}
-            <p style={{fontSize: '18px', fontStyle: 'italic', marginBottom: '30px'}}>"{currentPrompt.text}"</p>
-            <button onClick={() => setIndex(index + 1)} style={{background: '#c49a6c', color: 'white', border: 'none', padding: '12px 30px', borderRadius: '4px', cursor: 'pointer'}}>Next</button>
+            <h2 style={{fontSize: '28px', fontWeight: '400', marginBottom: '20px'}}>{activeTab}</h2>
+            {currentPrompt.img && <img src={currentPrompt.img} style={{width: '100%', maxHeight: '400px', objectFit: 'cover', borderRadius: '12px', marginBottom: '20px'}} alt="" />}
+            <p style={{fontSize: '20px', fontStyle: 'italic', marginBottom: '30px', lineHeight: '1.6'}}>"{currentPrompt.text}"</p>
+            <button onClick={() => setIndex(index + 1)} style={{background: '#c49a6c', color: 'white', border: 'none', padding: '14px 32px', borderRadius: '6px', cursor: 'pointer', fontSize: '16px'}}>Next Prompt</button>
           </div>
         ) : (
           <div>
-            <h2 style={{fontSize: '24px', fontWeight: '400', marginBottom: '20px'}}>Journal</h2>
+            <h2 style={{fontSize: '28px', fontWeight: '400', marginBottom: '20px'}}>Journal</h2>
             <textarea value={journalText} onChange={e => setJournalText(e.target.value)}
-              style={{width: '100%', height: '200px', padding: '16px', border: '1px solid #ddd', borderRadius: '8px', fontFamily: 'serif', fontSize: '16px'}}
+              style={{width: '100%', height: '200px', padding: '20px', border: '1px solid #d4c5a4', borderRadius: '8px', fontFamily: 'Georgia, serif', fontSize: '16px', background: 'white'}}
               placeholder="Write to yourself with love..." />
-            <button onClick={saveEntry} style={{background: '#c49a6c', color: 'white', border: 'none', padding: '12px 30px', borderRadius: '4px', cursor: 'pointer', marginTop: '16px'}}>Save Entry</button>
+            <button onClick={saveEntry} style={{background: '#c49a6c', color: 'white', border: 'none', padding: '14px 32px', borderRadius: '6px', cursor: 'pointer', marginTop: '16px', fontSize: '16px'}}>Save Entry</button>
             <div style={{marginTop: '30px'}}>
               {entries.map((entry, i) => (
-                <div key={i} style={{background: 'white', padding: '16px', borderRadius: '8px', marginBottom: '12px', border: '1px solid #eee'}}>
+                <div key={i} style={{background: 'white', padding: '20px', borderRadius: '8px', marginBottom: '16px', border: '1px solid #eee'}}>
                   <p style={{fontSize: '12px', color: '#888', marginBottom: '8px'}}>{entry.date}</p>
-                  <p>{entry.text}</p>
+                  <p style={{fontSize: '16px', lineHeight: '1.6'}}>{entry.text}</p>
                 </div>
               ))}
             </div>
