@@ -192,156 +192,45 @@ const data = {
       "https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"
     ] 
   },
-  food: {
+    "Self Care": { prompts: ["Day 1: What self-care ritual makes you feel most loved?","Day 2: How can you turn self-care into a non-negotiable?","Day 3: Take a 15-minute break just for you.","Day 4: What does your nervous system need right now?","Day 5: Say no to one thing that drains you.","Day 6: Self-care is not selfish. It's survival.","Day 7: What brings you comfort today?","Day 8: Take a bath. Light a candle. Breathe.","Day 9: How can you soften today?","Day 10: Put your phone down for 1 hour.","Day 11: What would feel like a hug right now?","Day 12: Schedule joy like you schedule work.","Day 13: You are allowed to rest.","Day 14: What boundary protects your peace?","Day 15: Do one thing that makes future-you grateful.","Day 16: Self-care looks different every day.","Day 17: Check in with yourself. Really.","Day 18: What can you delegate or drop?","Day 19: Nourish your mind with good content.","Day 20: Move your body gently.","Day 21: You don't have to earn rest.","Day 22: What would kindness look like today?","Day 23: Protect your energy fiercely.","Day 24: Create a cozy space for yourself.","Day 25: Say kind things to yourself out loud.","Day 26: What are you craving? Give it to yourself.","Day 27: You are worthy of care every day.","Day 28: Keep showing up for yourself."], images: ["https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800","https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800","https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800","https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"] },
+  Rituals: { prompts: ["Day 1: How can skincare become a ritual of self-love?","Day 2: What is the power of flowers and softness?","Day 3: Create a morning ritual just for you.","Day 4: Light a candle and set an intention.","Day 5: How can you make bedtime sacred?","Day 6: Anoint yourself with oil. You are holy.","Day 7: What ritual helps you feel grounded?","Day 8: Write yourself a love note weekly.","Day 9: Create a playlist for your ritual.","Day 10: Use your hands. Make something.","Day 11: Ritual is repetition with meaning.","Day 12: How can you honor the moon phases?","Day 13: Cleanse your space with intention.","Day 14: What scent makes you feel safe?","Day 15: Dress up for yourself today.","Day 16: Create an altar to yourself.","Day 17: Rituals don't have to be perfect.","Day 18: Thank yourself for showing up.","Day 19: What ritual helps you transition?","Day 20: Use beautiful things daily.","Day 21: Touch yourself with kindness.","Day 22: How can you ritualize your coffee/tea?","Day 23: Create a closing ritual for your day.","Day 24: What do you want to celebrate?","Day 25: Ritualize your journaling.","Day 26: Move your body as ritual.","Day 27: You are the ritual you've been waiting for.","Day 28: Keep your promises to yourself."], images: ["https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800","https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800","https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800","https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800"] },
+  Journal: { prompts: ["Day 1: Describe the version of yourself you are becoming.","Day 2: Write a love letter to yourself.","Day 3: What are you proud of that no one knows?","Day 4: What story are you ready to release?","Day 5: How do you want to feel in 30 days?","Day 6: What did you learn about yourself this week?","Day 7: Write down 10 things you love about you.","Day 8: What do you need to hear today?","Day 9: Describe your perfect day.","Day 10: What are you no longer available for?","Day 11: How has your definition of love changed?","Day 12: What are you grateful for in your body?","Day 13: Write to your younger self.","Day 14: What boundaries do you need?","Day 15: What does freedom mean to you?","Day 16: How do you talk to yourself?","Day 17: What is your heart asking for?","Day 18: Describe a moment you felt powerful.","Day 19: What are you creating?","Day 20: What would you do if you trusted yourself?","Day 21: Write about a time you overcame something.","Day 22: What does success look like for you?","Day 23: How can you be more you?","Day 24: What are you calling in?","Day 25: Write about your values.","Day 26: What makes you feel alive?","Day 27: What is your truth today?","Day 28: Dear me: You did it. You're here."], images: ["https://images.pexels.com/photos/733745/pexels-photo-733745.jpeg?auto=compress&w=800","https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&w=800","https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpg?auto=compress&w=800","https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"] },
+  Writings: {
     prompts: [
-      "Day 1: What does it mean to nourish yourself with love?",
-      "Day 2: How can eating become a sacred act of self-care?",
-      "Day 3: Cook one meal for yourself today with intention.",
-      "Day 4: What foods make you feel energized and loved?",
-      "Day 5: Eat slowly. Taste every bite.",
-      "Day 6: Food is not the enemy. It's medicine.",
-      "Day 7: What would you feed someone you love?",
-      "Day 8: Nourish your cravings with compassion.",
-      "Day 9: Drink water like it's an act of love.",
-      "Day 10: Make your plate beautiful. You deserve that.",
-      "Day 11: What is your body asking for right now?",
-      "Day 12: No guilt. Only nourishment.",
-      "Day 13: Shop for groceries like you're shopping for you.",
-      "Day 14: Try one new recipe this week.",
-      "Day 15: How can you make mealtime peaceful?",
-      "Day 16: You are allowed to enjoy food.",
-      "Day 17: What foods connect you to home?",
-      "Day 18: Feed your soul, not just your body.",
-      "Day 19: Create a ritual around one meal.",
-      "Day 20: What would 'enough' look like on your plate?",
-      "Day 21: Thank the hands that made your food.",
-      "Day 22: Food can be comfort without shame.",
-      "Day 23: What nutrients does your body need?",
-      "Day 24: Eat with all your senses.",
-      "Day 25: You deserve meals that taste good.",
-      "Day 26: How can you honor your hunger?",
-      "Day 27: Cooking for yourself is self-love.",
-      "Day 28: You nourish you. And that is powerful."
+      "Day 1: Today I choose to write myself free.",
+      "Day 2: Dear me, I see you. I hear you.",
+      "Day 3: What am I carrying that I can put down on this page?",
+      "Day 4: Write the apology you’ve been waiting to receive.",
+      "Day 5: What truth wants to come through me today?",
+      "Day 6: My words are sacred. My story matters.",
+      "Day 7: I release what no longer serves me with this pen.",
+      "Day 8: What would I tell my younger self?",
+      "Day 9: Write a love letter to your body.",
+      "Day 10: What am I grateful for in this moment?",
+      "Day 11: I am allowed to take up space with my voice.",
+      "Day 12: What dream have I been afraid to write down?",
+      "Day 13: Today I forgive myself for...",
+      "Day 14: What does my heart need to say?",
+      "Day 15: I am proud of myself because...",
+      "Day 16: What boundary am I ready to set?",
+      "Day 17: Write about a time you felt powerful.",
+      "Day 18: What am I calling into my life?",
+      "Day 19: My feelings are valid. Today I feel...",
+      "Day 20: What would love say to me right now?",
+      "Day 21: I release the story that...",
+      "Day 22: What makes me feel alive?",
+      "Day 23: Write to your future self.",
+      "Day 24: What am I ready to celebrate?",
+      "Day 25: My intuition is telling me...",
+      "Day 26: What do I need to hear today?",
+      "Day 27: I am becoming the woman who...",
+      "Day 28: Dear me: Look how far you’ve come."
     ],
     images: [
-      "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800",
-      "https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800",
-      "https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800",
-      "https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&w=800"
-    ]
-  },
-  selfcare: {
-    prompts: [
-      "Day 1: What self-care ritual makes you feel most loved?",
-      "Day 2: How can you turn self-care into a non-negotiable?",
-      "Day 3: Take a 15-minute break just for you.",
-      "Day 4: What does your nervous system need right now?",
-      "Day 5: Say no to one thing that drains you.",
-      "Day 6: Self-care is not selfish. It's survival.",
-      "Day 7: What brings you comfort today?",
-      "Day 8: Take a bath. Light a candle. Breathe.",
-      "Day 9: How can you soften today?",
-      "Day 10: Put your phone down for 1 hour.",
-      "Day 11: What would feel like a hug right now?",
-      "Day 12: Schedule joy like you schedule work.",
-      "Day 13: You are allowed to rest.",
-      "Day 14: What boundary protects your peace?",
-      "Day 15: Do one thing that makes future-you grateful.",
-      "Day 16: Self-care looks different every day.",
-      "Day 17: Check in with yourself. Really.",
-      "Day 18: What can you delegate or drop?",
-      "Day 19: Nourish your mind with good content.",
-      "Day 20: Move your body gently.",
-      "Day 21: You don't have to earn rest.",
-      "Day 22: What would kindness look like today?",
-      "Day 23: Protect your energy fiercely.",
-      "Day 24: Create a cozy space for yourself.",
-      "Day 25: Say kind things to yourself out loud.",
-      "Day 26: What are you craving? Give it to yourself.",
-      "Day 27: You are worthy of care every day.",
-      "Day 28: Keep showing up for yourself."
-    ],
-    images: [
-      "https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800",
-      "https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800",
-      "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800",
-      "https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"
-    ]
-  },
-  rituals: {
-    prompts: [
-      "Day 1: How can skincare become a ritual of self-love?",
-      "Day 2: What is the power of flowers and softness?",
-      "Day 3: Create a morning ritual just for you.",
-      "Day 4: Light a candle and set an intention.",
-      "Day 5: How can you make bedtime sacred?",
-      "Day 6: Anoint yourself with oil. You are holy.",
-      "Day 7: What ritual helps you feel grounded?",
-      "Day 8: Write yourself a love note weekly.",
-      "Day 9: Create a playlist for your ritual.",
-      "Day 10: Use your hands. Make something.",
-      "Day 11: Ritual is repetition with meaning.",
-      "Day 12: How can you honor the moon phases?",
-      "Day 13: Cleanse your space with intention.",
-      "Day 14: What scent makes you feel safe?",
-      "Day 15: Dress up for yourself today.",
-      "Day 16: Create an altar to yourself.",
-      "Day 17: Rituals don't have to be perfect.",
-      "Day 18: Thank yourself for showing up.",
-      "Day 19: What ritual helps you transition?",
-      "Day 20: Use beautiful things daily.",
-      "Day 21: Touch yourself with kindness.",
-      "Day 22: How can you ritualize your coffee/tea?",
-      "Day 23: Create a closing ritual for your day.",
-      "Day 24: What do you want to celebrate?",
-      "Day 25: Ritualize your journaling.",
-      "Day 26: Move your body as ritual.",
-      "Day 27: You are the ritual you've been waiting for.",
-      "Day 28: Keep your promises to yourself."
-    ],
-    images: [
-      "https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800",
-      "https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800",
-      "https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800",
-      "https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800"
-    ]
-  },
-  journal: {
-    prompts: [
-      "Day 1: Describe the version of yourself you are becoming.",
-      "Day 2: Write a love letter to yourself.",
-      "Day 3: What are you proud of that no one knows?",
-      "Day 4: What story are you ready to release?",
-      "Day 5: How do you want to feel in 30 days?",
-      "Day 6: What did you learn about yourself this week?",
-      "Day 7: Write down 10 things you love about you.",
-      "Day 8: What do you need to hear today?",
-      "Day 9: Describe your perfect day.",
-      "Day 10: What are you no longer available for?",
-      "Day 11: How has your definition of love changed?",
-      "Day 12: What are you grateful for in your body?",
-      "Day 13: Write to your younger self.",
-      "Day 14: What boundaries do you need?",
-      "Day 15: What does freedom mean to you?",
-      "Day 16: How do you talk to yourself?",
-      "Day 17: What is your heart asking for?",
-      "Day 18: Describe a moment you felt powerful.",
-      "Day 19: What are you creating?",
-      "Day 20: What would you do if you trusted yourself?",
-      "Day 21: Write about a time you overcame something.",
-      "Day 22: What does success look like for you?",
-      "Day 23: How can you be more you?",
-      "Day 24: What are you calling in?",
-      "Day 25: Write about your values.",
-      "Day 26: What makes you feel alive?",
-      "Day 27: What is your truth today?",
-      "Day 28: Dear me: You did it. You're here."
-    ],
-    images: [
-      "https://images.pexels.com/photos/35537/pexels-photo.jpg?auto=compress&w=800",
-      "https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&w=800",
-      "https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpg?auto=compress&w=800",
-      "https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"
+      "https://images.pexels.com/photos/733745/pexels-photo-733745.jpeg?auto=compress&w=800",
+      "https://images.pexels.com/photos/131046/pexels-photo-131046.jpeg?auto=compress&w=800",
+      "https://images.pexels.com/photos/256302/pexels-photo-256302.jpeg?auto=compress&w=800",
+      "https://images.pexels.com/photos/207896/pexels-photo-207896.jpeg?auto=compress&w=800"
     ]
   }
 }
@@ -349,7 +238,7 @@ const data = {
 export default function App() {
   const [started, setStarted] = useState(false)
   const [isPaid, setIsPaid] = useState(false)
-  const [activeTab, setActiveTab] = useState('manifest')
+  const [activeTab, setActiveTab] = useState('Manifest')
   const [day, setDay] = useState(1)
 
   const getImageForDay = (cat: keyof typeof data, dayNum: number) => {
@@ -359,7 +248,7 @@ export default function App() {
 
   const canView = (cat: string, dayNum: number) => {
     if (isPaid) return true
-    const freeCats = ['manifest', 'motivate', 'Music/Dance']
+    const freeCats = ['Manifest', 'Motivate', 'Music/Dance']
     return freeCats.includes(cat) && dayNum === 1
   }
 
