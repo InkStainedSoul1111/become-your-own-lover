@@ -2,15 +2,16 @@
 import { useState } from 'react'
 
 const tabs = [
-  {name: 'Fitness', content: 'Move your body with love. Honor it with joy.'},
-  {name: 'Food', content: 'Nourish yourself like you love you.'},
-  {name: 'Self Care', content: 'Rest is productive. Softness is strength.'},
-  {name: 'Nature', content: 'Go outside. Let the earth hold you.'},
-  {name: 'Music & Dance', content: 'Put on a song. Move how your body wants.'},
-  {name: 'Rituals', content: 'Light a candle. Breathe. Call yourself back home.'},
-  {name: 'My Writings', content: 'This is where your poems and letters live.'},
-  {name: 'Manifest', content: 'My body is a sacred vessel. I honor it with movement that feels like joy.'},
-  {name: 'Journal', content: 'Dear me...'}
+  {name: 'Manifest', content: 'Speak your truth into existence. Let these affirmations anchor you in your power. My body is a sacred vessel. I honor it with movement that feels like joy.'},
+  {name: 'Motivate', content: 'You are not behind. You are becoming. Keep going, even on the soft days.'},
+  {name: 'Music & Dance', content: 'Put on a song. Move how your body wants. Let music shake the stuck places loose.'},
+  {name: 'Nature', content: 'Go outside. Let the earth hold you. The trees remember who you are.'},
+  {name: 'Fitness', content: 'Move your body with love. Strength is a love letter to yourself.'},
+  {name: 'Food', content: 'Nourish yourself like you love you. Food is care, not control.'},
+  {name: 'Self Care', content: 'Rest is productive. Softness is strength. What do you need today?'},
+  {name: 'Rituals', content: 'Light a candle. Breathe. Call yourself back home. Rituals remind you that you matter.'},
+  {name: 'Journal', content: 'Dear me... What’s on your heart today?'},
+  {name: 'My Writings', content: 'This is where your poems and letters live. Your words are medicine.'}
 ]
 
 export default function FullApp() {
@@ -27,7 +28,7 @@ export default function FullApp() {
         <p style={{fontSize: '18px', marginTop: '10px'}}>Discover who you are. Dare to chase your dreams. Fall in love with your own life.</p>
       </div>
 
-      {/* CLICKABLE TABS */}
+      {/* CLICKABLE TABS IN YOUR ORDER */}
       <div style={{display: 'flex', gap: '30px', padding: '20px 40px', borderBottom: '2px solid #e5ddd5', overflowX: 'auto'}}>
         {tabs.map(tab => (
           <span 
@@ -51,7 +52,7 @@ export default function FullApp() {
         <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" style={{width: '100%', borderRadius: '12px', marginBottom: '20px'}}/>
         
         <h2 style={{fontSize: '32px', color: '#4a3b2a'}}>{activeTab}</h2>
-        <p style={{color: '#666'}}>Speak your truth into existence. Let these anchor you in your power.</p>
+        <p style={{color: '#666'}}>Let this anchor you in your power.</p>
 
         <div style={{background: 'white', padding: '25px', borderRadius: '12px', marginTop: '20px', fontSize: '18px', lineHeight: '2'}}>
           <p>{currentTab?.content}</p>
