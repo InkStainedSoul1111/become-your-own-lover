@@ -120,11 +120,11 @@ export default function App() {
               <div className="card">
                 <h2 className="heading" style={{fontSize:'24px',marginBottom:'16px'}}>Sacred Journal</h2>
                 <p style={{fontSize:'18px',fontStyle:'italic',marginBottom:'16px'}}>"{(data.journal as string[])[index.journal]}"</p>
-               <img 
-                  src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=1200" 
-                  alt="Sacred Journal" 
-                  style={{width: '100%', borderRadius: '12px', marginBottom: '20px', maxHeight: '400px', objectFit: 'cover'}}
-                />
+              <img
+                src="/journal-pastel.jpg"
+                alt="Sacred Journal"
+                style={{width: '100%', borderRadius: '12px', marginBottom: '20px', maxHeight: '400px', objectFit: 'cover'}}
+              />
                 <form onSubmit={saveEntry}>
                   <textarea value={journalText} onChange={e=>setJournalText(e.target.value)} placeholder="Write from your heart..." style={{width:'100%',minHeight:'160px',border:'1px solid #d6d3d1',borderRadius:'8px',padding:'12px',marginBottom:'16px'}}/>
                   <button className="btn" type="submit">Save Entry</button>
