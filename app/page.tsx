@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef } from 'react'
 
 export default function App() {
   const [started, setStarted] = useState(false)
@@ -21,7 +21,7 @@ export default function App() {
       {text:"You are not behind. You are becoming."},
       {text:"Your healing is not a luxury. It is necessary."}
     ],
-    'Music/Dance': [
+    "Music/Dance": [
       {text:"What song makes your soul remember who you are?"},
       {text:"Dance like no one is watching. This is for you."}
     ],
@@ -71,7 +71,8 @@ export default function App() {
   }
 
   const nextPrompt = () => {
-    setIndex({...index, [activeTab]: (index[activeTab] + 1) % data[activeTab as keyof typeof data].length})
+    const currentData = data[activeTab as keyof typeof data]
+    setIndex({...index, [activeTab]: (index[activeTab] + 1) % currentData.length})
     if(musicPlaying) playSound()
   }
 
@@ -82,44 +83,59 @@ export default function App() {
     }
   }
 
+  const styles = {
+    page: {minHeight: '100vh', background: 'linear-gradient(to bottom right, #7c2d12, #9d174d, #881337)', color: 'white', padding: '20px', fontFamily: 'system-ui'},
+    container: {maxWidth: '800px', margin: '0 auto'},
+    title: {fontSize: '48px', fontWeight: 'bold', textAlign: 'center' as const, marginBottom: '16px'},
+    subtitle: {fontSize: '20px', textAlign: 'center' as const, marginBottom: '32px', opacity: 0.9},
+    button: {background: '#ea580c', color: 'white', padding: '16px 32px', borderRadius: '50px', fontSize: '20px', fontWeight: '600', border: 'none', cursor: 'pointer', display: 'block', margin: '0 auto'},
+    tabs: {display: 'flex', flexWrap: 'wrap' as const, gap: '8px', marginBottom: '24px', justifyContent: 'center' as const},
+    tab: {padding: '10px 16px', borderRadius: '50px', background: 'rgba(255,255,255,0.2)', border: 'none', color: 'white', cursor: 'pointer', textTransform: 'capitalize' as const},
+    tabActive: {background: '#ea580c'},
+    card: {background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(10px)', borderRadius: '16px', padding: '32px', marginBottom: '16px'},
+    img: {width: '100%', height: '256px', objectFit: 'cover' as const, borderRadius: '12px', marginBottom: '16px'},
+    prompt: {fontSize: '24px', textAlign: 'center' as const, marginBottom: '24px'},
+    textarea: {width: '100%', height: '160px', background: 'rgba(255,255,255,0.2)', borderRadius: '12px', padding: '16px', color: 'white', border: 'none', fontSize: '16px'},
+    entry: {background: 'rgba(255,255,255,0.1)', padding: '16px', borderRadius: '12px', marginBottom: '8px'}
+  }
+
   if(!started) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-orange-900 via-red-900 to-pink-900 flex flex-col items-center justify-center text-white p-8">
-        <h1 className="text-6xl font-bold mb-4 text-center">Become Your Own Lover</h1>
-        <p className="text-xl mb-8 text-center opacity-90">A sacred space for self-connection and healing</p>
-        <button
-          onClick={() => setStarted(true)}
-          className="bg-orange-500 hover:bg-orange-600 px-8 py-4 rounded-full text-xl font-semibold transition"
-        >
-          Start Your Journey
-        </button>
+      <div style={styles.page}>
+        <div style={styles.container}>
+          <h1 style={styles.title}>Become Your Own Lover</h1>
+          <p style={styles.subtitle}>A sacred space for self-connection and healing</p>
+          <button style={styles.button} onClick={() => setStarted(true)}>
+            Start Your Journey
+          </button>
+        </div>
       </div>
     )
   }
 
+  const currentPrompt = data[activeTab as keyof typeof data][index[activeTab]]
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-pink-900 to-orange-900 text-white p-4">
-      <div className="max-w-4xl mx-auto">
-        <div className="flex flex-wrap gap-2 mb-6 justify-center">
+    <div style={styles.page}>
+      <div style={styles.container}>
+        <div style={styles.tabs}>
           {Object.keys(data).map(tab => (
             <button
               key={tab}
+              style={{...styles.tab,...(activeTab === tab? styles.tabActive : {})}}
               onClick={() => setActiveTab(tab)}
-              className={`px-4 py-2 rounded-full capitalize ${activeTab === tab? 'bg-orange-500' : 'bg-white/20'}`}
             >
               {tab}
             </button>
           ))}
         </div>
 
-        <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 mb-4">
+        <div style={styles.card}>
           {activeTab!== 'journal'? (
             <>
-              {data[activeTab as keyof typeof data][index[activeTab]]?.img && (
-                <img src={data[activeTab as keyof typeof data][index[activeTab]].img} className="w-full h-64 object-cover rounded-xl mb-4" alt="" />
-              )}
-              <p className="text-2xl text-center mb-6">{data[activeTab as keyof typeof data][index[activeTab]]?.text}</p>
-              <button onClick={nextPrompt} className="w-full bg-orange-500 hover:bg-orange-600 py-3 rounded-xl font-semibold">
+              {currentPrompt?.img && <img src={currentPrompt.img} style={styles.img} alt="" />}
+              <p style={styles.prompt}>{currentPrompt?.text}</p>
+              <button style={{...styles.button, width: '100%'}} onClick={nextPrompt}>
                 Next Prompt
               </button>
             </>
@@ -128,16 +144,16 @@ export default function App() {
               <textarea
                 value={journalText}
                 onChange={(e) => setJournalText(e.target.value)}
-                className="w-full h-40 bg-white/20 rounded-xl p-4 text-white placeholder-white/60"
+                style={styles.textarea}
                 placeholder="Write to yourself with love..."
               />
-              <button onClick={saveEntry} className="w-full bg-orange-500 hover:bg-orange-600 py-3 rounded-xl font-semibold mt-4">
+              <button style={{...styles.button, width: '100%', marginTop: '16px'}} onClick={saveEntry}>
                 Save Entry
               </button>
-              <div className="mt-6">
+              <div style={{marginTop: '24px'}}>
                 {allEntries.map((entry, i) => (
-                  <div key={i} className="bg-white/10 p-4 rounded-xl mb-2">
-                    <p className="text-sm opacity-70">{entry.date}</p>
+                  <div key={i} style={styles.entry}>
+                    <p style={{fontSize: '12px', opacity: 0.7}}>{entry.date}</p>
                     <p>{entry.text}</p>
                   </div>
                 ))}
@@ -147,8 +163,8 @@ export default function App() {
         </div>
 
         <button
+          style={{...styles.button, width: '100%', background: 'rgba(255,255,255,0.2)'}}
           onClick={() => setMusicPlaying(!musicPlaying)}
-          className="w-full bg-white/20 hover:bg-white/30 py-3 rounded-xl"
         >
           {musicPlaying? '🔊 Sound On' : '🔇 Sound Off'}
         </button>
