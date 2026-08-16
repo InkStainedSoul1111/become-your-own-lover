@@ -141,6 +141,6 @@ export default function App() {
                  <p style={{fontStyle:'italic',color:'#6d4c41',fontSize:'14px'}}>🪶 {e.prompt}</p>
                  <p style={{color: '#3e2723', fontFamily: 'serif'}}>The ink remembers.</p>
             </div>
-         ))}
+         ))
  </main>
  }
