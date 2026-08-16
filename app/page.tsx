@@ -1,8 +1,12 @@
 "use client"
 import { useState, useEffect, useRef } from 'react'
+export default function Home() {
 const [hasUnlocked, setHasUnlocked] = useState(false);
 const [entryCount, setEntryCount] = useState(0);
-
+const [tab, setTab] = useState('journal');
+const [index, setIndex] = useState({journal:0,affirmation:0,prayer:0});
+const [journalText, setJournalText] = useState('');
+const [allEntries, setAllEntries] = useState([]);
 const data = {
   manifest: [
     {text:"I am worthy of deep, unconditional love — starting with my own.", img:"https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&w=800"},
