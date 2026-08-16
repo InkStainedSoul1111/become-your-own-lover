@@ -14,6 +14,7 @@ export default function HomePage() {
     }}>
       <h1>Welcome to Become Your Own Lover</h1>
       <ProductPreview />
+      <a href="/sample">View Free Sample →</a>
     </div>
   )
 }
