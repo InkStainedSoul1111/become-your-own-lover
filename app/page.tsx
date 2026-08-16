@@ -1,222 +1,131 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 const data = {
-  Manifest: {
-    prompts: [
-      "Day 1: I am worthy of deep, unconditional love — starting with my own.",
-      "Day 2: My body is a sacred vessel. I honor it with movement that feels like joy.",
-      "Day 3: I release the need for external validation. I am enough exactly as I am.",
-      "Day 4: I choose to speak to myself with the same kindness I give others.",
-      "Day 5: I am safe to be fully seen and fully loved.",
-      "Day 6: My heart is open to receiving love from myself first.",
-      "Day 7: I trust my own wisdom. I know what I need.",
-      "Day 8: I am allowed to take up space in this world.",
-      "Day 9: My needs matter. My voice matters.",
-      "Day 10: I forgive myself for not knowing what I didn't know.",
-      "Day 11: I am proud of how far I have come.",
-      "Day 12: I choose peace over proving myself.",
-      "Day 13: I am worthy of softness and rest.",
-      "Day 14: I release shame. I choose self-compassion.",
-      "Day 15: I am the answer to my own prayers.",
-      "Day 16: My boundaries are acts of love for myself.",
-      "Day 17: I am grateful for my body and all it does for me.",
-      "Day 18: I get to decide what love looks like for me.",
-      "Day 19: I am healing, and that is enough.",
-      "Day 20: I celebrate myself today.",
-      "Day 21: I am not behind. I am becoming.",
-      "Day 22: I choose me. Every single day.",
-      "Day 23: I am magnetic to the love I give myself.",
-      "Day 24: My joy is my responsibility and my right.",
-      "Day 25: I am whole, exactly as I am right now.",
-      "Day 26: I speak my truth with love and clarity.",
-      "Day 27: I am my own safe place.",
-      "Day 28: I am my own home. I belong to me."
-    ],
-    images: [
-      "https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&w=800",
-      "https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpg?auto=compress&w=800",
-      "https://images.pexels.com/photos/35537/pexels-photo.jpg?auto=compress&w=800",
-      "https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800"
-    ]
-  },
-  Motivate: { prompts: ["Day 1: What would you do if you knew you could not fail?","Day 2: Your dreams chose you for a reason.","Day 3: Dare to name what you really want.","Day 4: What is one brave step you can take today?","Day 5: You are capable of more than you think.","Day 6: Motivation is action. Move anyway.","Day 7: What would your future self thank you for?","Day 8: Progress, not perfection.","Day 9: You are allowed to want more.","Day 10: Discipline is self-love in action.","Day 11: Your only competition is who you were yesterday.","Day 12: Start before you feel ready.","Day 13: What if it all works out?","Day 14: You have survived 100% of your hard days.","Day 15: Do it scared.","Day 16: Your time is now.","Day 17: What story are you telling yourself? Rewrite it.","Day 18: Show up for yourself today.","Day 19: You are building the life you deserve.","Day 20: Small steps every day.","Day 21: You are not lazy. You are learning.","Day 22: What lights you up? Do that.","Day 23: You are worthy of your goals.","Day 24: Keep going. You’re closer than you think.","Day 25: Be your own biggest cheerleader.","Day 26: What would love do?","Day 27: You are creating your reality.","Day 28: You did it. Now do it again for you."], images: ["https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800","https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800","https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800","https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"] },
-  "Music/Dance": { prompts: ["Day 1: How does dancing reset your nervous system?","Day 2: What music makes you feel most alive?","Day 3: Let your body move however it needs to.","Day 4: What song is your current anthem?","Day 5: Dance like no one is watching. Because they aren't.","Day 6: How does rhythm help you feel grounded?","Day 7: Create a playlist for your healing.","Day 8: What does your body want to express through music?","Day 9: Sing loud. Even if you're off key.","Day 10: Music is medicine. What do you need today?","Day 11: Move your hips. Release what you hold.","Day 12: What song reminds you of your power?","Day 13: Let sound wash over you.","Day 14: Dance out the emotions you can't name.","Day 15: What music makes you feel safe?","Day 16: Your body knows how to move. Trust it.","Day 17: Play the song that makes you cry. Feel it.","Day 18: What beat matches your heartbeat?","Day 19: Music connects you to your soul.","Day 20: Have a 5-minute dance party for yourself.","Day 21: What lyrics feel like they were written for you?","Day 22: Let music be your prayer.","Day 23: Move in a way that feels like love.","Day 24: What song would you play at your celebration?","Day 25: Sound bath. Close your eyes and listen.","Day 26: How does music help you process?","Day 27: Create the soundtrack to your life.","Day 28: You are the music you've been waiting for."], images: ["https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800","https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800","https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800","https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800"] },
-  Nature: { prompts: ["Day 1: How does being in nature shift your sense of self?","Day 2: What does nature teach you about growth?","Day 3: Stand barefoot. Feel the earth hold you.","Day 4: What element calls to you today: earth, water, air, or fire?","Day 5: Notice 5 things in nature that reflect your beauty.","Day 6: How can you move more slowly, like nature?","Day 7: Let the sun warm your face. Receive it.","Day 8: What season of life are you in?","Day 9: Trees shed to grow. What can you release?","Day 10: Water washes clean. What needs cleansing?","Day 11: Sit under the sky. Remember how big you are.","Day 12: Nature doesn't rush. You don't have to either.","Day 13: Collect something from nature that feels like you.","Day 14: How does fresh air change your mood?","Day 15: Be like the ocean: powerful and calm.","Day 16: What does your body need from nature today?","Day 17: Watch the sunset. Practice being present.","Day 18: You are nature. You are not separate.","Day 19: Plant something. Tend to it with love.","Day 20: Listen to the birds. What are they saying?","Day 21: Nature mirrors you back to yourself.","Day 22: Walk without a destination. Just wander.","Day 23: Thank the earth for holding you.","Day 24: What natural beauty do you overlook?","Day 25: Let the moon remind you to rest.","Day 26: Find a place in nature that feels like home.","Day 27: How does nature help you heal?","Day 28: You belong to the earth, and it belongs to you."], images: ["https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800","https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&w=800","https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpg?auto=compress&w=800","https://images.pexels.com/photos/35537/pexels-photo.jpg?auto=compress&w=800"] },
-  Fitness: { prompts: ["Day 1: What does your body want to express through movement today?","Day 2: How can you honor your body as a vessel of strength?","Day 3: Move for 10 minutes just for joy, not results.","Day 4: What feels strong in your body right now?","Day 5: Stretch with love. Thank each muscle.","Day 6: Fitness is a celebration, not a punishment.","Day 7: What kind of movement makes you feel alive?","Day 8: Listen to your body. Rest is also training.","Day 9: You are athletic. You are capable.","Day 10: Move in a way that feels like self-respect.","Day 11: Strength is built in small reps.","Day 12: How can you make movement playful?","Day 13: Your body is not a problem to fix.","Day 14: Breathe into your workout.","Day 15: What did your body do for you today?","Day 16: Progress over perfection in the gym too.","Day 17: Move to feel good, not to earn food.","Day 18: You are building a strong relationship with yourself.","Day 19: Hydrate. Nourish. Move. Repeat.","Day 20: What would it feel like to love your workout?","Day 21: Your body deserves care, not criticism.","Day 22: Find a movement you actually enjoy.","Day 23: Energy in = Energy out. Fuel yourself.","Day 24: Rest days are productive days.","Day 25: You are getting stronger every day.","Day 26: How can you move with gratitude?","Day 27: Your body is your home. Clean it.","Day 28: You showed up for yourself. That's fitness."], images: ["https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800","https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800","https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800","https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"] },
-  Food: { prompts: ["Day 1: What does it mean to nourish yourself with love?","Day 2: How can eating become a sacred act of self-care?","Day 3: Cook one meal for yourself today with intention.","Day 4: What foods make you feel energized and loved?","Day 5: Eat slowly. Taste every bite.","Day 6: Food is not the enemy. It's medicine.","Day 7: What would you feed someone you love?","Day 8: Nourish your cravings with compassion.","Day 9: Drink water like it's an act of love.","Day 10: Make your plate beautiful. You deserve that.","Day 11: What is your body asking for right now?","Day 12: No guilt. Only nourishment.","Day 13: Shop for groceries like you're shopping for you.","Day 14: Try one new recipe this week.","Day 15: How can you make mealtime peaceful?","Day 16: You are allowed to enjoy food.","Day 17: What foods connect you to home?","Day 18: Feed your soul, not just your body.","Day 19: Create a ritual around one meal.","Day 20: What would 'enough' look like on your plate?","Day 21: Thank the hands that made your food.","Day 22: Food can be comfort without shame.","Day 23: What nutrients does your body need?","Day 24: Eat with all your senses.","Day 25: You deserve meals that taste good.","Day 26: How can you honor your hunger?","Day 27: Cooking for yourself is self-love.","Day 28: You nourish you. And that is powerful."], images: ["https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800","https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800","https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800","https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&w=800"] }
-}
-  "Self Care": { prompts: ["Day 1: What self-care ritual makes you feel most loved?","Day 2: How can you turn self-care into a non-negotiable?","Day 3: Take a 15-minute break just for you.","Day 4: What does your nervous system need right now?","Day 5: Say no to one thing that drains you.","Day 6: Self-care is not selfish. It's survival.","Day 7: What brings you comfort today?","Day 8: Take a bath. Light a candle. Breathe.","Day 9: How can you soften today?","Day 10: Put your phone down for 1 hour.","Day 11: What would feel like a hug right now?","Day 12: Schedule joy like you schedule work.","Day 13: You are allowed to rest.","Day 14: What boundary protects your peace?","Day 15: Do one thing that makes future-you grateful.","Day 16: Self-care looks different every day.","Day 17: Check in with yourself. Really.","Day 18: What can you delegate or drop?","Day 19: Nourish your mind with good content.","Day 20: Move your body gently.","Day 21: You don't have to earn rest.","Day 22: What would kindness look like today?","Day 23: Protect your energy fiercely.","Day 24: Create a cozy space for yourself.","Day 25: Say kind things to yourself out loud.","Day 26: What are you craving? Give it to yourself.","Day 27: You are worthy of care every day.","Day 28: Keep showing up for yourself."], images: ["https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800","https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800","https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800","https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"] },
-  Rituals: { prompts: ["Day 1: How can skincare become a ritual of self-love?","Day 2: What is the power of flowers and softness?","Day 3: Create a morning ritual just for you.","Day 4: Light a candle and set an intention.","Day 5: How can you make bedtime sacred?","Day 6: Anoint yourself with oil. You are holy.","Day 7: What ritual helps you feel grounded?","Day 8: Write yourself a love note weekly.","Day 9: Create a playlist for your ritual.","Day 10: Use your hands. Make something.","Day 11: Ritual is repetition with meaning.","Day 12: How can you honor the moon phases?","Day 13: Cleanse your space with intention.","Day 14: What scent makes you feel safe?","Day 15: Dress up for yourself today.","Day 16: Create an altar to yourself.","Day 17: Rituals don't have to be perfect.","Day 18: Thank yourself for showing up.","Day 19: What ritual helps you transition?","Day 20: Use beautiful things daily.","Day 21: Touch yourself with kindness.","Day 22: How can you ritualize your coffee/tea?","Day 23: Create a closing ritual for your day.","Day 24: What do you want to celebrate?","Day 25: Ritualize your journaling.","Day 26: Move your body as ritual.","Day 27: You are the ritual you've been waiting for.","Day 28: Keep your promises to yourself."], images: ["https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800","https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800","https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800","https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800"] },
-  Journal: { prompts: ["Day 1: Describe the version of yourself you are becoming.","Day 2: Write a love letter to yourself.","Day 3: What are you proud of that no one knows?","Day 4: What story are you ready to release?","Day 5: How do you want to feel in 30 days?","Day 6: What did you learn about yourself this week?","Day 7: Write down 10 things you love about you.","Day 8: What do you need to hear today?","Day 9: Describe your perfect day.","Day 10: What are you no longer available for?","Day 11: How has your definition of love changed?","Day 12: What are you grateful for in your body?","Day 13: Write to your younger self.","Day 14: What boundaries do you need?","Day 15: What does freedom mean to you?","Day 16: How do you talk to yourself?","Day 17: What is your heart asking for?","Day 18: Describe a moment you felt powerful.","Day 19: What are you creating?","Day 20: What would you do if you trusted yourself?","Day 21: Write about a time you overcame something.","Day 22: What does success look like for you?","Day 23: How can you be more you?","Day 24: What are you calling in?","Day 25: Write about your values.","Day 26: What makes you feel alive?","Day 27: What is your truth today?","Day 28: Dear me: You did it. You're here."], images: ["/journal-pastel.jpg","https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&w=800","https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpg?auto=compress&w=800","https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"] },
-  Writings: {
-    prompts: [
-      "Day 1: Today I choose to write myself free.",
-      "Day 2: Dear me, I see you. I hear you.",
-      "Day 3: What am I carrying that I can put down on this page?",
-      "Day 4: Write the apology you’ve been waiting to receive.",
-      "Day 5: What truth wants to come through me today?",
-      "Day 6: My words are sacred. My story matters.",
-      "Day 7: I release what no longer serves me with this pen.",
-      "Day 8: What would I tell my younger self?",
-      "Day 9: Write a love letter to your body.",
-      "Day 10: What am I grateful for in this moment?",
-      "Day 11: I am allowed to take up space with my voice.",
-      "Day 12: What dream have I been afraid to write down?",
-      "Day 13: Today I forgive myself for...",
-      "Day 14: What does my heart need to say?",
-      "Day 15: I am proud of myself because...",
-      "Day 16: What boundary am I ready to set?",
-      "Day 17: Write about a time you felt powerful.",
-      "Day 18: What am I calling into my life?",
-      "Day 19: My feelings are valid. Today I feel...",
-      "Day 20: What would love say to me right now?",
-      "Day 21: I release the story that...",
-      "Day 22: What makes me feel alive?",
-      "Day 23: Write to your future self.",
-      "Day 24: What am I ready to celebrate?",
-      "Day 25: My intuition is telling me...",
-      "Day 26: What do I need to hear today?",
-      "Day 27: I am becoming the woman who...",
-      "Day 28: Dear me: Look how far you’ve come."
-    ],
-    images: [
-      "https://images.pexels.com/photos/733745/pexels-photo-733745.jpeg?auto=compress&w=800",
-      "https://images.pexels.com/photos/131046/pexels-photo-131046.jpeg?auto=compress&w=800",
-      "https://images.pexels.com/photos/256302/pexels-photo-256302.jpeg?auto=compress&w=800",
-      "https://images.pexels.com/photos/207896/pexels-photo-207896.jpeg?auto=compress&w=800"
-    ]
-  }
+  manifest: Array.from({length:28}, (_,i)=>({
+    text:`Day ${i+1}: ${["I am worthy of deep, unconditional love — starting with my own.","My body is a sacred vessel. I honor it with movement that feels like joy.","I release the need for external validation. I am enough exactly as I am.","I choose to speak to myself with the same kindness I give others.","I am safe to be fully seen and fully loved.","My heart is open to receiving love from myself first.","I trust my own wisdom. I know what I need.","I am allowed to take up space in this world.","My needs matter. My voice matters.","I forgive myself for not knowing what I didn't know.","I am proud of how far I have come.","I choose peace over proving myself.","I am worthy of softness and rest.","I release shame. I choose self-compassion.","I am the answer to my own prayers.","My boundaries are acts of love for myself.","I am grateful for my body and all it does for me.","I get to decide what love looks like for me.","I am healing, and that is enough.","I celebrate myself today.","I am not behind. I am becoming.","I choose me. Every single day.","I am magnetic to the love I give myself.","My joy is my responsibility and my right.","I am whole, exactly as I am right now.","I speak my truth with love and clarity.","I am my own safe place.","I am my own home. I belong to me."][i]}`,
+    img:["https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&w=800","https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpg?auto=compress&w=800","https://images.pexels.com/photos/35537/pexels-photo.jpg?auto=compress&w=800","https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800"][Math.floor(i/7)]
+  })),
+  motivate: Array.from({length:28}, (_,i)=>({
+    text:`Day ${i+1}: ${["What would you do if you knew you could not fail?","Your dreams chose you for a reason.","Dare to name what you really want.","What is one brave step you can take today?","You are capable of more than you think.","Motivation is action. Move anyway.","What would your future self thank you for?","Progress, not perfection.","You are allowed to want more.","Discipline is self-love in action.","Your only competition is who you were yesterday.","Start before you feel ready.","What if it all works out?","You have survived 100% of your hard days.","Do it scared.","Your time is now.","What story are you telling yourself? Rewrite it.","Show up for yourself today.","You are building the life you deserve.","Small steps every day.","You are not lazy. You are learning.","What lights you up? Do that.","You are worthy of your goals.","Keep going. You’re closer than you think.","Be your own biggest cheerleader.","What would love do?","You are creating your reality.","You did it. Now do it again for you."][i]}`,
+    img:["https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800","https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800","https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800","https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"][Math.floor(i/7)]
+  })),
+  'Music/Dance': Array.from({length:28}, (_,i)=>({
+    text:`Day ${i+1}: ${["How does dancing reset your nervous system?","What music makes you feel most alive?","Let your body move however it needs to.","What song is your current anthem?","Dance like no one is watching. Because they aren't.","How does rhythm help you feel grounded?","Create a playlist for your healing.","What does your body want to express through music?","Sing loud. Even if you're off key.","Music is medicine. What do you need today?","Move your hips. Release what you hold.","What song reminds you of your power?","Let sound wash over you.","Dance out the emotions you can't name.","What music makes you feel safe?","Your body knows how to move. Trust it.","Play the song that makes you cry. Feel it.","What beat matches your heartbeat?","Music connects you to your soul.","Have a 5-minute dance party for yourself.","What lyrics feel like they were written for you?","Let music be your prayer.","Move in a way that feels like love.","What song would you play at your celebration?","Sound bath. Close your eyes and listen.","How does music help you process?","Create the soundtrack to your life.","You are the music you've been waiting for."][i]}`,
+    img:["https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800","https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800","https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800","https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800"][Math.floor(i/7)]
+  })),
+  nature: Array.from({length:28}, (_,i)=>({text:`Day ${i+1}: Nature prompt`,img:["https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800","https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&w=800","https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpg?auto=compress&w=800","https://images.pexels.com/photos/35537/pexels-photo.jpg?auto=compress&w=800"][Math.floor(i/7)]})),
+  fitness: Array.from({length:28}, (_,i)=>({text:`Day ${i+1}: Fitness prompt`,img:["https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800","https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800","https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800","https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"][Math.floor(i/7)]})),
+  food: Array.from({length:28}, (_,i)=>({text:`Day ${i+1}: Food prompt`,img:["https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800","https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800","https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800","https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&w=800"][Math.floor(i/7)]})),
+  selfcare: Array.from({length:28}, (_,i)=>({text:`Day ${i+1}: Self Care prompt`,img:["https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800","https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800","https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800","https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"][Math.floor(i/7)]})),
+  rituals: Array.from({length:28}, (_,i)=>({text:`Day ${i+1}: Rituals prompt`,img:["https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800","https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800","https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800","https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800"][Math.floor(i/7)]})),
+  journal: Array.from({length:28}, (_,i)=>`Day ${i+1}: Journal prompt`),
+  writings: Array.from({length:28}, (_,i)=>`Day ${i+1}: Writing prompt`)
 }
 
 export default function App() {
   const [started, setStarted] = useState(false)
   const [isPaid, setIsPaid] = useState(false)
-  const [activeTab, setActiveTab] = useState('Manifest')
-  const [day, setDay] = useState(1)
+  const [activeTab, setActiveTab] = useState('manifest')
+  const [index, setIndex] = useState<any>({manifest:0, motivate:0, 'Music/Dance':0, nature:0, fitness:0, food:0, selfcare:0, rituals:0, journal:0, writings:0})
+  const [journalText, setJournalText] = useState('')
+  const [allEntries, setAllEntries] = useState<any[]>([])
+  const [musicPlaying, setMusicPlaying] = useState(true)
+  const audioContextRef = useRef<AudioContext | null>(null)
 
-  const getImageForDay = (cat: keyof typeof data, dayNum: number) => {
-    const imgIndex = Math.floor((dayNum - 1) / 7)
-    return data[cat].images[imgIndex]
+  const freeTabs = ['manifest','motivate','Music/Dance']
+  const canView = (tab:string, day:number) => isPaid || (freeTabs.includes(tab) && day === 0)
+
+  const handleCheckout = () => window.location.href = "https://buy.stripe.com/00w14n8JPakTfMv7sx7bW02"
+
+  const shuffle = (tab: string) => {
+    const arr = data[tab as keyof typeof data] as any[]
+    setIndex({...index, [tab]: (index[tab] + 1) % arr.length })
   }
 
-  const canView = (cat: string, dayNum: number) => {
-    if (isPaid) return true
-    const freeCats = ['Manifest', 'Motivate', 'Music/Dance']
-    return freeCats.includes(cat) && dayNum === 1
+  const saveEntry = (e: React.FormEvent) => {
+    e.preventDefault();
+    const newEntry = {prompt: (data.journal as string[])[index.journal], content: journalText, date: new Date().toLocaleDateString()}
+    setAllEntries([newEntry,...allEntries]);
+    setJournalText('')
   }
 
-  const handleCheckout = () => {
-    window.location.href = "https://buy.stripe.com/00w14n8JPakTfMv7sx7bW02"
-  }
-
-  if (!started) {
-    return (
-      <div style={{
-        minHeight:'100vh',
-        backgroundImage:"url('https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=1920')",
-        backgroundSize:'cover',
-        backgroundPosition: 'center',
-        display:'flex',
-        alignItems:'center',
-        justifyContent:'center',
-        flexDirection:'column',
-        color:'white',
-        textAlign:'center',
-        padding:'20px'
-      }}>
-        <h1 style={{fontSize:'48px', marginBottom:'16px', textShadow:'2px 2px 8px rgba(0,0,0,0.7)'}}>Become Your Own Lover</h1>
-        <p style={{fontSize:'20px', marginBottom:'32px', textShadow:'1px 1px 4px rgba(0,0,0,0.7)'}}>A sacred space for inner connection and self love</p>
-        <button onClick={()=>setStarted(true)} style={{
-          padding:'16px 32px',
-          fontSize:'18px',
-          background:'#f97316',
-          border:'none',
-          borderRadius:'8px',
-          color:'white',
-          marginBottom:'12px',
-          cursor:'pointer',
-          fontWeight:'bold'
-        }}>Start Free Preview</button>
-        <button onClick={handleCheckout} style={{
-          padding:'16px 32px',
-          fontSize:'18px',
-          background:'#06b6d4',
-          border:'none',
-          borderRadius:'8px',
-          color:'white',
-          cursor:'pointer',
-          fontWeight:'bold'
-        }}>Unlock Full 28 Days - $21.21</button>
-      </div>
-    )
-  }
-
-  const currentCat = activeTab as keyof typeof data
-  const currentPrompt = data[currentCat].prompts[day-1] || "Content coming soon"
-  const currentImage = getImageForDay(currentCat, day)
-  const locked =!canView(activeTab, day)
+  const tabs = ['manifest','motivate','Music/Dance','nature','fitness','food','selfcare','rituals','journal','writings']
 
   return (
-    <div style={{minHeight:'100vh', background:'#fdf2f8', padding:'20px'}}>
-      <div style={{maxWidth:'900px', margin:'0 auto'}}>
-        <div style={{display:'flex', gap:'8px', overflowX:'auto', marginBottom:'20px', paddingBottom:'10px'}}>
-          {Object.keys(data).map(cat => (
-            <button key={cat} onClick={()=>{setActiveTab(cat); setDay(1)}} style={{
-              padding:'10px 16px',
-              border:'none',
-              borderRadius:'20px',
-              background: activeTab===cat? '#ec4899' : 'white',
-              color: activeTab===cat? 'white' : '#ec4899',
-              cursor:'pointer',
-              fontWeight:'bold',
-              whiteSpace:'nowrap'
-            }}>{cat}</button>
-          ))}
-        </div>
+    <>
+    <style>{`body{font-family:'Alegreya',serif;background:#fdf8f3;margin:0}.heading{font-family:'Playfair Display',serif}.btn{background:#b45309;color:white;padding:10px 20px;border:none;border-radius:8px;cursor:pointer;font-weight:bold}.card{background:white;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.05);border:1px solid #e7e5e4;padding:24px;margin-bottom:16px}.tab{padding:16px 8px;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;color:#57534e}.tab.active{border-bottom:3px solid #b45309;color:#b45309}.panel{display:none}.panel.active{display:block;animation:fade.4s} @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}`}</style>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
 
-        <div style={{background:'white', borderRadius:'16px', padding:'24px', boxShadow:'0 4px 6px rgba(0,0,0,0.1)'}}>
-          <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:'16px'}}>
-            <h2 style={{fontSize:'24px', color:'#ec4899'}}>{activeTab}</h2>
-            <div style={{display:'flex', gap:'8px'}}>
-              {[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28].map(d => (
-                <button key={d} onClick={()=>setDay(d)} style={{
-                  width:'36px',
-                  height:'36px',
-                  borderRadius:'50%',
-                  border:'2px solid #ec4899',
-                  background: day===d? '#ec4899' : 'white',
-                  color: day===d? 'white' : '#ec4899',
-                  cursor:'pointer',
-                  fontWeight:'bold'
-                }}>{d}</button>
-              ))}
-            </div>
-          </div>
-
-          {locked? (
-            <div style={{textAlign:'center', padding:'40px'}}>
-              <h3 style={{fontSize:'20px', marginBottom:'12px'}}>🔒 Unlock Day {day}</h3>
-              <p style={{marginBottom:'20px'}}>This content is for members only</p>
-              <button onClick={handleCheckout} style={{
-                padding:'14px 28px',
-                background:'#06b6d4',
-                border:'none',
-                borderRadius:'8px',
-                color:'white',
-                fontSize:'16px',
-                cursor:'pointer',
-                fontWeight:'bold'
-              }}>Unlock Full 28 Days - $21.21</button>
-            </div>
-          ) : (
-            <div>
-              <img src={currentImage} alt="" style={{width:'100%', height:'300px', objectFit:'cover', borderRadius:'12px', marginBottom:'16px'}}/>
-              <p style={{fontSize:'18px', lineHeight:'1.6', color:'#333'}}>{currentPrompt}</p>
-            </div>
-          )}
+    {!started? (
+      <div style={{position:'relative',height:'100vh'}}>
+        <img src="https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=1920" style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover'}}/>
+        <div style={{position:'absolute',inset:0,background:'linear-gradient(to bottom,rgba(0,0,0,.2),rgba(0,0,0,.6))'}}/>
+        <div style={{position:'relative',zIndex:10,height:'100%',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',textAlign:'center',padding:'24px',color:'white'}}>
+          <h1 className="heading" style={{fontSize:'48px',textShadow:'2px 2px 8px rgba(0,0,0,.7)'}}>Become Your Own Lover</h1>
+          <p style={{fontSize:'20px',margin:'12px 0 32px',textShadow:'1px 1px 4px rgba(0,0,0,.7)'}}>A sacred space for inner connection and self-love</p>
+          <button className="btn" style={{background:'#f97316',marginBottom:'12px'}} onClick={()=>setStarted(true)}>Start Free Preview</button>
+          <button className="btn" style={{background:'#06b6d4'}} onClick={handleCheckout}>Unlock Full 28 Days - $21.21</button>
         </div>
       </div>
-    </div>
+    ) : (
+      <div style={{background:'linear-gradient(to bottom,#fafaf9,#fffbeb)',minHeight:'100vh'}}>
+        <header className="card" style={{borderRadius:0,position:'sticky',top:0,zIndex:10}}>
+          <div style={{maxWidth:'1024px',margin:'0 auto',display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+            <h1 className="heading">Become Your Own Lover</h1>
+            <button onClick={()=>setMusicPlaying(!musicPlaying)} style={{background:'none',border:'none',color:'#b45309',cursor:'pointer'}}>{musicPlaying?'🔊 On':'🔇 Off'}</button>
+          </div>
+        </header>
+        <nav style={{background:'white',borderBottom:'1px solid #e7e5e4'}}>
+          <div style={{maxWidth:'1024px',margin:'0 auto',display:'flex',gap:'16px',overflowX:'auto',padding:'0 16px'}}>
+            {tabs.map(t=><button key={t} className={`tab ${activeTab===t?'active':''}`} onClick={()=>setActiveTab(t)}>{t.charAt(0).toUpperCase()+t.slice(1).replace('selfcare','Self Care').replace('music','Music & Dance')}</button>)}
+          </div>
+        </nav>
+        <main style={{maxWidth:'1024px',margin:'0 auto',padding:'24px 16px'}}>
+          {['manifest','motivate','Music/Dance','nature','fitness','food','selfcare','rituals'].map(tab=>(
+            <div key={tab} className={`panel ${activeTab===tab?'active':''}`}>
+              <div className="card">
+                <h2 className="heading" style={{fontSize:'24px',marginBottom:'16px'}}>{tab.charAt(0).toUpperCase()+tab.slice(1)}</h2>
+                {!canView(tab, index[tab])? (
+                  <div style={{textAlign:'center',padding:'40px'}}>
+                    <h3>🔒 Unlock Day {index[tab]+1}</h3>
+                    <p>This content is for members only</p>
+                    <button className="btn" style={{background:'#06b6d4'}} onClick={handleCheckout}>Unlock Full 28 Days - $21.21</button>
+                  </div>
+                ) : (
+                  <>
+                    {(data[tab as keyof typeof data] as any[])[index[tab]]?.img && <img src={(data[tab as keyof typeof data] as any[])[index[tab]].img} style={{width:'100%',height:'240px',objectFit:'cover',borderRadius:'8px',marginBottom:'16px'}}/>}
+                    <p style={{fontSize:'18px',fontStyle:'italic',marginBottom:'16px'}}>"{(data[tab as keyof typeof data] as any[])[index[tab]]?.text}"</p>
+                    <button className="btn" onClick={()=>shuffle(tab)}>Next Day</button>
+                  </>
+                )}
+              </div>
+            </div>
+          ))}
+          <div className={`panel ${activeTab==='journal'?'active':''}`}>
+            <div className="card">
+              <h2 className="heading" style={{fontSize:'24px',marginBottom:'16px'}}>Sacred Journal</h2>
+              <p style={{fontSize:'18px',fontStyle:'italic',marginBottom:'16px'}}>"{(data.journal as string[])[index.journal]}"</p>
+              <img src="/journal-pastel.jpg" alt="Sacred Journal" style={{width: '100%', borderRadius: '12px', marginBottom: '20px', maxHeight: '400px', objectFit: 'cover'}} />
+              <form onSubmit={saveEntry}>
+                <div className="card" style={{ backgroundImage: "url('/scroll-paper.jpg')", backgroundSize: "cover", backgroundPosition: "center", padding: '24px', borderRadius: '12px', marginBottom: '16px' }} >
+                  <textarea value={journalText} onChange={e=>setJournalText(e.target.value)} className="w-full h-80 bg-transparent border-none outline-none resize-none text-amber-900 placeholder-amber-700 font-serif text-lg leading-relaxed" placeholder="Dear Me, Today I choose to become my own lover by..." />
+                </div>
+                <button className="btn" type="submit">Save Entry</button>
+              </form>
+              <button onClick={()=>shuffle('journal')} style={{marginTop:'12px',background:'none',border:'none',color:'#b45309',cursor:'pointer'}}>New Prompt</button>
+            </div>
+          </div>
+          <div className={`panel ${activeTab==='writings'?'active':''}`}>
+            <div className="card">
+              <h2 className="heading" style={{fontSize:'24px',marginBottom:'16px'}}>My Writings</h2>
+              <img src="https://images.pexels.com/photos/733745/pexels-photo-733745.jpeg?auto=compress&w=800" style={{width:'100%',height:'200px',objectFit:'cover',borderRadius:'8px',marginBottom:'16px'}}/>
+              {allEntries.length===0?<p>No entries yet.</p>:allEntries.map((e,i)=><div key={i} style={{borderBottom:'1px solid #e7e5e4',padding:'16px 0'}}><p style={{fontStyle:'italic',color:'#78716c'}}>{e.prompt}</p><p>{e.content}</p></div>)}
+            </div>
+          </div>
+        </main>
+      </div>
+    )}
+    </>
   )
 }
