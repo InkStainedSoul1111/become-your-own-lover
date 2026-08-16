@@ -1,5 +1,7 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
+const [hasUnlocked, setHasUnlocked] = useState(false);
+const [entryCount, setEntryCount] = useState(0);
 
 const data = {
   manifest: [
@@ -56,11 +58,12 @@ export default function App() {
     setIndex({...index, [tab]: (index[tab] + 1) % arr.length })
   }
 
-  const saveEntry = (e: React.FormEvent) => {
-    e.preventDefault();
-    const newEntry = {prompt: (data.journal as string[])[index.journal], content: journalText, date: new Date().toLocaleDateString()}
-    setAllEntries([newEntry,...allEntries]); setJournalText('')
-  }
+    const saveEntry = (e: React.FormEvent) => {
+  e.preventDefault();
+  const newEntry = {prompt: (data.journal as string[])[index.journal], content: journalText, date: new Date().toLocaleDateString()}
+  setAllEntries([newEntry,...allEntries]); setJournalText('')
+  setEntryCount(entryCount + 1)  // <-- ADD THIS LINE
+}
 
   useEffect(() => { if (started && musicPlaying) playSound() }, [started])
 
@@ -147,7 +150,18 @@ export default function App() {
 <button className="btn" type="submit">Save Entry</button>
                 </form>
                 <button onClick={()=>shuffle('journal')} style={{marginTop:'12px',background:'none',border:'none',color:'#b45309',cursor:'pointer'}}>New Prompt</button>
-              </div>
+               {{entryCount >= 1 && !hasUnlocked && (
+  <div className="card" style={{textAlign: 'center', marginTop: '24px', background: '#fffaf0', padding: '20px'}}>
+    <h3 style={{color: '#b45309', marginBottom: '8px'}}>You've felt it 💛</h3>
+    <p style={{marginBottom: '16px'}}>This is your sacred space. Unlock unlimited entries forever.</p>
+    <button 
+      style={{background: '#b45309', color: 'white', fontSize: '18px', padding: '12px 24px', borderRadius: '8px', border: 'none', cursor: 'pointer'}}
+      onClick={() => alert('Payment link coming next!')}
+    >
+      Unlock Full Journal - $11
+    </button>
+  </div>
+)}</div>
             </div>
 
             <div className={`panel ${activeTab==='writings'?'active':''}`}>
