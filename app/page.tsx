@@ -150,7 +150,7 @@ export default function App() {
 <button className="btn" type="submit">Save Entry</button>
                 </form>
                 <button onClick={()=>shuffle('journal')} style={{marginTop:'12px',background:'none',border:'none',color:'#b45309',cursor:'pointer'}}>New Prompt</button>
-               {{entryCount >= 1 && !hasUnlocked && (
+               {entryCount >= 1 && !hasUnlocked && (
   <div className="card" style={{textAlign: 'center', marginTop: '24px', background: '#fffaf0', padding: '20px'}}>
     <h3 style={{color: '#b45309', marginBottom: '8px'}}>You've felt it 💛</h3>
     <p style={{marginBottom: '16px'}}>This is your sacred space. Unlock unlimited entries forever.</p>
