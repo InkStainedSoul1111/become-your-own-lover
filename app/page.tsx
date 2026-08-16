@@ -1,4 +1,4 @@
-'use client'
+"use client"
 import { useState, useEffect, useRef } from 'react'
 const [hasUnlocked, setHasUnlocked] = useState(false);
 const [entryCount, setEntryCount] = useState(0);
