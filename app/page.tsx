@@ -12,7 +12,7 @@ const data = {
     {text:"Your dreams chose you for a reason."},
     {text:"Dare to name what you really want."},
   ],
-  'music/dance': [
+  'Music/Dance': [
     {text:"How does dancing reset your nervous system?", img:"https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800"},
     {text:"What music makes you feel most alive?"},
   ],
@@ -64,7 +64,7 @@ export default function App() {
 
   useEffect(() => { if (started && musicPlaying) playSound() }, [started])
 
-  const tabs = ['manifest','motivate','music/dance','nature','fitness','food','selfcare','rituals','journal','writings']
+  const tabs = ['manifest','motivate','Music/Dance','nature','fitness','food','selfcare','rituals','journal','writings']
 
   return (
     <>
@@ -105,7 +105,7 @@ export default function App() {
           </nav>
           <main style={{maxWidth:'1024px',margin:'0 auto',padding:'24px 16px'}}>
             
-            {['manifest','motivate','music/dance','nature','fitness','food','selfcare','rituals'].map(tab=>(
+            {['manifest','motivate','Music/Dance','nature','fitness','food','selfcare','rituals'].map(tab=>(
               <div key={tab} className={`panel ${activeTab===tab?'active':''}`}>
                 <div className="card">
                   <h2 className="heading" style={{fontSize:'24px',marginBottom:'16px'}}>{tab.charAt(0).toUpperCase()+tab.slice(1)}</h2>
