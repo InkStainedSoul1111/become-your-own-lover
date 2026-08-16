@@ -13,12 +13,13 @@ const data = {
     {text:"Dare to name what you really want."},
   ],
   music: [
-    {text:"How does dancing reset your nervous system?", img:"https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800"},
-    {text:"What music makes you feel most alive?"},
-  ],
+  {text:"How does dancing reset your nervous system?", img:"https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800"},
+  {text:"What music makes you feel most alive?", img:"https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg?auto=compress&w=800"},
+],
   nature: [
-    {text:"How does being in nature shift your sense of self?", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"What does nature teach you about growth?"},
+  {text:"How does being in nature shift your sense of self?", img:"https://images.pexels.com/photos/3617500/pexels-photo-3617500.jpeg?auto=compress&w=800"},
+  {text:"What does nature teach you about growth?", img:"https://images.pexels.com/photos/1032650/pexels-photo-1032650.jpeg?auto=compress&w=800"},
+],
   ],
   fitness: [
     {text:"What does your body want to express through movement today?", img:"https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"},
@@ -36,7 +37,11 @@ const data = {
     {text:"How can skincare become a ritual of self-love?", img:"https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800"},
     {text:"What is the power of flowers and softness?"},
   ],
-  journal: ["Describe the version of yourself you are becoming.", "Write a love letter to yourself.", "What dream have you been too afraid to chase?"]
+  journal: [
+  {text:"Describe the version of yourself you are becoming.", img:"https://images.pexels.com/photos/733745/pexels-photo-733745.jpeg?auto=compress&w=800"},
+  {text:"Write a love letter to yourself.", img:"https://images.pexels.com/photos/733745/pexels-photo-733745.jpeg?auto=compress&w=800"},
+  {text:"What dream have you been too afraid to chase?", img:"https://images.pexels.com/photos/733745/pexels-photo-733745.jpeg?auto=compress&w=800"}
+]
 }
 
 export default function App() {
@@ -64,7 +69,7 @@ export default function App() {
 
   useEffect(() => { if (started && musicPlaying) playSound() }, [started])
 
-  const tabs = ['manifest','motivate','music','nature','fitness','food','selfcare','rituals','journal','writings']
+  const tabs = ['manifest','motivate','music','nature','fitness','food','selfcare','rituals','journal','writings','payment']
 
   return (
     <>
@@ -100,7 +105,7 @@ export default function App() {
           </header>
           <nav style={{background:'white',borderBottom:'1px solid #e7e5e4'}}>
             <div style={{maxWidth:'1024px',margin:'0 auto',display:'flex',gap:'16px',overflowX:'auto',padding:'0 16px'}}>
-              {tabs.map(t=><button key={t} className={`tab ${activeTab===t?'active':''}`} onClick={()=>setActiveTab(t)}>{t.charAt(0).toUpperCase()+t.slice(1).replace('selfcare','Self Care').replace('music','Music & Dance')}</button>)}
+              {tabs.map(t=><button key={t} className={`tab ${activeTab===t?'active':''}`} onClick={()=>setActiveTab(t)}>{t==='music'?'Music/Dance':t.charAt(0).toUpperCase()+t.slice(1)}</button>)}
             </div>
           </nav>
           <main style={{maxWidth:'1024px',margin:'0 auto',padding:'24px 16px'}}>
@@ -129,9 +134,18 @@ export default function App() {
             </div>
 
             <div className={`panel ${activeTab==='writings'?'active':''}`}>
-              <div className="card">
-                <h2 className="heading" style={{fontSize:'24px',marginBottom:'16px'}}>My Writings</h2>
-                {allEntries.length===0?<p>No entries yet.</p>:allEntries.map((e,i)=><div key={i} style={{borderBottom:'1px solid #e7e5e4',padding:'16px 0'}}><p style={{fontStyle:'italic',color:'#78716c'}}>{e.prompt}</p><p>{e.content}</p></div>)}
+              <div className="card" style={{backgroundImage:"url('https://images.pexels.com/photos/733745/pexels-photo-733745.jpeg?auto=compress&w=800')", backgroundSize:'cover', backgroundPosition:'center'}}>
+              <div style={{background:'rgba(253,248,243,0.92)',padding:'24px',borderRadius:'12px'}}>
+                 <h2 className="heading" style={{fontSize:'28px',marginBottom:'16px',color:'#3e2723'}}>Ink Stained Soul</h2>
+                 {allEntries.length===0?<p style={{color:'#5d4037',fontStyle:'italic'}}>Your sacred words will appear here like ink on parchment...</p>:allEntries.map((e,i)=>
+                 <div key={i} style={{borderLeft:'3px solid #8d6e63',padding:'16px 0 16px 16px',marginBottom:'16px',background:'rgba(255,255,255,0.7)',borderRadius:'4px'}}>
+                 <p style={{fontStyle:'italic',color:'#6d4c41',fontSize:'14px'}}>🪶 {e.prompt}</p>
+                <p style={{color:'#3e2723',fontFamily:'Alegreya'}}>{e.content}</p>
+            </div>
+      )}
+    </div>
+  </div>
+</div>
               </div>
             </div>
           </main>
