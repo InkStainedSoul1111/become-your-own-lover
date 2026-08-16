@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect, useRef } from 'react'
+import { useState } from 'react'
 
 const data = {
   manifest: {
@@ -115,6 +115,82 @@ const data = {
       "https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800",
       "https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800"
     ]
+  },
+  nature: { 
+    prompts: [
+      "Day 1: How does being in nature shift your sense of self?",
+      "Day 2: What does nature teach you about growth?",
+      "Day 3: Stand barefoot. Feel the earth hold you.",
+      "Day 4: What element calls to you today: earth, water, air, or fire?",
+      "Day 5: Notice 5 things in nature that reflect your beauty.",
+      "Day 6: How can you move more slowly, like nature?",
+      "Day 7: Let the sun warm your face. Receive it.",
+      "Day 8: What season of life are you in?",
+      "Day 9: Trees shed to grow. What can you release?",
+      "Day 10: Water washes clean. What needs cleansing?",
+      "Day 11: Sit under the sky. Remember how big you are.",
+      "Day 12: Nature doesn't rush. You don't have to either.",
+      "Day 13: Collect something from nature that feels like you.",
+      "Day 14: How does fresh air change your mood?",
+      "Day 15: Be like the ocean: powerful and calm.",
+      "Day 16: What does your body need from nature today?",
+      "Day 17: Watch the sunset. Practice being present.",
+      "Day 18: You are nature. You are not separate.",
+      "Day 19: Plant something. Tend to it with love.",
+      "Day 20: Listen to the birds. What are they saying?",
+      "Day 21: Nature mirrors you back to yourself.",
+      "Day 22: Walk without a destination. Just wander.",
+      "Day 23: Thank the earth for holding you.",
+      "Day 24: What natural beauty do you overlook?",
+      "Day 25: Let the moon remind you to rest.",
+      "Day 26: Find a place in nature that feels like home.",
+      "Day 27: How does nature help you heal?",
+      "Day 28: You belong to the earth, and it belongs to you."
+    ], 
+    images: [
+      "https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800",
+      "https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&w=800",
+      "https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpg?auto=compress&w=800",
+      "https://images.pexels.com/photos/35537/pexels-photo.jpg?auto=compress&w=800"
+    ] 
+  },
+  fitness: { 
+    prompts: [
+      "Day 1: What does your body want to express through movement today?",
+      "Day 2: How can you honor your body as a vessel of strength?",
+      "Day 3: Move for 10 minutes just for joy, not results.",
+      "Day 4: What feels strong in your body right now?",
+      "Day 5: Stretch with love. Thank each muscle.",
+      "Day 6: Fitness is a celebration, not a punishment.",
+      "Day 7: What kind of movement makes you feel alive?",
+      "Day 8: Listen to your body. Rest is also training.",
+      "Day 9: You are athletic. You are capable.",
+      "Day 10: Move in a way that feels like self-respect.",
+      "Day 11: Strength is built in small reps.",
+      "Day 12: How can you make movement playful?",
+      "Day 13: Your body is not a problem to fix.",
+      "Day 14: Breathe into your workout.",
+      "Day 15: What did your body do for you today?",
+      "Day 16: Progress over perfection in the gym too.",
+      "Day 17: Move to feel good, not to earn food.",
+      "Day 18: You are building a strong relationship with yourself.",
+      "Day 19: Hydrate. Nourish. Move. Repeat.",
+      "Day 20: What would it feel like to love your workout?",
+      "Day 21: Your body deserves care, not criticism.",
+      "Day 22: Find a movement you actually enjoy.",
+      "Day 23: Energy in = Energy out. Fuel yourself.",
+      "Day 24: Rest days are productive days.",
+      "Day 25: You are getting stronger every day.",
+      "Day 26: How can you move with gratitude?",
+      "Day 27: Your body is your home. Clean it.",
+      "Day 28: You showed up for yourself. That's fitness."
+    ], 
+    images: [
+      "https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800",
+      "https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800",
+      "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800",
+      "https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"
+    ] 
   },
   nature: { 
     prompts: [
@@ -344,78 +420,4 @@ const data = {
       "https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"
     ] 
   }
-}
-
-export default function App() {
-  const [started, setStarted] = useState(false)
-  const [isPaid, setIsPaid] = useState(false)
-  const [activeTab, setActiveTab] = useState('manifest')
-  const [day, setDay] = useState(1)
-
-  const getImageForDay = (cat: keyof typeof data, dayNum: number) => {
-    const imgIndex = Math.floor((dayNum - 1) / 7)
-    return data[cat].images[imgIndex]
-  }
-
-  const canView = (cat: string, dayNum: number) => {
-    if (isPaid) return true
-    const freeCats = ['manifest', 'motivate', 'Music/Dance']
-    return freeCats.includes(cat) && dayNum === 1
-  }
-
-  const handleCheckout = () => {
-    window.location.href = "https://buy.stripe.com/00w14n8JPakTfMv7sx7bW02"
-  }
-
-  if (!started) {
-    return (
-      <div style={{minHeight:'100vh', backgroundImage:"url('https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg')", backgroundSize:'cover', display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'column', color:'white', textAlign:'center', padding:'20px'}}>
-        <h1 style={{fontSize:'48px', marginBottom:'16px'}}>Become Your Own Lover</h1>
-        <p style={{fontSize:'20px', marginBottom:'32px'}}>28 days of inner connection and self-love</p>
-        <button onClick={()=>setStarted(true)} style={{padding:'16px 32px', fontSize:'18px', background:'#f97316', border:'none', borderRadius:'8px', color:'white', marginBottom:'12px', cursor:'pointer'}}>Start Free Preview</button>
-        <button onClick={handleCheckout} style={{padding:'16px 32px', fontSize:'18px', background:'#06b6d4', border:'none', borderRadius:'8px', color:'white', cursor:'pointer'}}>Unlock Full 28 Days - $21.21</button>
-      </div>
-    )
-  }
-
-  const currentCat = activeTab as keyof typeof data
-  const currentPrompt = data[currentCat].prompts[day-1] || "Content coming soon"
-  const currentImage = getImageForDay(currentCat, day)
-  const locked =!canView(activeTab, day)
-
-  return (
-    <div style={{padding:'20px', maxWidth:'900px', margin:'0 auto'}}>
-      <h1>Become Your Own Lover</h1>
-      <div style={{display:'flex', gap:'8px', marginBottom:'20px', flexWrap:'wrap'}}>
-        {Object.keys(data).map(cat => (
-          <button key={cat} onClick={()=>{setActiveTab(cat); setDay(1)}}
-            style={{padding:'8px 16px', background: activeTab===cat? '#f97316' : '#e5e7eb', border:'none', borderRadius:'8px', cursor:'pointer'}}>
-            {cat}
-          </button>
-        ))}
-      </div>
-
-      <div style={{border:'1px solid #ddd', padding:'20px', borderRadius:'12px'}}>
-        <h2>{activeTab} - Day {day}</h2>
-
-        {locked? (
-          <div style={{textAlign:'center', padding:'40px'}}>
-            <p style={{fontSize:'18px', marginBottom:'16px'}}>🔒 Unlock Day {day} and all other categories</p>
-            <button onClick={handleCheckout} style={{padding:'14px 28px', background:'#06b6d4', color:'white', border:'none', borderRadius:'8px', fontSize:'16px', cursor:'pointer'}}>
-              Unlock Full Access - $21.21
-            </button>
-          </div>
-        ) : (
-          <>
-            <img src={currentImage} alt="prompt" style={{width:'100%', height:'300px', objectFit:'cover', borderRadius:'8px', marginBottom:'16px'}} />
-            <p style={{fontSize:'20px', fontStyle:'italic', marginBottom:'20px'}}>"{currentPrompt}"</p>
-            <div style={{display:'flex', gap:'12px'}}>
-              <button onClick={()=>setDay(d=>Math.max(1, d-1))} disabled={day<=1} style={{padding:'12px 24px', background:'#e5e7eb', border:'none', borderRadius:'8px', cursor:'pointer'}}>Prev</button>
-              <button onClick={()=>setDay(d=>Math.min(28, d+1))} disabled={day>=28} style={{padding:'12px 24px', background:'#f97316', color:'white', border:'none', borderRadius:'8px', cursor:'pointer'}}>Next Day</button>
-            </div>
-          </>
-        )}
-      </div>
-    </div>
-  )
 }
