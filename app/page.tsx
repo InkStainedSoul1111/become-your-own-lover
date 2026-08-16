@@ -1,4 +1,4 @@
-import { ProductPreview } from '@/components/productpreview'
+import { ProductPreview } from '@/components/ProductPreview'
 
 export default function HomePage() {
   return (
