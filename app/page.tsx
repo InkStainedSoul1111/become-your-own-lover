@@ -8,7 +8,7 @@ const data = {
     {text:"I release the need for external validation. I am enough exactly as I am.", img:"https://images.pexels.com/photos/35537/pexels-photo.jpg?auto=compress&w=800"},
   ],
   motivate: [
-    {text:"What would you do if you knew you could not fail?"},
+    {text:"What would you do if you knew you could not fail?", img:"https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800"},
     {text:"Your dreams chose you for a reason."},
     {text:"Dare to name what you really want."},
   ],
@@ -21,7 +21,7 @@ const data = {
     {text:"What does nature teach you about growth?"},
   ],
   fitness: [
-    {text:"What does your body want to express through movement today?", img:"https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg?auto=compress&w=800"},
+    {text:"What does your body want to express through movement today?", img:"https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"},
     {text:"How can you honor your body as a vessel of strength?"},
   ],
   food: [
