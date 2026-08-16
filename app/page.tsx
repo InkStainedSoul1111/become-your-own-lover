@@ -12,7 +12,7 @@ export default function HomePage() {
       justifyContent: 'center',  // <- lowercase j
       padding: '2rem'
     }}>
-      <h1>Welcome to Manifestation Journal</h1>
+      <h1>Welcome to Become Your Own Lover</h1>
       <ProductPreview />
     </div>
   )
