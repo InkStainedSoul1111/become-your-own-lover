@@ -120,8 +120,8 @@ export default function App() {
               <div className="card">
                 <h2 className="heading" style={{fontSize:'24px',marginBottom:'16px'}}>Sacred Journal</h2>
                 <p style={{fontSize:'18px',fontStyle:'italic',marginBottom:'16px'}}>"{(data.journal as string[])[index.journal]}"</p>
-                <img 
-                  src="https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=1200" 
+               <img 
+                  src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=1200" 
                   alt="Sacred Journal" 
                   style={{width: '100%', borderRadius: '12px', marginBottom: '20px', maxHeight: '400px', objectFit: 'cover'}}
                 />
