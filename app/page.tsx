@@ -1,5 +1,7 @@
 'use client'
-import { useState, useEffect, useRef } from 'react'const data = {
+import { useState, useEffect, useRef } from 'react'
+
+const data = {
   manifest: {
     prompts: [
       "Day 1: I am worthy of deep, unconditional love — starting with my own.",
@@ -343,6 +345,7 @@ import { useState, useEffect, useRef } from 'react'const data = {
     ] 
   }
 }
+
 export default function App() {
   const [started, setStarted] = useState(false)
   const [isPaid, setIsPaid] = useState(false)
@@ -356,7 +359,6 @@ export default function App() {
 
   const canView = (cat: string, dayNum: number) => {
     if (isPaid) return true
-    // FREE: Only Day 1 of first 3 categories
     const freeCats = ['manifest', 'motivate', 'Music/Dance']
     return freeCats.includes(cat) && dayNum === 1
   }
