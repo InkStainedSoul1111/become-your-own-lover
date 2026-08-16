@@ -35,8 +35,7 @@ const data = {
     {text:"How can eating become a sacred act of self-care?"},
   ],
   selfcare: [
-    {text:"What self-care ritual makes you feel most loved?", img:"https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800"},
-   
+    
   export default function App() {
   const [started, setStarted] = useState(false)
   const [activeTab, setActiveTab] = useState('manifest')
