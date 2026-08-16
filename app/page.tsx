@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect, useRef } from 'react'
 
-  export default function App() {
+export default function App() {
   const [started, setStarted] = useState(false)
   const [activeTab, setActiveTab] = useState('manifest')
   const [journalText, setJournalText] = useState('')
@@ -9,161 +9,150 @@ import { useState, useEffect, useRef } from 'react'
   const [musicPlaying, setMusicPlaying] = useState(true)
   const [index, setIndex] = useState<any>({manifest:0, motivate:0, music:0, nature:0, fitness:0, food:0, selfcare:0, rituals:0, journal:0})
   const audioContextRef = useRef<AudioContext | null>(null)
-    const data = {
-  manifest: [
-    {text:"I am worthy of deep, unconditional love — starting with my own.", img:"https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&w=800"},
-    {text:"My body is a sacred vessel. I honor it with movement that feels like joy.", img:"https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpg?auto=compress&w=800"},
-    {text:"I release the need for external validation. I am enough exactly as I am.", img:"https://images.pexels.com/photos/35537/pexels-photo.jpg?auto=compress&w=800"},
-  ],
-  motivate: [
-    {text:"What would you do if you knew you could not fail?", img:"https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800"},
-    {text:"Your dreams chose you for a reason."},
-    {text:"Dare to name what you really want."},
-  ],
-  'Music/Dance': [
-    {text:"How does dancing reset your nervous system?", img:"https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800"},
-    {text:"What music makes you feel most alive?"},
-  ],
-  nature: [
-    {text:"How does being in nature shift your sense of self?", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"What does nature teach you about growth?"},
-  ],
-  fitness: [
-    {text:"What does your body want to express through movement today?", img:"https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"},
-    {text:"How can you honor your body as a vessel of strength?"},
-  ],
-  food: [
-    {text:"What does it mean to nourish yourself with love?", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800"},
-    {text:"How can eating become a sacred act of self-care?"},
-  ],
-  selfcare: [
-  {text:"What self-care ritual makes you feel most loved?", img:"https://images.pexels.com/photos/..." },
-],
-} 
 
-   const initAudio = () => { if (!audioContextRef.current) audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)() }
-  const playSound = () => { initAudio(); const ctx = audioContextRef.current; if(!ctx) return; const o = ctx.createOscillator(); const g = ctx.createGain(); o.connect(g); g.connect(ctx.destination); o.frequency.value = 220; g.gain.setValueAtTime(0.05, ctx.currentTime); g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 2); o.start(); o.stop(ctx.currentTime + 2); }
-
-  const shuffle = (tab: string) => {
-    const arr = data[tab as keyof typeof data] as any[]
-    setIndex({...index, [tab]: (index[tab] + 1) % arr.length })
+  const data = {
+    manifest: [
+      {text:"I am worthy of love that feels like coming home.", img:"https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg"},
+      {text:"My body is a temple and I honor it daily."},
+      {text:"I choose to speak to myself with kindness."}
+    ],
+    motivate: [
+      {text:"What small act of self-love will you do today?", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg"},
+      {text:"You are not behind. You are becoming."},
+      {text:"Your healing is not a luxury. It is necessary."}
+    ],
+    'Music/Dance': [
+      {text:"What song makes your soul remember who you are?"},
+      {text:"Dance like no one is watching. This is for you."}
+    ],
+    nature: [
+      {text:"How does nature reflect the beauty you carry inside?"},
+      {text:"What lesson from the trees can you apply to your life today?"}
+    ],
+    fitness: [
+      {text:"What does your body want to express through movement today?"},
+      {text:"How can you honor your body as a vessel of strength?"},
+      {text:"Movement is medicine. What does your body need?"}
+    ],
+    food: [
+      {text:"What does it mean to nourish yourself with love?", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg"},
+      {text:"How can eating become a sacred act of self-care?"},
+      {text:"What food makes you feel most nurtured and alive?"}
+    ],
+    selfcare: [
+      {text:"What self-care ritual makes you feel most loved?", img:"https://images.pexels.com/photos/40568/melancholy-rain-drop-nature-40568.jpeg"},
+      {text:"How can you give yourself the comfort you give others?"},
+      {text:"What boundary would be the most loving thing to set today?"}
+    ],
+    rituals: [
+      {text:"What ritual would make you feel most connected to yourself?"},
+      {text:"Create a morning ritual that feels like a hug from you to you."}
+    ],
+    journal: []
   }
 
-    const saveEntry = (e: React.FormEvent) => {
-  e.preventDefault();
-  const newEntry = {prompt: (data.journal as string[])[index.journal], content: journalText, date: new Date().toLocaleDateString()}
-  setAllEntries([newEntry,...allEntries]); setJournalText('')
-  setEntryCount(entryCount + 1)  // <-- ADD THIS LINE
-}
+  const initAudio = () => {
+    if (!audioContextRef.current) audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
+  }
 
-  useEffect(() => { if (started && musicPlaying) playSound() }, [started])
+  const playSound = () => {
+    initAudio();
+    const ctx = audioContextRef.current;
+    if(!ctx) return;
+    const o = ctx.createOscillator();
+    const g = ctx.createGain();
+    o.connect(g);
+    g.connect(ctx.destination);
+    o.frequency.value = 440;
+    g.gain.setValueAtTime(0.1, ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.5);
+    o.start();
+    o.stop(ctx.currentTime + 0.5);
+  }
 
-  const tabs = ['manifest','motivate','Music/Dance','nature','fitness','food','selfcare','rituals','journal','writings']
+  const nextPrompt = () => {
+    setIndex({...index, [activeTab]: (index[activeTab] + 1) % data[activeTab as keyof typeof data].length})
+    if(musicPlaying) playSound()
+  }
+
+  const saveEntry = () => {
+    if(journalText.trim()) {
+      setAllEntries([...allEntries, {text: journalText, date: new Date().toLocaleDateString()}])
+      setJournalText('')
+    }
+  }
+
+  if(!started) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-orange-900 via-red-900 to-pink-900 flex flex-col items-center justify-center text-white p-8">
+        <h1 className="text-6xl font-bold mb-4 text-center">Become Your Own Lover</h1>
+        <p className="text-xl mb-8 text-center opacity-90">A sacred space for self-connection and healing</p>
+        <button
+          onClick={() => setStarted(true)}
+          className="bg-orange-500 hover:bg-orange-600 px-8 py-4 rounded-full text-xl font-semibold transition"
+        >
+          Start Your Journey
+        </button>
+      </div>
+    )
+  }
 
   return (
-    <>
-      <style>{`
-        body{font-family:'Alegreya',serif;background:#fdf8f3;margin:0}
-      .heading{font-family:'Playfair Display',serif}
-      .btn{background:#b45309;color:white;padding:10px 20px;border:none;border-radius:8px;cursor:pointer}
-      .card{background:white;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.05);border:1px solid #e7e5e4;padding:24px;margin-bottom:16px}
-      .tab{padding:16px 8px;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;color:#57534e}
-      .tab.active{border-bottom:3px solid #b45309;color:#b45309}
-      .panel{display:none}.panel.active{display:block;animation:fade.4s}
-        @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-      `}</style>
-      <link href="https://fonts.googleapis.com/css2?family=Alegreya&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
-
-      {!started? (
-        <div style={{position:'relative',height:'100vh'}}>
-          <img src="https://images.pexels.com/photos/1661296/pexels-photo-1661296.jpeg?auto=compress&w=1280" style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover'}}/>
-          <div style={{position:'absolute',inset:0,background:'linear-gradient(to bottom,rgba(0,0,0,.2),rgba(0,0,0,.6))'}}/>
-          <div style={{position:'relative',zIndex:10,height:'100%',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',textAlign:'center',padding:'24px'}}>
-            <h1 className="heading" style={{color:'white',fontSize:'48px',textShadow:'0 2px 10px rgba(0,0,0,.5)'}}>Become Your Own Lover</h1>
-            <p style={{color:'white',fontSize:'18px',margin:'12px 0 32px'}}>A sacred space for inner connection and self-love</p>
-            <button className="btn" onClick={()=>{setStarted(true);playSound()}}>Start Your Journey</button>
-          </div>
+    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-pink-900 to-orange-900 text-white p-4">
+      <div className="max-w-4xl mx-auto">
+        <div className="flex flex-wrap gap-2 mb-6 justify-center">
+          {Object.keys(data).map(tab => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`px-4 py-2 rounded-full capitalize ${activeTab === tab? 'bg-orange-500' : 'bg-white/20'}`}
+            >
+              {tab}
+            </button>
+          ))}
         </div>
-      ) : (
-        <div style={{background:'linear-gradient(to bottom,#fafaf9,#fffbeb)',minHeight:'100vh'}}>
-          <header className="card" style={{borderRadius:0,position:'sticky',top:0,zIndex:10}}>
-            <div style={{maxWidth:'1024px',margin:'0 auto',display:'flex',justifyContent:'space-between'}}>
-              <h1 className="heading">Become Your Own Lover</h1>
-              <button onClick={()=>setMusicPlaying(!musicPlaying)} style={{background:'none',border:'none',color:'#b45309',cursor:'pointer'}}>{musicPlaying?'🔊 On':'🔇 Off'}</button>
-            </div>
-          </header>
-          <nav style={{background:'white',borderBottom:'1px solid #e7e5e4'}}>
-            <div style={{maxWidth:'1024px',margin:'0 auto',display:'flex',gap:'16px',overflowX:'auto',padding:'0 16px'}}>
-              {tabs.map(t=><button key={t} className={`tab ${activeTab===t?'active':''}`} onClick={()=>setActiveTab(t)}>{t.charAt(0).toUpperCase()+t.slice(1).replace('selfcare','Self Care').replace('music','Music & Dance')}</button>)}
-            </div>
-          </nav>
-          <main style={{maxWidth:'1024px',margin:'0 auto',padding:'24px 16px'}}>
-            
-            {['manifest','motivate','Music/Dance','nature','fitness','food','selfcare','rituals'].map(tab=>(
-              <div key={tab} className={`panel ${activeTab===tab?'active':''}`}>
-                <div className="card">
-                  <h2 className="heading" style={{fontSize:'24px',marginBottom:'16px'}}>{tab.charAt(0).toUpperCase()+tab.slice(1)}</h2>
-                  {(data[tab as keyof typeof data] as any[])[index[tab]]?.img && <img src={(data[tab as keyof typeof data] as any[])[index[tab]].img} style={{width:'100%',height:'240px',objectFit:'cover',borderRadius:'8px',marginBottom:'16px'}}/>}
-                  <p style={{fontSize:'18px',fontStyle:'italic',marginBottom:'16px'}}>"{(data[tab as keyof typeof data] as any[])[index[tab]]?.text}"</p>
-                  <button className="btn" onClick={()=>shuffle(tab)}>Shuffle</button>
-                </div>
-              </div>
-            ))}
 
-            <div className={`panel ${activeTab==='journal'?'active':''}`}>
-              <div className="card">
-                <h2 className="heading" style={{fontSize:'24px',marginBottom:'16px'}}>Sacred Journal</h2>
-                <p style={{fontSize:'18px',fontStyle:'italic',marginBottom:'16px'}}>"{(data.journal as string[])[index.journal]}"</p>
-              <img
-                src="/journal-pastel.jpg"
-                alt="Sacred Journal"
-                style={{width: '100%', borderRadius: '12px', marginBottom: '20px', maxHeight: '400px', objectFit: 'cover'}}
+        <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 mb-4">
+          {activeTab!== 'journal'? (
+            <>
+              {data[activeTab as keyof typeof data][index[activeTab]]?.img && (
+                <img src={data[activeTab as keyof typeof data][index[activeTab]].img} className="w-full h-64 object-cover rounded-xl mb-4" alt="" />
+              )}
+              <p className="text-2xl text-center mb-6">{data[activeTab as keyof typeof data][index[activeTab]]?.text}</p>
+              <button onClick={nextPrompt} className="w-full bg-orange-500 hover:bg-orange-600 py-3 rounded-xl font-semibold">
+                Next Prompt
+              </button>
+            </>
+          ) : (
+            <>
+              <textarea
+                value={journalText}
+                onChange={(e) => setJournalText(e.target.value)}
+                className="w-full h-40 bg-white/20 rounded-xl p-4 text-white placeholder-white/60"
+                placeholder="Write to yourself with love..."
               />
-                <form onSubmit={saveEntry}>
-                 <div 
-  className="card"
-  style={{
-    backgroundImage: "url('/scroll-paper.jpg')",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    padding: '24px',
-    borderRadius: '12px',
-    marginBottom: '16px'
-  }}
->
-  <textarea 
-    value={journalText} 
-    onChange={e=>setJournalText(e.target.value)}
-    className="w-full h-80 bg-transparent border-none outline-none resize-none text-amber-900 placeholder-amber-700 font-serif text-lg leading-relaxed"
-    placeholder="Dear Me, Today I choose to become my own lover by..."
-  />
-</div>
-<button className="btn" type="submit">Save Entry</button>
-                </form>
-                <button onClick={()=>shuffle('journal')} style={{marginTop:'12px',background:'none',border:'none',color:'#b45309',cursor:'pointer'}}>New Prompt</button>
-               {entryCount >= 1 && !hasUnlocked && (
-  <div className="card" style={{textAlign: 'center', marginTop: '24px', background: '#fffaf0', padding: '20px'}}>
-    <h3 style={{color: '#b45309', marginBottom: '8px'}}>You've felt it 💛</h3>
-    <p style={{marginBottom: '16px'}}>This is your sacred space. Unlock unlimited entries forever.</p>
-    <button 
-      style={{background: '#b45309', color: 'white', fontSize: '18px', padding: '12px 24px', borderRadius: '8px', border: 'none', cursor: 'pointer'}}
-      onClick={() => alert('Payment link coming next!')}
-    >
-      Unlock Full Journal - $11
-    </button>
-  </div>
-)}</div>
-            </div>
-
-            <div className={`panel ${activeTab==='writings'?'active':''}`}>
-              <div className="card">
-                <h2 className="heading" style={{fontSize:'24px',marginBottom:'16px'}}>My Writings</h2>
-                {allEntries.length===0?<p>No entries yet.</p>:allEntries.map((e,i)=><div key={i} style={{borderBottom:'1px solid #e7e5e4',padding:'16px 0'}}><p style={{fontStyle:'italic',color:'#78716c'}}>{e.prompt}</p><p>{e.content}</p></div>)}
+              <button onClick={saveEntry} className="w-full bg-orange-500 hover:bg-orange-600 py-3 rounded-xl font-semibold mt-4">
+                Save Entry
+              </button>
+              <div className="mt-6">
+                {allEntries.map((entry, i) => (
+                  <div key={i} className="bg-white/10 p-4 rounded-xl mb-2">
+                    <p className="text-sm opacity-70">{entry.date}</p>
+                    <p>{entry.text}</p>
+                  </div>
+                ))}
               </div>
-            </div>
-          </main>
+            </>
+          )}
         </div>
-      )}
-    </>
+
+        <button
+          onClick={() => setMusicPlaying(!musicPlaying)}
+          className="w-full bg-white/20 hover:bg-white/30 py-3 rounded-xl"
+        >
+          {musicPlaying? '🔊 Sound On' : '🔇 Sound Off'}
+        </button>
+      </div>
+    </div>
   )
 }
