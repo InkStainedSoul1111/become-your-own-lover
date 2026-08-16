@@ -20,7 +20,6 @@ const data = {
   {text:"How does being in nature shift your sense of self?", img:"https://images.pexels.com/photos/3617500/pexels-photo-3617500.jpeg?auto=compress&w=800"},
   {text:"What does nature teach you about growth?", img:"https://images.pexels.com/photos/1032650/pexels-photo-1032650.jpeg?auto=compress&w=800"},
 ],
-  ],
   fitness: [
     {text:"What does your body want to express through movement today?", img:"https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"},
     {text:"How can you honor your body as a vessel of strength?"},
