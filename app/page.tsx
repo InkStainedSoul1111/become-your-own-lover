@@ -371,7 +371,7 @@ export default function App() {
     return (
       <div style={{
         minHeight:'100vh', 
-        backgroundImage:"url('https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&w=1920')", 
+        backgroundImage:"url('https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=1920')", 
         backgroundSize:'cover',
         backgroundPosition: 'center',
         display:'flex', 
