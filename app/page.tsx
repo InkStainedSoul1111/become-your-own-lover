@@ -166,9 +166,14 @@ export default function App() {
       const entries = localStorage.getItem('byol_entries')
       if (unlocked === 'true') setHasFullAccess(true)
       if (views) setPromptsViewed(parseInt(views))
-      if (entries) setAllEntries(JSON.parse(entries))
+      if (entries) {
+        const parsed = JSON.parse(entries)
+        setAllEntries(Array.isArray(parsed)? parsed : [])
+      }
     } catch (e) {
-      console.log('localStorage error')
+      console.log('localStorage corrupt, resetting...')
+      localStorage.removeItem('byol_entries')
+      setAllEntries([])
     }
   }, [])
 
@@ -279,7 +284,12 @@ export default function App() {
             <div style={{maxWidth:'1024px',margin:'0 auto',display:'flex',justifyContent:'space-between',alignItems:'center'}}>
               <h1 className="heading">Become Your Own Lover</h1>
               <div style={{display:'flex',gap:'16px',alignItems:'center'}}>
-                {!hasFullAccess && <span style={{fontSize:'14px',color:'#78716c',background:'#fef3c7',padding:'4px 12px',borderRadius:'20px'}}>Free views: {Math.max(0,3-promptsViewed)}/3</span>}
+                {!hasFullAccess && (
+                  <>
+                    <span style={{fontSize:'14px',color:'#92400e',background:'#fef3c7',padding:'4px 12px',borderRadius:'20px',fontWeight:'bold'}}>PREVIEW MODE</span>
+                    <button className="btn-gold" onClick={handlePurchase} style={{padding:'6px 16px',fontSize:'14px'}}>Buy Full Version $21.21</button>
+                  </>
+                )}
                 {hasFullAccess && <span style={{fontSize:'14px',color:'#059669',background:'#d1fae5',padding:'4px 12px',borderRadius:'20px'}}>Full Access</span>}
                 <button onClick={()=>setMusicPlaying(!musicPlaying)} style={{background:'none',border:'none',color:'#b45309',cursor:'pointer'}}>{musicPlaying?'🔊 On':'🔇 Off'}</button>
               </div>
@@ -371,7 +381,24 @@ export default function App() {
 
             <div className={`panel ${activeTab==='writings'?'active':''}`}>
               <div className="card">
-                <h2 className="heading" style={{fontSize:'24px',marginBottom:'16px'}}>My Writings</h2>
+                <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:'16px'}}>
+                  <h2 className="heading" style={{fontSize:'24px',margin:0}}>My Writings</h2>
+                  {!hasFullAccess && (
+                    <button className="btn-gold" onClick={handlePurchase} style={{padding:'8px 16px',fontSize:'14px'}}>
+                      Unlock Full Version
+                    </button>
+                  )}
+                </div>
+                
+                {!hasFullAccess && (
+                  <div style={{background:'#fef3c7',border:'1px solid #fde68a',borderRadius:'8px',padding:'12px',marginBottom:'16px',textAlign:'center'}}>
+                    <p style={{margin:0,color:'#92400e',fontSize:'14px'}}>
+                      <strong>Preview:</strong> You’re viewing saved responses from the 3 free prompts. 
+                      <span onClick={handlePurchase} style={{textDecoration:'underline',cursor:'pointer',marginLeft:'4px'}}>Unlock all 84 prompts for $21.21</span>
+                    </p>
+                  </div>
+                )}
+
                 {allEntries.length===0?<p>No entries yet. Your responses to prompts will appear here.</p>:allEntries.map((e,i)=><div key={i} style={{borderBottom:'1px solid #e7e5e4',padding:'16px 0'}}>
                   <p style={{fontSize:'13px',color:'#b45309',marginBottom:'4px',fontWeight:'bold'}}>{e.tab==='manifest'?'Manifest':e.tab==='motivate'?'Motivate':e.tab==='Music/Dance'?'Music/Dance':e.tab.charAt(0).toUpperCase()+e.tab.slice(1)}</p>
                   <p style={{fontStyle:'italic',color:'#78716c',marginBottom:'8px'}}>{e.prompt}</p>
