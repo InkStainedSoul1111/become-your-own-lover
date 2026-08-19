@@ -147,17 +147,16 @@ const data = {
 }
 
 export default function App() {
-  const [started][setStarted] = useState(false)
-  const [activeTab][setActiveTab] = useState('manifest')
-  const [journalText][setJournalText] = useState('')
-  const [allEntries][setAllEntries] = useState<any[]>([])
-  const [musicPlaying][setMusicPlaying] = useState(true)
-  const [index][setIndex] = useState<any>({manifest:0, motivate:0, 'Music/Dance':0, nature:0, fitness:0, food:0, selfcare:0, rituals:0, journal:0})
-  const [responseText][setResponseText] = useState('')
+  const [started, setStarted] = useState(false)
+  const [activeTab, setActiveTab] = useState('manifest')
+  const [journalText, setJournalText] = useState('')
+  const [allEntries, setAllEntries] = useState<any[]>([])
+  const [musicPlaying, setMusicPlaying] = useState(true)
+  const [index, setIndex] = useState<any>({manifest:0, motivate:0, 'Music/Dance':0, nature:0, fitness:0, food:0, selfcare:0, rituals:0, journal:0})
+  const [responseText, setResponseText] = useState('')
 
-  // PAYWALL: $21.21 AFTER 3 VIEWS - ONLY ON CORE 3 TABS
-  const [promptsViewed][setPromptsViewed] = useState(0)
-  const [hasFullAccess][setHasFullAccess] = useState(false)
+  const [promptsViewed, setPromptsViewed] = useState(0)
+  const [hasFullAccess, setHasFullAccess] = useState(false)
 
   const audioContextRef = useRef<AudioContext | null>(null)
 
@@ -240,15 +239,15 @@ export default function App() {
     <>
       <style>{`
         body{font-family:'Alegreya',serif;background:#fdf8f3;margin:0}
-    .heading{font-family:'Playfair Display',serif}
-    .btn{background:#b45309;color:white;padding:10px 20px;border:none;border-radius:8px;cursor:pointer;font-size:15px}
-    .btn-gold{background:linear-gradient(135deg,#d4af37,#b45309);color:white;padding:12px 24px;border:none;border-radius:8px;cursor:pointer;font-weight:bold}
-    .btn-small{background:#b45309;color:white;padding:8px 16px;border:none;border-radius:6px;cursor:pointer;font-size:14px}
-    .card{background:white;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.05);border:1px solid #e7e5e4;padding:24px;margin-bottom:16px}
-    .tab{padding:16px 8px;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;color:#57534e}
-    .tab.active{border-bottom:3px solid #b45309;color:#b45309}
-    .panel{display:none}.panel.active{display:block;animation:fade.4s}
-    .paywall-glow{box-shadow:0 0 0 1px #f59e0b, 0 0 20px rgba(245,158,11,.2)}
+        .heading{font-family:'Playfair Display',serif}
+        .btn{background:#b45309;color:white;padding:10px 20px;border:none;border-radius:8px;cursor:pointer;font-size:15px}
+        .btn-gold{background:linear-gradient(135deg,#d4af37,#b45309);color:white;padding:12px 24px;border:none;border-radius:8px;cursor:pointer;font-weight:bold}
+        .btn-small{background:#b45309;color:white;padding:8px 16px;border:none;border-radius:6px;cursor:pointer;font-size:14px}
+        .card{background:white;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.05);border:1px solid #e7e5e4;padding:24px;margin-bottom:16px}
+        .tab{padding:16px 8px;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;color:#57534e}
+        .tab.active{border-bottom:3px solid #b45309;color:#b45309}
+        .panel{display:none}.panel.active{display:block;animation:fade.4s}
+        .paywall-glow{box-shadow:0 0 0 1px #f59e0b, 0 0 20px rgba(245,158,11,.2)}
         @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
       `}</style>
       <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
@@ -314,7 +313,6 @@ export default function App() {
                       {currentItem?.img && <img src={currentItem.img} style={{width:'100%',height:'240px',objectFit:'cover',borderRadius:'8px',marginBottom:'16px'}}/>}
                       <p style={{fontSize:'18px',fontStyle:'italic',marginBottom:'16px'}}>"{currentItem?.text || currentItem}"</p>
                       
-                      {/* RESPONSE BOX FOR EVERY CARD - SAVES TO WRITINGS */}
                       <div style={{background:'#fef3c7',padding:'16px',borderRadius:'8px',marginBottom:'16px',border:'1px solid #fde68a'}}>
                         <textarea
                           value={responseText}
@@ -339,9 +337,8 @@ export default function App() {
               <div className="card">
                 <h2 className="heading" style={{fontSize:'24px',marginBottom:'16px'}}>Sacred Journal</h2>
                 <p style={{fontSize:'18px',fontStyle:'italic',marginBottom:'16px'}}>"{(data.journal as string[])[index.journal]}"</p>
-                <img src="/journal-pastel.jpg" alt="Sacred Journal" style={{width: '100%', borderRadius: '12px', marginBottom: '20px', maxHeight: '400px', objectFit: 'cover'}} />
                 <form onSubmit={saveEntry}>
-                  <div className="card" style={{ backgroundImage: "url('/scroll-paper.jpg')", backgroundSize: "cover", backgroundPosition: "center", padding: '24px', borderRadius: '12px', marginBottom: '16px' }} >
+                  <div className="card" style={{ background:'#fff7ed', padding: '24px', borderRadius: '12px', marginBottom: '16px' }} >
                     <textarea value={journalText} onChange={e=>setJournalText(e.target.value)} style={{width:'100%',minHeight:'200px',background:'rgba(255,255,255,0.9)',border:'none',outline:'none',resize:'none',color:'#78350f',fontFamily:'Alegreya',fontSize:'16px',padding:'12px',borderRadius:'8px'}} placeholder="Dear Me, Today I choose to become my own lover by..." />
                   </div>
                   <button className="btn" type="submit">Save Entry</button>
