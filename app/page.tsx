@@ -94,27 +94,157 @@ const data = {
     {text:"Silence check: Sit 5 min. No input. What’s your voice without his echo?", img:"https://images.pexels.com/photos/2114206/pexels-photo-2114206.jpeg?auto=compress&w=800"},
     {text:"Image + caption: *I’m my own love story now.*", img:"https://images.pexels.com/photos/1661296/pexels-photo-1661296.jpeg?auto=compress&w=800"}
   ],
-   nature: [
+    nature: [
     {text:"How does being in nature shift your sense of self?", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"What does nature teach you about growth?"}
+    {text:"What does nature teach you about growth?", img:"https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&w=800"},
+    {text:"Sit outside for 10 min. No phone. What sounds belong to you now?", img:"https://images.pexels.com/photos/2387873/pexels-photo-2387873.jpeg?auto=compress&w=800"},
+    {text:"Touch a tree. Tell it one thing you’re no longer carrying for him.", img:"https://images.pexels.com/photos/15286/pexels-photo.jpg?auto=compress&w=800"},
+    {text:"Walk barefoot on grass. Where do you feel *held* by the earth?", img:"https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&w=800"},
+    {text:"Watch clouds for 5 min. Which one looks like your grief? Let it pass.", img:"https://images.pexels.com/photos/2113566/pexels-photo-2113566.jpeg?auto=compress&w=800"},
+    {text:"Collect 3 stones. Name them: Past, Present, Choice.", img:"https://images.pexels.com/photos/1671325/pexels-photo-1671325.jpeg?auto=compress&w=800"},
+    {text:"Sun on your face. Eyes closed. Whose permission are you waiting for?", img:"https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&w=800"},
+    {text:"Find water — sink, creek, cup. What are you ready to let flow away?", img:"https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?auto=compress&w=800"},
+    {text:"Photograph one thing growing despite concrete. That’s you.", img:"https://images.pexels.com/photos/1105766/pexels-photo-1105766.jpeg?auto=compress&w=800"},
+    {text:"Wind check: Stand outside. What direction are YOU moving?", img:"https://images.pexels.com/photos/21014/pexels-photo.jpg?auto=compress&w=800"},
+    {text:"Moon tonight. What phase are you in? Name it without him.", img:"https://images.pexels.com/photos/1251173/pexels-photo-1251173.jpeg?auto=compress&w=800"},
+    {text:"Plant something. Even a herb. You’re done waiting for his garden.", img:"https://images.pexels.com/photos/4503273/pexels-photo-4503273.jpeg?auto=compress&w=800"},
+    {text:"Rain or shower: Let water hit your chest. Say *“I’m safe now.”*", img:"https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&w=800"},
+    {text:"Bird watching: 5 min. Notice what sings when you’re quiet.", img:"https://images.pexels.com/photos/1661296/pexels-photo-1661296.jpeg?auto=compress&w=800"},
+    {text:"Dirt under nails. Do something messy. You’re not ornamental.", img:"https://images.pexels.com/photos/4503273/pexels-photo-4503273.jpeg?auto=compress&w=800"},
+    {text:"Sunrise or sunset. Which one are you choosing today?", img:"https://images.pexels.com/photos/2387873/pexels-photo-2387873.jpeg?auto=compress&w=800"},
+    {text:"Lie on the ground. Feel the whole earth. It never said *“yo.”*", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
+    {text:"Find a wildflower. You’re allowed to be soft AND uninvited.", img:"https://images.pexels.com/photos/1024960/pexels-photo-1024960.jpeg?auto=compress&w=800"},
+    {text:"Shadow work: Look at yours. It never left, even in 1519 days.", img:"https://images.pexels.com/photos/2114206/pexels-photo-2114206.jpeg?auto=compress&w=800"},
+    {text:"Pick up a leaf. Trace its veins. This is your life, not his map.", img:"https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&w=800"},
+    {text:"Thunder = anger. Rain = grief. Sun = you anyway. What’s today’s weather?", img:"https://images.pexels.com/photos/2113566/pexels-photo-2113566.jpeg?auto=compress&w=800"},
+    {text:"Stargaze: You’re made of the same stuff. He didn’t name you.", img:"https://images.pexels.com/photos/1251173/pexels-photo-1251173.jpeg?auto=compress&w=800"},
+    {text:"Bring nature inside: One rock, leaf, flower. Altar to *you*.", img:"https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&w=800"},
+    {text:"Seasons: What are you shedding? What’s budding without his water?", img:"https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&w=800"},
+    {text:"Breathe air that hasn’t been in his lungs. How does *your* oxygen taste?", img:"https://images.pexels.com/photos/3759657/pexels-photo-3759657.jpeg?auto=compress&w=800"},
+    {text:"Fire — candle or bonfire. What are you burning: hope or habit?", img:"https://images.pexels.com/photos/261763/pexels-photo-261763.jpeg?auto=compress&w=800"},
+    {text:"Image + caption: *I belong to the earth now.*", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"}
   ],
   fitness: [
     {text:"What does your body want to express through movement today?", img:"https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"},
-    {text:"How can you honor your body as a vessel of strength?"}
+    {text:"How can you honor your body as a vessel of strength?", img:"https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"},
+    {text:"Stretch for 5 min. Not for him. For the knots *he* gave you.", img:"https://images.pexels.com/photos/3759657/pexels-photo-3759657.jpeg?auto=compress&w=800"},
+    {text:"Dance like no one’s watching — because he isn’t.", img:"https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800"},
+    {text:"Walk 10 min. Every step is one day you took back.", img:"https://images.pexels.com/photos/1105766/pexels-photo-1105766.jpeg?auto=compress&w=800"},
+    {text:"Lift something heavy. Feel your own power. No spotter needed.", img:"https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"},
+    {text:"Punch a pillow. Name what you’re done carrying.", img:"https://images.pexels.com/photos/3094230/pexels-photo-3094230.jpeg?auto=compress&w=800"},
+    {text:"Yoga pose: Child’s pose. You get to be held, even by yourself.", img:"https://images.pexels.com/photos/3759657/pexels-photo-3759657.jpeg?auto=compress&w=800"},
+    {text:"Run in place 1 min. Heartbeat = *you’re alive without his call.*", img:"https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"},
+    {text:"Balance on one foot. You’re your own anchor now.", img:"https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"},
+    {text:"Squat like you’re rising from 1519 days. Up. Again.", img:"https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"},
+    {text:"Plank 30 sec. You’ve held *him* up longer. Hold *you* now.", img:"https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"},
+    {text:"Shake it out — arms, legs, hips. Shake off *“maybe.”*", img:"https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800"},
+    {text:"Roll shoulders back. No more hunching for someone who won’t meet you.", img:"https://images.pexels.com/photos/3759657/pexels-photo-3759657.jpeg?auto=compress&w=800"},
+    {text:"Wall push-ups. You’re pushing back on *waiting*.", img:"https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"},
+    {text:"March in place. Left, right, left. You’re moving on.", img:"https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"},
+    {text:"Neck stretch. You don’t have to look at your phone for him.", img:"https://images.pexels.com/photos/3759657/pexels-photo-3759657.jpeg?auto=compress&w=800"},
+    {text:"Jump — even tiny. Joy is a rebellion.", img:"https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800"},
+    {text:"Hands on heart + belly. Breathe. This is home now.", img:"https://images.pexels.com/photos/3759657/pexels-photo-3759657.jpeg?auto=compress&w=800"},
+    {text:"Swim, bath, or shower. Water holds you. You don’t have to be strong.", img:"https://images.pexels.com/photos/35537/pexels-photo.jpg?auto=compress&w=800"},
+    {text:"Twist your spine. Wring out old texts like a wet rag.", img:"https://images.pexels.com/photos/3759657/pexels-photo-3759657.jpeg?auto=compress&w=800"},
+    {text:"Legs up wall. Let gravity drain the *“what if.”*", img:"https://images.pexels.com/photos/3759657/pexels-photo-3759657.jpeg?auto=compress&w=800"},
+    {text:"Arm circles. Big. Take up space. He’s not shrinking you.", img:"https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"},
+    {text:"Barefoot walk. Feel your feet. They stayed when he didn’t.", img:"https://images.pexels.com/photos/1105766/pexels-photo-1105766.jpeg?auto=compress&w=800"},
+    {text:"Rest pose: Savasana. You don’t have to earn rest anymore.", img:"https://images.pexels.com/photos/3759657/pexels-photo-3759657.jpeg?auto=compress&w=800"},
+    {text:"Flex in mirror. Not for him. *“This strength stayed.”*", img:"https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&w=800"},
+    {text:"Climb stairs. Each step = one day you chose you after day 1520.", img:"https://images.pexels.com/photos/1105766/pexels-photo-1105766.jpeg?auto=compress&w=800"},
+    {text:"Image + caption: *This body is not his lobby.*", img:"https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"}
   ],
   food: [
     {text:"What does it mean to nourish yourself with love?", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800"},
-    {text:"How can eating become a sacred act of self-care?"}
+    {text:"How can eating become a sacred act of self-care?", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800"},
+    {text:"Cook the meal you’d make *him*. Plate it. Eat it. Yours.", img:"https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&w=800"},
+    {text:"Eat one bite with eyes closed. Taste *you*, not distraction.", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800"},
+    {text:"What food feels like an apology to your body? Eat it.", img:"https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&w=800"},
+    {text:"Grocery shop for *future you*. Not *maybe-dinner-with-him* you.", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800"},
+    {text:"Warm drink. Hold it. This is what showing up feels like.", img:"https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&w=800"},
+    {text:"Breakfast: Eat it like you matter. Because you do.", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800"},
+    {text:"Fruit. Slow. Notice juice. You’re allowed pleasure without him.", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800"},
+    {text:"Salt, fat, acid, heat. You’re allowed to be *full* flavor.", img:"https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&w=800"},
+    {text:"Leftovers: Reheat like it’s day 1, not day 3. You’re worth fresh.", img:"https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&w=800"},
+    {text:"Eat at a table. Not bed. Not car. *“I’m worth a place.”*", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800"},
+    {text:"Snack you loved as a kid. You’re mothering her now.", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800"},
+    {text:"Water: 1 full glass. *“I keep my promises to me.”*", img:"https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?auto=compress&w=800"},
+    {text:"Spice something. You’re not bland without his opinion.", img:"https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&w=800"},
+    {text:"Bake or buy bread. Carbs = energy. You’re not shrinking.", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800"},
+    {text:"Eat with your non-dominant hand. Slow = sacred.", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800"},
+    {text:"Chocolate, one square. No guilt. No *“what would he think.”*", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800"},
+    {text:"Smell first. Then taste. You’re present now.", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800"},
+    {text:"Food you *almost* ordered at restaurants. Make it.", img:"https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&w=800"},
+    {text:"No phone dinner. Date yourself. Conversation counts.", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800"},
+    {text:"Feed yourself before you’re starving. You’re not desperate.", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800"},
+    {text:"Herbs: Taste green. You’re growing, not waiting.", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800"},
+    {text:"Comfort food: Ask *“what comfort am I actually needing?”*", img:"https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&w=800"},
+    {text:"Share food — with friend, neighbor, self. You’re not alone.", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800"},
+    {text:"Dessert first. Rules are yours now.", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800"},
+    {text:"Clean up after. *“I’m worth a clean kitchen.”*", img:"https://images.pexels.com/photos/4239031/pexels-photo-4239031.jpeg?auto=compress&w=800"},
+    {text:"Image + caption: *I feed myself like I love me.*", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800"}
   ],
   selfcare: [
     {text:"What self-care ritual makes you feel most loved?", img:"https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800"},
-    {text:"How can you turn self-care into a non-negotiable?"}
+    {text:"How can you turn self-care into a non-negotiable?", img:"https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800"},
+    {text:"Brush your hair like you’re brushing a child’s. Gentle.", img:"https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800"},
+    {text:"Moisturize your whole body. *“I’m worth the time.”*", img:"https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800"},
+    {text:"Change sheets. Climb into clean. You’re worth fresh.", img:"https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg?auto=compress&w=800"},
+    {text:"Clip nails. File them. You’re not *raw* anymore.", img:"https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800"},
+    {text:"Face mask or steam. Let your face *receive*.", img:"https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800"},
+    {text:"Light a candle. Not for him. For *you* coming home.", img:"https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&w=800"},
+    {text:"Tidy 5 min. *“My space reflects my worth.”*", img:"https://images.pexels.com/photos/4107288/pexels-photo-4107288.jpeg?auto=compress&w=800"},
+    {text:"To-do list: Put *“rest”* on it. Then cross it off.", img:"https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&w=800"},
+    {text:"Say *“no”* to one ask today. Feel the space open.", img:"https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&w=800"},
+    {text:"Budget check: Where did you fund *waiting*? Redirect $5 to you.", img:"https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&w=800"},
+    {text:"Social media: Unfollow one *hope* account.", img:"https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&w=800"},
+    {text:"Playlist name: *“No More Yo.”* Add 3 songs.", img:"https://images.pexels.com/photos/164745/pexels-photo-164745.jpeg?auto=compress&w=800"},
+    {text:"Outfit prep for tomorrow. *“She’s got plans with herself.”*", img:"https://images.pexels.com/photos/794064/pexels-photo-794064.jpeg?auto=compress&w=800"},
+    {text:"Digital declutter: Delete 5 photos of *him/hoping*.", img:"https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&w=800"},
+    {text:"Voice note to self: *“I’m proud of you for ___.”*", img:"https://images.pexels.com/photos/3771069/pexels-photo-3771069.jpeg?auto=compress&w=800"},
+    {text:"Boundaries: What time do you stop checking today?", img:"https://images.pexels.com/photos/4049791/pexels-photo-4049791.jpeg?auto=compress&w=800"},
+    {text:"Therapy or journal: 10 min. You’re worth the unpacking.", img:"https://images.pexels.com/photos/733856/pexels-photo-733856.jpeg?auto=compress&w=800"},
+    {text:"Medical appt you put off? Book it. *“I stay for me.”*", img:"https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800"},
+    {text:"Nap 20 min. No alarm guilt. You’re recovering from 1519 days.", img:"https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800"},
+    {text:"Stretch in bed before up. *“Good morning, my love.”*", img:"https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg?auto=compress&w=800"},
+    {text:"Read 1 page of fiction. Not self-help. Escape is care.", img:"https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&w=800"},
+    {text:"Compliment a stranger. You’re not invisible.", img:"https://images.pexels.com/photos/3184423/pexels-photo-3184423.jpeg?auto=compress&w=800"},
+    {text:"Laugh at a video. On purpose. Joy is maintenance.", img:"https://images.pexels.com/photos/1851164/pexels-photo-1851164.jpeg?auto=compress&w=800"},
+    {text:"Write tomorrow’s *one* priority. Not his. Yours.", img:"https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&w=800"},
+    {text:"Phone on Do Not Disturb 1 hour. *“I’m not on call for crumbs.”*", img:"https://images.pexels.com/photos/4049791/pexels-photo-4049791.jpeg?auto=compress&w=800"},
+    {text:"Image + caption: *Self-care isn’t selfish. It’s survival.*", img:"https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800"}
   ],
   rituals: [
     {text:"How can skincare become a ritual of self-love?", img:"https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800"},
-    {text:"What is the power of flowers and softness?"}
+    {text:"What is the power of flowers and softness?", img:"https://images.pexels.com/photos/1024960/pexels-photo-1024960.jpeg?auto=compress&w=800"},
+    {text:"Morning: 3 deep breaths before feet hit floor. *“I’m here for me.”*", img:"https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800"},
+    {text:"Tea/coffee: Stir clockwise. *“I call my energy back.”*", img:"https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&w=800"},
+    {text:"Get dressed: One item that feels like *armor* or *silk*. Choose.", img:"https://images.pexels.com/photos/794064/pexels-photo-794064.jpeg?auto=compress&w=800"},
+    {text:"Midday: Hand on heart 10 sec. *“We’re okay without him.”*", img:"https://images.pexels.com/photos/3759657/pexels-photo-3759657.jpeg?auto=compress&w=800"},
+    {text:"Sunset check: What did I *not* wait for today? Name it.", img:"https://images.pexels.com/photos/2387873/pexels-photo-2387873.jpeg?auto=compress&w=800"},
+    {text:"Evening: Shoes off at door. *“I leave *hope* outside.”*", img:"https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&w=800"},
+    {text:"Candle at dinner. Even if it’s cereal. You’re worth ambiance.", img:"https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&w=800"},
+    {text:"Phone charging outside bedroom. *“My sleep isn’t his lobby.”*", img:"https://images.pexels.com/photos/4049791/pexels-photo-4049791.jpeg?auto=compress&w=800"},
+    {text:"Pajamas: What would *lover you* pick for tired you?", img:"https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg?auto=compress&w=800"},
+    {text:"Gratitude: 1 thing *you* did. Not him. You.", img:"https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&w=800"},
+    {text:"Mirror: Eye contact 5 sec. *“I see you. I’m staying.”*", img:"https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&w=800"},
+    {text:"Weekly: Flower purchase. $3. *“Beauty is mine.”*", img:"https://images.pexels.com/photos/1024960/pexels-photo-1024960.jpeg?auto=compress&w=800"},
+    {text:"Monthly: Solo date. Book it. Non-negotiable.", img:"https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&w=800"},
+    {text:"New moon: Write what you’re *done* calling in.", img:"https://images.pexels.com/photos/1251173/pexels-photo-1251173.jpeg?auto=compress&w=800"},
+    {text:"Full moon: Write what you’re releasing. Burn/shred.", img:"https://images.pexels.com/photos/1251173/pexels-photo-1251173.jpeg?auto=compress&w=800"},
+    {text:"Sunday: Plan week around *your* joy, not his gaps.", img:"https://images.pexels.com/photos/4792285/pexels-photo-4792285.jpeg?auto=compress&w=800"},
+    {text:"Birthday: Letter to next-year you. *“We didn’t wait.”*", img:"https://images.pexels.com/photos/606541/pexels-photo-606541.jpeg?auto=compress&w=800"},
+    {text:"Anniversary of *“yo”*: Ritual of release. Do it your way.", img:"https://images.pexels.com/photos/261763/pexels-photo-261763.jpeg?auto=compress&w=800"},
+    {text:"Before shower: *“I wash off anyone who didn’t choose me.”*", img:"https://images.pexels.com/photos/35537/pexels-photo.jpg?auto=compress&w=800"},
+    {text:"After shower: Lotion = *“I seal my own love in.”*", img:"https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800"},
+    {text:"Bed: Hand on chest. *“You’re safe. I’m not leaving.”*", img:"https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg?auto=compress&w=800"},
+    {text:"Wake: No phone 10 min. *“My morning is mine.”*", img:"https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800"},
+    {text:"Commute: Podcast or silence. Not stalking. Choose.", img:"https://images.pexels.com/photos/21014/pexels-photo.jpg?auto=compress&w=800"},
+    {text:"Work break: Step outside. 2 min. *“I’m not trapped.”*", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
+    {text:"Night: List 3 ways you showed up. *“I’m evidence.”*", img:"https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&w=800"},
+    {text:"Image + caption: *My life is a ritual of choosing me.*", img:"https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&w=800"}
   ],
-  journal: [
+    journal: [
     "Describe the version of yourself you are becoming.",
     "Write a love letter to yourself.",
     "What dream have you been too afraid to chase?",
@@ -270,21 +400,21 @@ export default function App() {
 
   return (
     <>
-           <style>{`
+      <style>{`
         body{font-family:'Alegreya',serif;background:#fdf8f3;margin:0}
-        .heading{font-family:'Playfair Display',serif}
-        .btn{background:#b45309;color:white;padding:10px 20px;border:none;border-radius:8px;cursor:pointer;font-size:15px}
-        .btn-gold{background:linear-gradient(135deg,#d4af37,#b45309);color:white;padding:12px 24px;border:none;border-radius:8px;cursor:pointer;font-weight:bold}
-        .btn-small{background:#b45309;color:white;padding:8px 16px;border:none;border-radius:6px;cursor:pointer;font-size:14px}
-        .card{background:white;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.05);border:1px solid #e7e5e4;padding:24px;margin-bottom:16px}
-        .tab{padding:16px 8px;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;color:#57534e;white-space:nowrap}
-        .tab.active{border-bottom:3px solid #b45309;color:#b45309}
-        .panel{display:none}.panel.active{display:block;animation:fade.4s}
-        .paywall-glow{box-shadow:0 0 0 1px #f59e0b, 0 0 20px rgba(245,158,11,.2)}
+       .heading{font-family:'Playfair Display',serif}
+       .btn{background:#b45309;color:white;padding:10px 20px;border:none;border-radius:8px;cursor:pointer;font-size:15px}
+       .btn-gold{background:linear-gradient(135deg,#d4af37,#b45309);color:white;padding:12px 24px;border:none;border-radius:8px;cursor:pointer;font-weight:bold}
+       .btn-small{background:#b45309;color:white;padding:8px 16px;border:none;border-radius:6px;cursor:pointer;font-size:14px}
+       .card{background:white;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.05);border:1px solid #e7e5e4;padding:24px;margin-bottom:16px}
+       .tab{padding:16px 8px;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;color:#57534e;white-space:nowrap}
+       .tab.active{border-bottom:3px solid #b45309;color:#b45309}
+       .panel{display:none}.panel.active{display:block;animation:fade.4s}
+       .paywall-glow{box-shadow:0 0 0 1px #f59e0b, 0 0 20px rgba(245,158,11,.2)}
         @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
       `}</style>
       <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
-      {!started ? (
+      {!started? (
         <div style={{position: 'relative', height: '100vh'}}>
           <img src="https://images.pexels.com/photos/1661296/pexels-photo-1661296.jpeg?auto=compress&w=1280" style={{position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover'}} />
           <div style={{position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6))'}} />
@@ -392,13 +522,13 @@ export default function App() {
                     </p>
                   </div>
                 )}
-                {!allEntries?.length ? (
+                {!allEntries?.length? (
                   <p>No entries yet. Your responses to prompts will appear here.</p>
                 ) : (
                   allEntries.filter(Boolean).map((e,i)=>(
                     <div key={i} style={{marginBottom:'16px', padding:'16px', border:'1px solid #fde68a', borderRadius:'8px'}}>
                       <p style={{fontSize:'13px',color:'#b45309',marginBottom:'4px',fontWeight:'bold'}}>
-                        {e.tab === 'manifest' ? 'Manifest' : e.tab === 'motivate' ? 'Motivate' : e.tab === 'Music/Dance' ? 'Music/Dance' : e.tab ? e.tab.charAt(0).toUpperCase() + e.tab.slice(1) : 'Entry'}
+                        {e.tab === 'manifest'? 'Manifest' : e.tab === 'motivate'? 'Motivate' : e.tab === 'Music/Dance'? 'Music/Dance' : e.tab? e.tab.charAt(0).toUpperCase() + e.tab.slice(1) : 'Entry'}
                       </p>
                       <p style={{fontStyle:'italic',color:'#78716c',marginBottom:'8px'}}>{e.prompt || ''}</p>
                       <p style={{color:'#44403c',lineHeight:'1.6'}}>{e.content || e.text || ''}</p>
