@@ -1,4 +1,4 @@
- 'use client'
+'use client'
 import { useState, useEffect, useRef } from 'react'
 
 const STRIPE_LINK = 'https://buy.stripe.com/00w14n8JPakTfMv7sx7bW02'
@@ -94,7 +94,7 @@ const data = {
     {text:"Silence check: Sit 5 min. No input. What’s your voice without his echo?", img:"https://images.pexels.com/photos/2114206/pexels-photo-2114206.jpeg?auto=compress&w=800"},
     {text:"Image + caption: *I’m my own love story now.*", img:"https://images.pexels.com/photos/1661296/pexels-photo-1661296.jpeg?auto=compress&w=800"}
   ],
-    nature: [
+   nature: [
     {text:"How does being in nature shift your sense of self?", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
     {text:"What does nature teach you about growth?"}
   ],
@@ -270,7 +270,7 @@ export default function App() {
 
   return (
     <>
-            <style>{`
+           <style>{`
         body{font-family:'Alegreya',serif;background:#fdf8f3;margin:0}
         .heading{font-family:'Playfair Display',serif}
         .btn{background:#b45309;color:white;padding:10px 20px;border:none;border-radius:8px;cursor:pointer;font-size:15px}
@@ -373,6 +373,7 @@ export default function App() {
                   <button onClick={()=>shuffle('journal')} style={{marginTop:'12px',background:'none',border:'none',color:'#b45309',cursor:'pointer'}}>New Prompt</button>
                 </div>
               </div>
+            </div>
             <div className={`panel ${activeTab==='writings'?'active':''}`}>
               <div className="card">
                 <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:'16px'}}>
