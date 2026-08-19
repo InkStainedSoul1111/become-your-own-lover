@@ -260,14 +260,17 @@ export default function App() {
       `}</style>
       <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
 
-      {!started? (
-        <div style={{position:'relative',height:'100vh'}}>
-          <img src="https://images.pexels.com/photos/1661296/pexels-photo-1661296.jpeg?auto=compress&w=1280" style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover'}}/>
-          <div style={{position:'absolute',inset:0,background:'linear-gradient(to bottom,rgba(0,0,0,.2),rgba(0,0,0,.6))'}}/>
-          <div style={{position:'relative',zIndex:10,height:'100%',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',textAlign:'center',padding:'24px'}}>
-            <h1 className="heading" style={{color:'white',fontSize:'48px',textShadow:'0 2px 10px rgba(0,0,0,.5)'}}>Become Your Own Lover</h1>
-            <p style={{color:'white',fontSize:'18px',margin:'12px 0 32px'}}>A sacred space for inner connection and self-love</p>
-            <button className="btn" onClick={()=>{setStarted(true);playSound()}}>Start Your Journey</button>
+      {!started ? (
+        <div style={{position: 'relative', height: '100vh'}}>
+          <img 
+            src="https://images.pexels.com/photos/1661296/pexels-photo-1661296.jpeg?auto=compress&w=1280" 
+            style={{position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover'}} 
+          />
+          <div style={{position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6))'}} />
+          <div style={{position: 'relative', zIndex: 10, height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '24px'}}>
+            <h1 className="heading" style={{color: 'white', fontSize: '48px', textShadow: '0 2px 10px rgba(0,0,0,0.5)'}}>Become Your Own Lover</h1>
+            <p style={{color: 'white', fontSize: '18px', margin: '12px 0 32px'}}>A sacred space for inner connection and self-love</p>
+            <button className="btn" onClick={() => {setStarted(true); playSound()}}>Start Your Journey</button>
           </div>
         </div>
       ) : (
