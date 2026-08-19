@@ -255,7 +255,7 @@ export default function App() {
   useEffect(() => { if (started && musicPlaying) playSound() }, [started])
 
   const tabs = ['manifest','motivate','Music/Dance','nature','fitness','food','selfcare','rituals','journal','writings']
-  const currentItem = data[activeTab][index[activeTab]]
+  const currentItem = data[activeTab]?.[index[activeTab]] || {text: '', img: ''}
   const isLocked =!hasFullAccess && promptsViewed >= 3 && ['manifest','motivate','Music/Dance'].includes(activeTab)
     return (
     <>
