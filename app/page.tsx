@@ -408,11 +408,21 @@ export default function App() {
                   </div>
                 )}
 
-                {allEntries.length===0?<p>No entries yet. Your responses to prompts will appear here.</p>:allEntries.map((e,i)=><div key={i} style={{borderBottom:'1px solid #e7e5e4',padding:'16px 0'}}>
-                  <p style={{fontSize:'13px',color:'#b45309',marginBottom:'4px',fontWeight:'bold'}}>{e.tab==='manifest'?'Manifest':e.tab==='motivate'?'Motivate':e.tab==='Music/Dance'?'Music/Dance':e.tab.charAt(0).toUpperCase()+e.tab.slice(1)}</p>
-                  <p style={{fontStyle:'italic',color:'#78716c',marginBottom:'8px'}}>{e.prompt}</p>
-                  <p style={{color:'#44403c',lineHeight:'1.6'}}>{e.content}</p>
-                  <p style={{fontSize:'12px',color:'#a8a29e',marginTop:'8px'}}>{e.date}</p>
+                {!allEntries?.length ? (
+                 <p>No entries yet. Your responses to prompts will appear here.</p>
+                  ) : (
+              allEntries.filter(Boolean).map((e,i)=>(
+            <div key={i} style={{marginBottom:'16px', padding:'16px', border:'1px solid #fde68a', borderRadius:'8px'}}>
+              <p style={{fontSize:'13px',color:'#b45309',marginBottom:'4px',fontWeight:'bold'}}>
+                {e.tab === 'manifest' ? 'Manifest' : e.tab === 'motivate' ? 'Motivate' : e.tab || 'Entry'}
+              </p>
+      <p style={{fontStyle:'italic',color:'#78716c',marginBottom:'8px'}}>{e.prompt || ''}</p>
+      <p style={{color:'#44403c',lineHeight:'1.6'}}>{e.content || e.text || ''}</p>
+      {e.img && <img src={e.img} alt="" style={{maxWidth:'100%', marginTop:'8px'}} />}
+      <p style={{fontSize:'12px',color:'#a8a29e',marginTop:'8px'}}>{e.date || ''}</p>
+    </div>
+  ))
+)}
                 </div>)}
               </div>
             </div>
