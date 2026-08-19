@@ -147,19 +147,17 @@ const data = {
 }
 
 export default function App() {
-  const [started, setStarted] = useState(false)
-  const [activeTab, setActiveTab] = useState('manifest')
-  const [journalText, setJournalText] = useState('')
-  const [allEntries, setAllEntries] = useState<any[]>([])
-  const [musicPlaying, setMusicPlaying] = useState(true)
-  const [index, setIndex] = useState<any>({manifest:0, motivate:0, 'Music/Dance':0, nature:0, fitness:0, food:0, selfcare:0, rituals:0, journal:0})
-
-  // NEW: response text for each card
-  const [responseText, setResponseText] = useState('')
+  const [started][setStarted] = useState(false)
+  const [activeTab][setActiveTab] = useState('manifest')
+  const [journalText][setJournalText] = useState('')
+  const [allEntries][setAllEntries] = useState<any[]>([])
+  const [musicPlaying][setMusicPlaying] = useState(true)
+  const [index][setIndex] = useState<any>({manifest:0, motivate:0, 'Music/Dance':0, nature:0, fitness:0, food:0, selfcare:0, rituals:0, journal:0})
+  const [responseText][setResponseText] = useState('')
 
   // PAYWALL: $21.21 AFTER 3 VIEWS - ONLY ON CORE 3 TABS
-  const [promptsViewed, setPromptsViewed] = useState(0)
-  const [hasFullAccess, setHasFullAccess] = useState(false)
+  const [promptsViewed][setPromptsViewed] = useState(0)
+  const [hasFullAccess][setHasFullAccess] = useState(false)
 
   const audioContextRef = useRef<AudioContext | null>(null)
 
@@ -200,7 +198,7 @@ export default function App() {
     }
     const arr = data[tab as keyof typeof data] as any[]
     setIndex({...index, [tab]: (index[tab] + 1) % arr.length })
-    setResponseText('') // clear response when shuffling
+    setResponseText('')
   }
 
   const handlePurchase = () => {
@@ -219,7 +217,6 @@ export default function App() {
     setJournalText('')
   }
 
-  // NEW: Save response to any card prompt
   const saveCardResponse = (tab: string) => {
     if (!responseText.trim()) return
     const currentPrompt = (data[tab as keyof typeof data] as any[])[index[tab]]
@@ -239,8 +236,7 @@ export default function App() {
   const tabs = ['manifest','motivate','Music/Dance','nature','fitness','food','selfcare','rituals','journal','writings']
   const currentItem = (data[activeTab as keyof typeof data] as any[])[index[activeTab]]
   const isLocked =!hasFullAccess && promptsViewed >= 3 && ['manifest','motivate','Music/Dance'].includes(activeTab)
-
-  return (
+    return (
     <>
       <style>{`
         body{font-family:'Alegreya',serif;background:#fdf8f3;margin:0}
@@ -317,8 +313,8 @@ export default function App() {
                     <>
                       {currentItem?.img && <img src={currentItem.img} style={{width:'100%',height:'240px',objectFit:'cover',borderRadius:'8px',marginBottom:'16px'}}/>}
                       <p style={{fontSize:'18px',fontStyle:'italic',marginBottom:'16px'}}>"{currentItem?.text || currentItem}"</p>
-
-                      {/* NEW: Response textarea for each card */}
+                      
+                      {/* RESPONSE BOX FOR EVERY CARD - SAVES TO WRITINGS */}
                       <div style={{background:'#fef3c7',padding:'16px',borderRadius:'8px',marginBottom:'16px',border:'1px solid #fde68a'}}>
                         <textarea
                           value={responseText}
@@ -326,3 +322,53 @@ export default function App() {
                           style={{width:'100%',minHeight:'100px',background:'rgba(255,255,255,0.8)',border:'none',outline:'none',resize:'vertical',color:'#78350f',fontFamily:'Alegreya',fontSize:'15px',padding:'12px',borderRadius:'6px'}}
                           placeholder="Write your response here... What comes up for you?"
                         />
+                        <button className="btn-small" onClick={()=>saveCardResponse(tab)} style={{marginTop:'12px'}}>
+                          Save to My Writings
+                        </button>
+                      </div>
+
+                      <button className="btn" onClick={()=>shuffle(tab)}>Next Prompt →</button>
+                      {!hasFullAccess && ['manifest','motivate','Music/Dance'].includes(tab) && <p style={{fontSize:'14px',marginTop:'12px',color:'#78716c'}}>{3-promptsViewed} free views left</p>}
+                    </>
+                  )}
+                </div>
+              </div>
+            ))}
+
+            <div className={`panel ${activeTab==='journal'?'active':''}`}>
+              <div className="card">
+                <h2 className="heading" style={{fontSize:'24px',marginBottom:'16px'}}>Sacred Journal</h2>
+                <p style={{fontSize:'18px',fontStyle:'italic',marginBottom:'16px'}}>"{(data.journal as string[])[index.journal]}"</p>
+                <img src="/journal-pastel.jpg" alt="Sacred Journal" style={{width: '100%', borderRadius: '12px', marginBottom: '20px', maxHeight: '400px', objectFit: 'cover'}} />
+                <form onSubmit={saveEntry}>
+                  <div className="card" style={{ backgroundImage: "url('/scroll-paper.jpg')", backgroundSize: "cover", backgroundPosition: "center", padding: '24px', borderRadius: '12px', marginBottom: '16px' }} >
+                    <textarea value={journalText} onChange={e=>setJournalText(e.target.value)} style={{width:'100%',minHeight:'200px',background:'rgba(255,255,255,0.9)',border:'none',outline:'none',resize:'none',color:'#78350f',fontFamily:'Alegreya',fontSize:'16px',padding:'12px',borderRadius:'8px'}} placeholder="Dear Me, Today I choose to become my own lover by..." />
+                  </div>
+                  <button className="btn" type="submit">Save Entry</button>
+                </form>
+                <button onClick={()=>shuffle('journal')} style={{marginTop:'12px',background:'none',border:'none',color:'#b45309',cursor:'pointer'}}>New Prompt</button>
+              </div>
+            </div>
+
+            <div className={`panel ${activeTab==='writings'?'active':''}`}>
+              <div className="card">
+                <h2 className="heading" style={{fontSize:'24px',marginBottom:'16px'}}>My Writings</h2>
+                {allEntries.length===0?<p>No entries yet. Your responses to prompts will appear here.</p>:allEntries.map((e,i)=><div key={i} style={{borderBottom:'1px solid #e7e5e4',padding:'16px 0'}}>
+                  <p style={{fontSize:'13px',color:'#b45309',marginBottom:'4px',fontWeight:'bold'}}>{e.tab==='manifest'?'Reclaim Body':e.tab==='motivate'?'Reclaim Time':e.tab==='Music/Dance'?'Reclaim Voice':e.tab.charAt(0).toUpperCase()+e.tab.slice(1)}</p>
+                  <p style={{fontStyle:'italic',color:'#78716c',marginBottom:'8px'}}>{e.prompt}</p>
+                  <p style={{color:'#44403c',lineHeight:'1.6'}}>{e.content}</p>
+                  <p style={{fontSize:'12px',color:'#a8a29e',marginTop:'8px'}}>{e.date}</p>
+                </div>)}
+              </div>
+            </div>
+          </main>
+
+          <footer style={{textAlign:'center',padding:'40px 20px',color:'#a8a29e',fontSize:'14px'}}>
+            <p>Day 1520. *No more waiting.* You chose you.</p>
+            {!hasFullAccess && <p style={{marginTop:'8px'}}>Unlock all 84 prompts for $21.21 — the cost of one dinner you never got.</p>}
+          </footer>
+        </div>
+      )}
+    </>
+  )
+}
