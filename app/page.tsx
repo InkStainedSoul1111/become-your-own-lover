@@ -408,14 +408,14 @@ export default function App() {
                   </div>
                 )}
 
-                {!allEntries?.length ? (
-                 <p>No entries yet. Your responses to prompts will appear here.</p>
-                  ) : (
-              allEntries.filter(Boolean).map((e,i)=>(
-            <div key={i} style={{marginBottom:'16px', padding:'16px', border:'1px solid #fde68a', borderRadius:'8px'}}>
-              <p style={{fontSize:'13px',color:'#b45309',marginBottom:'4px',fontWeight:'bold'}}>
-                {e.tab === 'manifest' ? 'Manifest' : e.tab === 'motivate' ? 'Motivate' : e.tab || 'Entry'}
-              </p>
+     {!allEntries?.length ? (
+  <p>No entries yet. Your responses to prompts will appear here.</p>
+) : (
+  allEntries.filter(Boolean).map((e,i)=>(
+    <div key={i} style={{marginBottom:'16px', padding:'16px', border:'1px solid #fde68a', borderRadius:'8px'}}>
+      <p style={{fontSize:'13px',color:'#b45309',marginBottom:'4px',fontWeight:'bold'}}>
+        {e.tab === 'manifest' ? 'Manifest' : e.tab === 'motivate' ? 'Motivate' : e.tab || 'Entry'}
+      </p>
       <p style={{fontStyle:'italic',color:'#78716c',marginBottom:'8px'}}>{e.prompt || ''}</p>
       <p style={{color:'#44403c',lineHeight:'1.6'}}>{e.content || e.text || ''}</p>
       {e.img && <img src={e.img} alt="" style={{maxWidth:'100%', marginTop:'8px'}} />}
@@ -423,7 +423,6 @@ export default function App() {
     </div>
   ))
 )}
-                </div>)}
               </div>
             </div>
           </main>
