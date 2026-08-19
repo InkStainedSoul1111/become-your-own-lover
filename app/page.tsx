@@ -1,257 +1,343 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
 
-const data = {
-  manifest: [
-    {text:"Day 1: I am worthy of deep, unconditional love — starting with my own.", img:"https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&w=800"},
-    {text:"Day 2: My body is a sacred vessel. I honor it with movement that feels like joy.", img:"https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&w=800"},
-    {text:"Day 3: I release the need for external validation. I am enough exactly as I am.", img:"https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&w=800"},
-    {text:"Day 4: I choose to speak to myself with the same kindness I give others.", img:"https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&w=800"},
-    {text:"Day 5: I am safe to be fully seen and fully loved.", img:"https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&w=800"},
-    {text:"Day 6: My heart is open to receiving love from myself first.", img:"https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&w=800"},
-    {text:"Day 7: I trust my own wisdom. I know what I need.", img:"https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&w=800"},
-    {text:"Day 8: I am allowed to take up space in this world.", img:"https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpg?auto=compress&w=800"},
-    {text:"Day 9: My needs matter. My voice matters.", img:"https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpg?auto=compress&w=800"},
-    {text:"Day 10: I forgive myself for not knowing what I didn't know.", img:"https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpg?auto=compress&w=800"},
-    {text:"Day 11: I am proud of how far I have come.", img:"https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpg?auto=compress&w=800"},
-    {text:"Day 12: I choose peace over proving myself.", img:"https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpg?auto=compress&w=800"},
-    {text:"Day 13: I am worthy of softness and rest.", img:"https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpg?auto=compress&w=800"},
-    {text:"Day 14: I release shame. I choose self-compassion.", img:"https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpg?auto=compress&w=800"},
-    {text:"Day 15: I am the answer to my own prayers.", img:"https://images.pexels.com/photos/35537/pexels-photo.jpg?auto=compress&w=800"},
-    {text:"Day 16: My boundaries are acts of love for myself.", img:"https://images.pexels.com/photos/35537/pexels-photo.jpg?auto=compress&w=800"},
-    {text:"Day 17: I am grateful for my body and all it does for me.", img:"https://images.pexels.com/photos/35537/pexels-photo.jpg?auto=compress&w=800"},
-    {text:"Day 18: I get to decide what love looks like for me.", img:"https://images.pexels.com/photos/35537/pexels-photo.jpg?auto=compress&w=800"},
-    {text:"Day 19: I am healing, and that is enough.", img:"https://images.pexels.com/photos/35537/pexels-photo.jpg?auto=compress&w=800"},
-    {text:"Day 20: I celebrate myself today.", img:"https://images.pexels.com/photos/35537/pexels-photo.jpg?auto=compress&w=800"},
-    {text:"Day 21: I am not behind. I am becoming.", img:"https://images.pexels.com/photos/35537/pexels-photo.jpg?auto=compress&w=800"},
-    {text:"Day 22: I choose me. Every single day.", img:"https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800"},
-    {text:"Day 23: I am magnetic to the love I give myself.", img:"https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800"},
-    {text:"Day 24: My joy is my responsibility and my right.", img:"https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800"},
-    {text:"Day 25: I am whole, exactly as I am right now.", img:"https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800"},
-    {text:"Day 26: I speak my truth with love and clarity.", img:"https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800"},
-    {text:"Day 27: I am my own safe place.", img:"https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800"},
-    {text:"Day 28: I am my own home. I belong to me.", img:"https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800"}
-  ],
-  motivate: [
-    {text:"Day 1: What would you do if you knew you could not fail?", img:"https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800"},
-    {text:"Day 2: Your dreams chose you for a reason.", img:"https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800"},
-    {text:"Day 3: Dare to name what you really want.", img:"https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800"},
-    {text:"Day 4: What is one brave step you can take today?", img:"https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800"},
-    {text:"Day 5: You are capable of more than you think.", img:"https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800"},
-    {text:"Day 6: Motivation is action. Move anyway.", img:"https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800"},
-    {text:"Day 7: What would your future self thank you for?", img:"https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800"},
-    {text:"Day 8: Progress, not perfection.", img:"https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800"},
-    {text:"Day 9: You are allowed to want more.", img:"https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800"},
-    {text:"Day 10: Discipline is self-love in action.", img:"https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800"},
-    {text:"Day 11: Your only competition is who you were yesterday.", img:"https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800"},
-    {text:"Day 12: Start before you feel ready.", img:"https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800"},
-    {text:"Day 13: What if it all works out?", img:"https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800"},
-    {text:"Day 14: You have survived 100% of your hard days.", img:"https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800"},
-    {text:"Day 15: Do it scared.", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 16: Your time is now.", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 17: What story are you telling yourself? Rewrite it.", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 18: Show up for yourself today.", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 19: You are building the life you deserve.", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 20: Small steps every day.", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 21: You are not lazy. You are learning.", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 22: What lights you up? Do that.", img:"https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"},
-    {text:"Day 23: You are worthy of your goals.", img:"https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"},
-    {text:"Day 24: Keep going. You’re closer than you think.", img:"https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"},
-    {text:"Day 25: Be your own biggest cheerleader.", img:"https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"},
-    {text:"Day 26: What would love do?", img:"https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"},
-    {text:"Day 27: You are creating your reality.", img:"https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"},
-    {text:"Day 28: You did it. Now do it again for you.", img:"https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"}
-  ],
-  'Music/Dance': [
-    {text:"Day 1: How does dancing reset your nervous system?", img:"https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800"},
-    {text:"Day 2: What music makes you feel most alive?", img:"https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800"},
-    {text:"Day 3: Let your body move however it needs to.", img:"https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800"},
-    {text:"Day 4: What song is your current anthem?", img:"https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800"},
-    {text:"Day 5: Dance like no one is watching. Because they aren't.", img:"https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800"},
-    {text:"Day 6: How does rhythm help you feel grounded?", img:"https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800"},
-    {text:"Day 7: Create a playlist for your healing.", img:"https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800"},
-    {text:"Day 8: What does your body want to express through music?", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800"},
-    {text:"Day 9: Sing loud. Even if you're off key.", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800"},
-    {text:"Day 10: Music is medicine. What do you need today?", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800"},
-    {text:"Day 11: Move your hips. Release what you hold.", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800"},
-    {text:"Day 12: What song reminds you of your power?", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800"},
-    {text:"Day 13: Let sound wash over you.", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800"},
-    {text:"Day 14: Dance out the emotions you can't name.", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800"},
-    {text:"Day 15: What music makes you feel safe?", img:"https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800"},
-    {text:"Day 16: Your body knows how to move. Trust it.", img:"https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800"},
-    {text:"Day 17: Play the song that makes you cry. Feel it.", img:"https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800"},
-    {text:"Day 18: What beat matches your heartbeat?", img:"https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800"},
-    {text:"Day 19: Music connects you to your soul.", img:"https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800"},
-    {text:"Day 20: Have a 5-minute dance party for yourself.", img:"https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800"},
-    {text:"Day 21: What lyrics feel like they were written for you?", img:"https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800"},
-    {text:"Day 22: Let music be your prayer.", img:"https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800"},
-    {text:"Day 23: Move in a way that feels like love.", img:"https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800"},
-    {text:"Day 24: What song would you play at your celebration?", img:"https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800"},
-    {text:"Day 25: Sound bath. Close your eyes and listen.", img:"https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800"},
-    {text:"Day 26: How does music help you process?", img:"https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800"},
-    {text:"Day 27: What instrument speaks to your soul?", img:"https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800"},
-    {text:"Day 28: You are the music.", img:"https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800"}
-  ],
-  nature: [],
-  fitness: [],
-  food: [],
-  selfcare: [],
-  rituals: [],
-  journal: ["Day 1: Describe the version of yourself you are becoming.", "Day 2: Write a love letter to yourself."],
-  writings: []
-}
+const STRIPE_LINK = 'https://buy.stripe.com/00w14n8JPakTfMv7sx7bW02'
+
+// PART 1: SECTION 1 - RECLAIM YOUR BODY - 28 PROMPTS
+const bodyPrompts = [
+  {text:"Photograph the part of your body you hid from him. Write 3 words you wish he’d said to it.", img:"https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&w=800"},
+  {text:"What did your body do for you today without asking? Thank it out loud.", img:"https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpg?auto=compress&w=800"},
+  {text:"Warm ritual: tea, bath, heating pad. Do it slow. What shifts?", img:"https://images.pexels.com/photos/35537/pexels-photo.jpg?auto=compress&w=800"},
+  {text:"Dress for *you* today. No “what would he think.” How does it feel?", img:"https://images.pexels.com/photos/794064/pexels-photo-794064.jpeg?auto=compress&w=800"},
+  {text:"Touch your own skin like someone in love would. Where do you soften?", img:"https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800"},
+  {text:"Move for 7 minutes — stretch, dance, sway. Not exercise. *Celebration*.", img:"https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"},
+  {text:"Eat one thing like it’s sacred. No phone. Taste only.", img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800"},
+  {text:"What is your body grieving? Where do you hold 1519 days? Breathe into it.", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
+  {text:"Look in the mirror, say: *“I’m not waiting for you to pick me.”* What face looks back?", img:"https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&w=800"},
+  {text:"Sleep setup: What would you do if you were tucking in someone you adore?", img:"https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg?auto=compress&w=800"},
+  {text:"List 5 ways your body has protected you. Scott never got this list.", img:"https://images.pexels.com/photos/1661296/pexels-photo-1661296.jpeg?auto=compress&w=800"},
+  {text:"Wear scent for yourself. Close your eyes. Who do you become?", img:"https://images.pexels.com/photos/965989/pexels-photo-965989.jpeg?auto=compress&w=800"},
+  {text:"Take up space. Sit spread out. Lie starfish. Notice the urge to shrink.", img:"https://images.pexels.com/photos/1851164/pexels-photo-1851164.jpeg?auto=compress&w=800"},
+  {text:"What does *rest* look like vs *collapse*? Do *rest* today.", img:"https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800"},
+  {text:"Photograph your hands. What have they held? What will they hold next?", img:"https://images.pexels.com/photos/1317712/pexels-photo-1317712.jpeg?auto=compress&w=800"},
+  {text:"Cold day plan: How do you warm yourself without him? Do one thing.", img:"https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&w=800"},
+  {text:"Say no to one thing your body doesn’t want. Feel the power.", img:"https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&w=800"},
+  {text:"Dance to one song naked or in underwear. No mirror first. Just feel.", img:"https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800"},
+  {text:"What does your menstrual phase need? Give it before it asks.", img:"https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?auto=compress&w=800"},
+  {text:"Touch your scars. Tattoo. Chest. Say: *“This is my history. I choose it.”*", img:"https://images.pexels.com/photos/1704120/pexels-photo-1704120.jpeg?auto=compress&w=800"},
+  {text:"Cook yourself the dinner you imagined at *his* place. Plate it pretty.", img:"https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&w=800"},
+  {text:"Breathe into your belly for 2 min. Tell it: *“I’m not abandoning you.”*", img:"https://images.pexels.com/photos/3759657/pexels-photo-3759657.jpeg?auto=compress&w=800"},
+  {text:"What feels like *luxury* that costs $0? Do it today.", img:"https://images.pexels.com/photos/1024960/pexels-photo-1024960.jpeg?auto=compress&w=800"},
+  {text:"Walk like you’re already loved. 10 minutes. Notice who sees you.", img:"https://images.pexels.com/photos/1105766/pexels-photo-1105766.jpeg?auto=compress&w=800"},
+  {text:"Before bed: Lotion your feet. Thank them for day 1520.", img:"https://images.pexels.com/photos/3993444/pexels-photo-3993444.jpeg?auto=compress&w=800"},
+  {text:"Mirror work: *“I’m sorry I gave you to someone who said ‘yo.’”*", img:"https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&w=800"},
+  {text:"What would “lover” you do for tired you tonight? Do that.", img:"https://images.pexels.com/photos/3771069/pexels-photo-3771069.jpeg?auto=compress&w=800"},
+  {text:"Image + caption: *This body is not a waiting room.*", img:"https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&w=800"}
+]
 
 export default function App() {
   const [started, setStarted] = useState(false)
-  const [isPaid, setIsPaid] = useState(false)
-  const [activeTab, setActiveTab] = useState('manifest')
+  const [activeTab, setActiveTab] = useState('body')
   const [journalText, setJournalText] = useState('')
   const [allEntries, setAllEntries] = useState<any[]>([])
   const [musicPlaying, setMusicPlaying] = useState(true)
-  const [index, setIndex] = useState<any>({manifest:0, motivate:0, 'Music/Dance':0, nature:0, fitness:0, food:0, selfcare:0, rituals:0, journal:0, writings:0})
+  const [index, setIndex] = useState<any>({body:0, time:0, voice:0, journal:0})
+
+  // PAYWALL STATE - $21.21 AFTER 3 VIEWS
+  const [promptsViewed, setPromptsViewed] = useState(0)
+  const [hasFullAccess, setHasFullAccess] = useState(false)
+
   const audioContextRef = useRef<AudioContext | null>(null)
-    const freeTabs = ['manifest','motivate','Music/Dance']
-  const canView = (tab:string, day:number) => isPaid || (freeTabs.includes(tab) && day === 0)
-  const handleCheckout = () => window.location.href = "https://buy.stripe.com/00w14n8JPakTfMv7sx7bW02"
 
-  const initAudio = () => { if (!audioContextRef.current) audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)() }
-  const playSound = () => { initAudio(); const ctx = audioContextRef.current; if(!ctx) return; const o = ctx.createOscillator(); const g = ctx.createGain(); o.connect(g); g.connect(ctx.destination); o.frequency.value = 220; g.gain.setValueAtTime(0.05, ctx.currentTime); g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 2); o.start(); o.stop(ctx.currentTime + 2); }
+  // Check localStorage for unlock + views
+  useEffect(() => {
+    const unlocked = localStorage.getItem('byol_unlocked')
+    const views = localStorage.getItem('byol_views')
+    if (unlocked === 'true') setHasFullAccess(true)
+    if (views) setPromptsViewed(parseInt(views))
+  }, [])
 
-  const shuffle = (tab: string) => { setIndex({...index, [tab]: (index[tab] + 1) % (data as any)[tab].length }) }
+  // Save views
+  useEffect(() => {
+    localStorage.setItem('byol_views', promptsViewed.toString())
+  }, [promptsViewed])
 
-  const saveEntry = (e: React.FormEvent) => { e.preventDefault(); const newEntry = {prompt: (data.journal as string[])[index.journal], content: journalText, date: new Date().toLocaleDateString()}; setAllEntries([newEntry,...allEntries]); setJournalText('') }
+  const initAudio = () => {
+    if (!audioContextRef.current) audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)()
+  }
+
+  const playSound = () => {
+    initAudio(); const ctx = audioContextRef.current; if(!ctx) return;
+    const o = ctx.createOscillator(); const g = ctx.createGain();
+    o.connect(g); g.connect(ctx.destination); o.frequency.value = 220;
+    g.gain.setValueAtTime(0.05, ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 2);
+    o.start(); o.stop(ctx.currentTime + 2);
+  }
+
+  const shuffle = (tab: string) => {
+    if (!hasFullAccess && ['body','time','voice'].includes(tab)) {
+      const newCount = promptsViewed + 1
+      setPromptsViewed(newCount)
+    }
+    const arr = tab === 'body'? bodyPrompts : tab === 'time'? timePrompts : tab === 'voice'? voicePrompts : journalPrompts
+    setIndex({...index, [tab]: (index[tab] + 1) % arr.length })
+  }
+
+  const handlePurchase = () => {
+    window.open(STRIPE_LINK, '_blank')
+  }
+
+  const unlockNow = () => {
+    localStorage.setItem('byol_unlocked', 'true')
+    setHasFullAccess(true)
+  }
+  // PART 2: SECTION 2 - RECLAIM YOUR TIME - 28 PROMPTS
+const timePrompts = [
+  {text:"Morning ritual, 5-min version. Do it. No phone. How does *you* feel?", img:"https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=800"},
+  {text:"What hour did you waste hoping he’d text? Take it back. Name what you’ll do instead.", img:"https://images.pexels.com/photos/590037/pexels-photo-590037.jpeg?auto=compress&w=800"},
+  {text:"Unfollow, mute, or move one app that keeps you in *Slipping Away*.", img:"https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&w=800"},
+  {text:"20-min “story time”: Do something you’d post, then *don’t* post it. It’s yours.", img:"https://images.pexels.com/photos/733856/pexels-photo-733856.jpeg?auto=compress&w=800"},
+  {text:"Plan one thing for future you 30 days from now. Buy the ticket, book the thing.", img:"https://images.pexels.com/photos/1251173/pexels-photo-1251173.jpeg?auto=compress&w=800"},
+  {text:"List: What did waiting steal from you? What are you taking back first?", img:"https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&w=800"},
+  {text:"Solo date. Coffee, bookstore, drive. No company. How was the conversation?", img:"https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&w=800"},
+  {text:"Clean one corner like you’re prepping for someone you love. You are.", img:"https://images.pexels.com/photos/4107288/pexels-photo-4107288.jpeg?auto=compress&w=800"},
+  {text:"Time block: 1 hour with no Scott thoughts. If he comes up, say *“Not now.”*", img:"https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&w=800"},
+  {text:"What did you stop doing because he might call? Start again for 10 min.", img:"https://images.pexels.com/photos/196645/pexels-photo-196645.jpeg?auto=compress&w=800"},
+  {text:"Write the text you want to send him. Then burn/delete it.", img:"https://images.pexels.com/photos/261763/pexels-photo-261763.jpeg?auto=compress&w=800"},
+  {text:"Learn 1 thing in 15 min. YouTube, book. Your brain is not a waiting room.", img:"https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&w=800"},
+  {text:"Evening ritual: What tells your nervous system *“we’re safe, he’s not coming, and that’s okay”*?", img:"https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&w=800"},
+  {text:"Say *“no”* before you’re sure. Practice.", img:"https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&w=800"},
+  {text:"Photograph golden hour. This light is not for his story views.", img:"https://images.pexels.com/photos/2387873/pexels-photo-2387873.jpeg?auto=compress&w=800"},
+  {text:"List 3 dreams that have nothing to do with *Him. Us.* Pick one step.", img:"https://images.pexels.com/photos/669986/pexels-photo-669986.jpeg?auto=compress&w=800"},
+  {text:"Do the thing you told yourself you’d do “when this is over.” It’s over.", img:"https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&w=800"},
+  {text:"Curate your space: Remove 1 item that feels like *him*.", img:"https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&w=800"},
+  {text:"30-min timer: No past. No Scott. Only now. What emerges?", img:"https://images.pexels.com/photos/2114206/pexels-photo-2114206.jpeg?auto=compress&w=800"},
+  {text:"Write your own *“yo”* response. How does your own energy reply?", img:"https://images.pexels.com/photos/3756766/pexels-photo-3756766.jpeg?auto=compress&w=800"},
+  {text:"Plan tomorrow *before* bed. You wake up to your choices, not his silence.", img:"https://images.pexels.com/photos/4792285/pexels-photo-4792285.jpeg?auto=compress&w=800"},
+  {text:"What are you available for now? Write the dating profile for *your life*.", img:"https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg?auto=compress&w=800"},
+  {text:"Take a different route home. Newness = you’re not stuck.", img:"https://images.pexels.com/photos/21014/pexels-photo.jpg?auto=compress&w=800"},
+  {text:"1 chore as devotion. *“I’m worth a clean sink.”*", img:"https://images.pexels.com/photos/4239031/pexels-photo-4239031.jpeg?auto=compress&w=800"},
+  {text:"Social media audit: Does this feed me or keep me waiting? Edit.", img:"https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&w=800"},
+  {text:"Set a boundary with yourself: *“I don’t check his name after 8pm.”*", img:"https://images.pexels.com/photos/4049791/pexels-photo-4049791.jpeg?auto=compress&w=800"},
+  {text:"Future self letter: Day 1550 Sue Ellen. What do you thank day 1520 for?", img:"https://images.pexels.com/photos/606541/pexels-photo-606541.jpeg?auto=compress&w=800"},
+  {text:"Image + caption: *My time is not a lobby.*", img:"https://images.pexels.com/photos/1438081/pexels-photo-1438081.jpeg?auto=compress&w=800"}
+]
+
+// PART 2: SECTION 3 - RECLAIM YOUR VOICE - 28 PROMPTS
+const voicePrompts = [
+  {text:"Say *“I don’t have anything important to say”* out loud. Feel the power of hanging up.", img:"https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&w=800"},
+  {text:"Voice memo: Tell day 1 Sue Ellen what day 1520 knows. Don’t send. Keep.", img:"https://images.pexels.com/photos/3771069/pexels-photo-3771069.jpeg?auto=compress&w=800"},
+  {text:"Write the love letter you wanted from him. Sign *your* name.", img:"https://images.pexels.com/photos/606541/pexels-photo-606541.jpeg?auto=compress&w=800"},
+  {text:"Scream into a pillow for 10 seconds. What’s left in the quiet?", img:"https://images.pexels.com/photos/3094230/pexels-photo-3094230.jpeg?auto=compress&w=800"},
+  {text:"What sentence are you done saying? *“Maybe he will...”* Replace it.", img:"https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&w=800"},
+  {text:"Sing, bad or good. One song. Volume up. This house is yours.", img:"https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&w=800"},
+  {text:"Unsent text draft: *“Five hearts isn’t a home.”* Sit with it. Delete or keep.", img:"https://images.pexels.com/photos/261763/pexels-photo-261763.jpeg?auto=compress&w=800"},
+  {text:"Record yourself saying *“no more waiting.”* Play it when you waver.", img:"https://images.pexels.com/photos/3756766/pexels-photo-3756766.jpeg?auto=compress&w=800"},
+  {text:"List: What did silence teach you? Thank it and dismiss it.", img:"https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&w=800"},
+  {text:"Read one poem out loud like you’re the only audience. You are.", img:"https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&w=800"},
+  {text:"What do you need to hear? Say it. *“I’m proud of you for hanging up.”*", img:"https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&w=800"},
+  {text:"Write your *Slipping Away* response song. One verse. No sending.", img:"https://images.pexels.com/photos/164745/pexels-photo-164745.jpeg?auto=compress&w=800"},
+  {text:"Tell the mirror: *“I choose me, even with just my love.”*", img:"https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&w=800"},
+  {text:"Practice: *“That doesn’t work for me.”* Say it 3 ways.", img:"https://images.pexels.com/photos/3760263/pexels-photo-3760263.jpeg?auto=compress&w=800"},
+  {text:"Journal: If my chest could talk, not scratch, what would it say?", img:"https://images.pexels.com/photos/733856/pexels-photo-733856.jpeg?auto=compress&w=800"},
+  {text:"Laugh on purpose for 20 seconds. Fake it till it’s real.", img:"https://images.pexels.com/photos/1851164/pexels-photo-1851164.jpeg?auto=compress&w=800"},
+  {text:"What truth are you whispering? Write it in all caps.", img:"https://images.pexels.com/photos/196645/pexels-photo-196645.jpeg?auto=compress&w=800"},
+  {text:"Call a friend and don’t mention him once. What else are you?", img:"https://images.pexels.com/photos/3184423/pexels-photo-3184423.jpeg?auto=compress&w=800"},
+  {text:"Name the grief: *“I’m sad about ___. And I’m still here.”*", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
+  {text:"Script: What you’d say if he asked why you left. Get clear.", img:"https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&w=800"},
+  {text:"Speak to his daughter in your head. What would you want her to know about love?", img:"https://images.pexels.com/photos/1251173/pexels-photo-1251173.jpeg?auto=compress&w=800"},
+  {text:"Record *“I’m not a waiting room”* as your alarm label.", img:"https://images.pexels.com/photos/4792285/pexels-photo-4792285.jpeg?auto=compress&w=800"},
+  {text:"Write your vows to yourself. *“I, Sue Ellen, take me...”*", img:"https://images.pexels.com/photos/1024960/pexels-photo-1024960.jpeg?auto=compress&w=800"},
+  {text:"What compliment do you fish for? Give it to yourself now.", img:"https://images.pexels.com/photos/794064/pexels-photo-794064.jpeg?auto=compress&w=800"},
+  {text:"Read old texts. Out loud. Then say *“That was then.”* Close the app.", img:"https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&w=800"},
+  {text:"Talk to 1519-day Sue Ellen: *“Thank you for lasting. I’ve got it now.”*", img:"https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg?auto=compress&w=800"},
+  {text:"Silence check: Sit 5 min. No input. What’s your voice without his echo?", img:"https://images.pexels.com/photos/2114206/pexels-photo-2114206.jpeg?auto=compress&w=800"},
+  {text:"Image + caption: *I’m my own love story now.*", img:"https://images.pexels.com/photos/1661296/pexels-photo-1661296.jpeg?auto=compress&w=800"}
+]
+
+// JOURNAL PROMPTS - 28 DAYS
+const journalPrompts = [
+  "Describe the version of yourself you are becoming.",
+  "Write a love letter to yourself.",
+  "What dream have you been too afraid to chase?",
+  "If your body could write you a note, what would it say?",
+  "What does *no more waiting* feel like in your chest?",
+  "List 3 ways you chose you today. No matter how small.",
+  "What would change if you believed you were already loved?",
+  "Write about the day you stopped shrinking.",
+  "What are you available for now that you weren’t before?",
+  "Describe your ritual morning as an act of devotion.",
+  "What truth are you done whispering?",
+  "If grief could speak, what would it thank you for?",
+  "What does your future self beg you to do today?",
+  "Write the apology you owe yourself.",
+  "What feels like home in your body right now?",
+  "List everything you no longer have to explain.",
+  "What song is your life singing now that he’s not the DJ?",
+  "Describe a boundary as a love letter to yourself.",
+  "What would you do if five hearts were enough?",
+  "Write about the moment you knew *“yo”* wasn’t enough.",
+  "What does your own love look like in action?",
+  "If you were your own partner, how would you make up for 1519 days?",
+  "What are you reclaiming that isn’t his to give?",
+  "Describe the taste of choosing yourself.",
+  "What did *Slipping Away* teach you about staying?",
+  "Write your permission slip for joy.",
+  "What story are you done telling about him?",
+  "Dear Me on day 1550, here’s what day 1520 did for you..."
+]
+    const saveEntry = (e: React.FormEvent) => {
+    e.preventDefault();
+    const newEntry = {
+      prompt: journalPrompts[index.journal],
+      content: journalText,
+      date: new Date().toLocaleDateString()
+    }
+    setAllEntries([newEntry,...allEntries]);
+    setJournalText('')
+  }
 
   useEffect(() => { if (started && musicPlaying) playSound() }, [started])
 
-  const tabs = ['manifest','motivate','Music/Dance','nature','fitness','food','selfcare','rituals','journal','writings']
+  const tabs = ['body','time','voice','journal','writings']
+  const currentPrompt = activeTab === 'body'? bodyPrompts[index.body] :
+                        activeTab === 'time'? timePrompts[index.time] :
+                        activeTab === 'voice'? voicePrompts[index.voice] : null
 
-  // ADD THE REST OF DATA HERE SO IT DOESNT CUT
-  data.nature = [
-    {text:"Day 1: How does being in nature shift your sense of self?", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 2: What does nature teach you about growth?", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 3: Sit barefoot on the earth. Feel it.", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 4: What season of life are you in?", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 5: Nature reflects you back to yourself.", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 6: Watch the sunset and breathe.", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 7: What would the trees tell you?", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 8: Go outside and find 3 beautiful things.", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 9: How does water make you feel?", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 10: Let the wind carry what you need to release.", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 11: Nature doesn't rush. Neither should you.", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 12: What flowers represent you right now?", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 13: Ground yourself. You are safe.", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 14: The sky is big enough for all your feelings.", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 15: What animal are you most like today?", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 16: Nature heals. Let it.", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 17: Take a mindful walk.", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 18: You are part of nature, not separate.", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 19: What does the moon remind you of?", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 20: Collect something from nature today.", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 21: Let nature teach you patience.", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 22: Sunlight is medicine.", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 23: What grows in you like a garden?", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 24: Nature shows you how to bloom.", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 25: Listen to the birds. They have messages.", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 26: Be like water. Flow.", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 27: Nature mirrors your inner world.", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"},
-    {text:"Day 28: You belong to this earth.", img:"https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&w=800"}
-  ]
-  data.fitness = Array.from({length:28}, (_,i)=>({text:`Day ${i+1}: What does your body want to express through movement today?`, img:"https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=800"}))
-  data.food = Array.from({length:28}, (_,i)=>({text:`Day ${i+1}: What does it mean to nourish yourself with love?`, img:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=800"}))
-  data.selfcare = Array.from({length:28}, (_,i)=>({text:`Day ${i+1}: What self-care ritual makes you feel most loved?`, img:"https://images.pexels.com/photos/3997982/pexels-photo-3997982.jpeg?auto=compress&w=800"}))
-  data.rituals = Array.from({length:28}, (_,i)=>({text:`Day ${i+1}: How can skincare become a ritual of self-love?`, img:"https://images.pexels.com/photos/3985328/pexels-photo-3985328.jpeg?auto=compress&w=800"}))
-  data.journal = Array.from({length:28}, (_,i)=>`Day ${i+1}: What dream have you been too afraid to chase?`)
+  const isLocked =!hasFullAccess && promptsViewed >= 3 && ['body','time','voice'].includes(activeTab)
 
   return (
     <>
-    <style>{`body{font-family:'Alegreya',serif;background:#fdf8f3;margin:0}.heading{font-family:'Playfair Display',serif}.btn{background:#b45309;color:white;padding:10px 20px;border:none;border-radius:8px;cursor:pointer;font-weight:bold}.card{background:white;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.05);border:1px solid #e7e5e4;padding:24px;margin-bottom:16px}.tab{padding:16px 8px;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;color:#57534e}.tab.active{border-bottom:3px solid #b45309;color:#b45309}.panel{display:none}.panel.active{display:block;animation:fade.4s} @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}`}</style>
-    <link href="https://fonts.googleapis.com/css2?family=Alegreya&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+      <style>{`
+        body{font-family:'Alegreya',serif;background:#fdf8f3;margin:0}
+      .heading{font-family:'Playfair Display',serif}
+      .btn{background:#b45309;color:white;padding:10px 20px;border:none;border-radius:8px;cursor:pointer;font-family:'Alegreya',serif;font-size:16px;transition:all.2s}
+      .btn:hover{background:#92400e;transform:translateY(-1px)}
+      .btn-gold{background:linear-gradient(135deg,#d4af37,#b45309);color:white;padding:14px 28px;border:none;border-radius:8px;cursor:pointer;font-weight:bold;font-size:16px;box-shadow:0 4px 12px rgba(180,83,9,.3)}
+      .btn-gold:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(180,83,9,.4)}
+      .card{background:white;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.05);border:1px solid #e7e5e4;padding:24px;margin-bottom:16px}
+      .tab{padding:16px 8px;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;color:#57534e;font-family:'Alegreya',serif;font-size:15px;transition:all.2s}
+      .tab:hover{color:#b45309}
+      .tab.active{border-bottom:3px solid #b45309;color:#b45309;font-weight:bold}
+      .panel{display:none}.panel.active{display:block;animation:fade.4s}
+      .paywall-glow{box-shadow:0 0 0 1px #f59e0b, 0 0 20px rgba(245,158,11,.2)}
+        @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+      `}</style>
+      <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
 
-    {!started? (
-      <div style={{position:'relative',height:'100vh'}}>
-   <img src="https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&w=1920" style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover'}} />
-        <div style={{position:'absolute',inset:0,background:'linear-gradient(to bottom,rgba(0,0,0,.2),rgba(0,0,0,.6))'}}/>
-        <div style={{position:'relative',zIndex:10,height:'100%',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',textAlign:'center',padding:'24px'}}>
-          <h1 className="heading" style={{color:'white',fontSize:'48px',textShadow:'0 2px 10px rgba(0,0,0,.5)'}}>Become Your Own Lover</h1>
-          <p style={{color:'white',fontSize:'18px',margin:'12px 0 32px'}}>A sacred space for inner connection and self-love</p>
-          <button className="btn" style={{background:'#f97316',marginBottom:'12px'}} onClick={()=>{setStarted(true);playSound()}}>Start Free Preview</button>
-          <button className="btn" style={{background:'#06b6d4'}} onClick={handleCheckout}>Unlock Full 28 Days - $21.21</button>
+      {!started? (
+        <div style={{position:'relative',height:'100vh'}}>
+          <img src="https://images.pexels.com/photos/1661296/pexels-photo-1661296.jpeg?auto=compress&w=1280" style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover'}}/>
+          <div style={{position:'absolute',inset:0,background:'linear-gradient(to bottom,rgba(0,0,0,.2),rgba(0,0,0,.6))'}}/>
+          <div style={{position:'relative',zIndex:10,height:'100%',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',textAlign:'center',padding:'24px'}}>
+            <h1 className="heading" style={{color:'white',fontSize:'48px',textShadow:'0 2px 10px rgba(0,0,0,.5)',marginBottom:'16px'}}>Become Your Own Lover</h1>
+            <p style={{color:'white',fontSize:'18px',margin:'12px 0 32px',maxWidth:'500px'}}>A sacred space for inner connection and self-love after *no more waiting*</p>
+            <button className="btn" onClick={()=>{setStarted(true);playSound()}}>Start Your Journey</button>
+          </div>
         </div>
-      </div>
-    ) : (
-      <div style={{background:'linear-gradient(to bottom,#fafaf9,#fffbeb)',minHeight:'100vh'}}>
-        <header className="card" style={{borderRadius:0,position:'sticky',top:0,zIndex:10}}>
-          <div style={{maxWidth:'1024px',margin:'0 auto',display:'flex',justifyContent:'space-between',alignItems:'center'}}>
-            <h1 className="heading">Become Your Own Lover</h1>
-            <button onClick={()=>setMusicPlaying(!musicPlaying)} style={{background:'none',border:'none',color:'#b45309',cursor:'pointer',fontSize:'18px'}}>{musicPlaying?'🔊 On':'🔇 Off'}</button>
-          </div>
-        </header>
-
-        <nav style={{background:'white',borderBottom:'1px solid #e7e5e4'}}>
-          <div style={{maxWidth:'1024px',margin:'0 auto',display:'flex',gap:'16px',overflowX:'auto',padding:'0 16px'}}>
-            {tabs.map(t=><button key={t} className={`tab ${activeTab===t?'active':''}`} onClick={()=>setActiveTab(t)}>{t.charAt(0).toUpperCase()+t.slice(1).replace('selfcare','Self Care').replace('Music/Dance','Music & Dance')}</button>)}
-          </div>
-        </nav>
-
-        <main style={{maxWidth:'1024px',margin:'0 auto',padding:'24px 16px'}}>
-                    {['manifest','motivate','Music/Dance','nature','fitness','food','selfcare','rituals'].map(tab=>(
-            <div key={tab} className={`panel ${activeTab===tab?'active':''}`}>
-              <div className="card">
-                <h2 className="heading" style={{fontSize:'24px',marginBottom:'16px'}}>{tab.charAt(0).toUpperCase()+tab.slice(1).replace('selfcare','Self Care').replace('Music/Dance','Music & Dance')}</h2>
-
-                {!canView(tab, index[tab])? (
-                  <div style={{textAlign:'center',padding:'40px'}}>
-                    <h3 style={{fontSize:'20px',marginBottom:'8px'}}>🔒 Unlock Day {index[tab]+1}</h3>
-                    <p style={{marginBottom:'16px',color:'#57534e'}}>This content is for members only</p>
-                    <button className="btn" style={{background:'#06b6d4'}} onClick={handleCheckout}>Unlock Full 28 Days - $21.21</button>
-                  </div>
-                ) : (
-                  <>
-                    {(data as any)[tab][index[tab]]?.img && <img src={(data as any)[tab][index[tab]].img} style={{width:'100%',height:'240px',objectFit:'cover',borderRadius:'8px',marginBottom:'16px'}}/>}
-                    <p style={{fontSize:'18px',fontStyle:'italic',marginBottom:'16px'}}>"{(data as any)[tab][index[tab]]?.text}"</p>
-                    <button className="btn" onClick={()=>shuffle(tab)}>Next Day</button>
-                  </>
-                )}
+      ) : (
+        <div style={{background:'linear-gradient(to bottom,#fafaf9,#fffbeb)',minHeight:'100vh'}}>
+          <header className="card" style={{borderRadius:0,position:'sticky',top:0,zIndex:10,marginBottom:0}}>
+            <div style={{maxWidth:'1024px',margin:'0 auto',display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+              <h1 className="heading" style={{fontSize:'24px'}}>Become Your Own Lover</h1>
+              <div style={{display:'flex',gap:'16px',alignItems:'center'}}>
+                {!hasFullAccess && <span style={{fontSize:'14px',color:'#78716c',background:'#fef3c7',padding:'4px 12px',borderRadius:'20px'}}>Free views: {Math.max(0,3-promptsViewed)}/3</span>}
+                {hasFullAccess && <span style={{fontSize:'14px',color:'#059669',background:'#d1fae5',padding:'4px 12px',borderRadius:'20px'}}>Full Access</span>}
+                <button onClick={()=>setMusicPlaying(!musicPlaying)} style={{background:'none',border:'none',color:'#b45309',cursor:'pointer',fontSize:'20px'}}>{musicPlaying?'🔊':'🔇'}</button>
               </div>
             </div>
-          ))}
+          </header>
 
-          <div className={`panel ${activeTab==='journal'?'active':''}`}>
-            <div className="card">
-              <h2 className="heading" style={{fontSize:'24px',marginBottom:'16px'}}>Sacred Journal</h2>
-              <img src="/journal-pastel.jpg" alt="Sacred Journal" style={{width: '100%', borderRadius: '12px', marginBottom: '20px', maxHeight: '400px', objectFit: 'cover'}} />
-              <p style={{fontSize:'18px',fontStyle:'italic',marginBottom:'16px'}}>"{(data.journal as string[])[index.journal]}"</p>
-              <form onSubmit={saveEntry}>
-                <div className="card" style={{ backgroundImage: "url('/scroll-paper.jpg')", backgroundSize: "cover", backgroundPosition: "center", padding: '24px', borderRadius: '12px', marginBottom: '16px' }} >
-                  <textarea
-                    value={journalText}
-                    onChange={e=>setJournalText(e.target.value)}
-                    className="w-full h-80 bg-transparent border-none outline-none resize-none text-amber-900 placeholder-amber-700 font-serif text-lg leading-relaxed"
-                    placeholder="Dear Me, Today I choose to become my own lover by..."
-                  />
-                </div>
-                <button className="btn" type="submit">Save Entry</button>
-              </form>
-              <button onClick={()=>shuffle('journal')} style={{marginTop:'12px',background:'none',border:'none',color:'#b45309',cursor:'pointer'}}>New Prompt</button>
+          <nav style={{background:'white',borderBottom:'1px solid #e7e5e4',position:'sticky',top:'73px',zIndex:9}}>
+            <div style={{maxWidth:'1024px',margin:'0 auto',display:'flex',gap:'16px',overflowX:'auto',padding:'0 16px'}}>
+              {tabs.map(t=><button key={t} className={`tab ${activeTab===t?'active':''}`} onClick={()=>setActiveTab(t)}>
+                {t === 'body'? 'Reclaim Body' : t === 'time'? 'Reclaim Time' : t === 'voice'? 'Reclaim Voice' : t.charAt(0).toUpperCase()+t.slice(1)}
+              </button>)}
             </div>
-          </div>
+          </nav>
 
-          <div className={`panel ${activeTab==='writings'?'active':''}`}>
-            <div className="card">
-              <h2 className="heading" style={{fontSize:'24px',marginBottom:'16px'}}>My Writings</h2>
-              <img src="https://images.pexels.com/photos/733745/pexels-photo-733745.jpeg?auto=compress&w=800" alt="Sacred Writings Scroll" style={{width:'100%',height:'300px',objectFit:'cover',borderRadius:'12px',marginBottom:'16px'}}/>
-              {allEntries.length===0?<p style={{color:'#78716c'}}>No entries yet. Start journaling 💌</p>:allEntries.map((e,i)=>
-                <div key={i} style={{borderBottom:'1px solid #e7e5e4',padding:'16px 0'}}>
-                  <p style={{fontSize:'12px',color:'#78716c',marginBottom:'4px'}}>{e.date}</p>
-                  <p style={{fontStyle:'italic',color:'#78716c',marginBottom:'8px'}}>{e.prompt}</p>
-                  <p style={{whiteSpace:'pre-wrap'}}>{e.content}</p>
+          <main style={{maxWidth:'1024px',margin:'0 auto',padding:'24px 16px'}}>
+            {['body','time','voice'].map(tab=>(
+              <div key={tab} className={`panel ${activeTab===tab?'active':''}`}>
+                <div className={`card ${isLocked && activeTab===tab?'paywall-glow':''}`} style={{position:'relative',minHeight:'500px'}}>
+                  <h2 className="heading" style={{fontSize:'24px',marginBottom:'16px',color:'#44403c'}}>
+                    {tab === 'body'? 'Reclaim Your Body' : tab === 'time'? 'Reclaim Your Time' : 'Reclaim Your Voice'}
+                  </h2>
+
+                  {isLocked && activeTab===tab? (
+                    <div style={{textAlign:'center',padding:'40px 20px'}}>
+                      <h3 className="heading" style={{fontSize:'28px',marginBottom:'16px',color:'#44403c'}}>You’ve felt the shift.</h3>
+                      <p style={{fontSize:'18px',marginBottom:'8px',color:'#57534e'}}>
+                        You’ve viewed 3 prompts. That clarity after *“yo”*?
+                      </p>
+                      <p style={{fontSize:'18px',marginBottom:'24px',color:'#57534e'}}>
+                        That strength to hang up? There are 81 more waiting.
+                      </p>
+                      <button className="btn-gold" onClick={handlePurchase}>
+                        Unlock All 84 Prompts — $21.21
+                      </button>
+                      <p style={{fontSize:'14px',marginTop:'16px',color:'#78716c'}}>One-time payment. Yours forever. No more waiting.</p>
+                      <p style={{fontSize:'13px',marginTop:'8px',color:'#a8a29e',fontStyle:'italic'}}>This is for the woman who said *“I want this. Him. Us.”* twice and chose herself.</p>
+                      <button onClick={unlockNow} style={{marginTop:'24px',background:'none',border:'none',color:'#a8a29e',fontSize:'12px',cursor:'pointer',textDecoration:'underline'}}>
+                        Already purchased? Click to restore access
+                      </button>
+                    </div>
+                  ) : (
+                    <>
+                      {currentPrompt?.img && <img src={currentPrompt.img} alt="" style={{width:'100%',height:'280px',objectFit:'cover',borderRadius:'8px',marginBottom:'20px'}}/>}
+                      <p style={{fontSize:'19px',fontStyle:'italic',marginBottom:'24px',lineHeight:'1.6',color:'#44403c'}}>"{currentPrompt?.text}"</p>
+                      <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+                        <button className="btn" onClick={()=>shuffle(tab)}>Next Prompt →</button>
+                        {!hasFullAccess && <p style={{fontSize:'14px',color:'#78716c'}}>{3-promptsViewed} free views left</p>}
+                      </div>
+                    </>
+                  )}
                 </div>
-              )}
+              </div>
+            ))}
+
+            <div className={`panel ${activeTab==='journal'?'active':''}`}>
+              <div className="card">
+                <h2 className="heading" style={{fontSize:'24px',marginBottom:'16px',color:'#44403c'}}>Sacred Journal</h2>
+                <p style={{fontSize:'18px',fontStyle:'italic',marginBottom:'20px',color:'#57534e'}}>"{journalPrompts[index.journal]}"</p>
+                <img src="https://images.pexels.com/photos/606541/pexels-photo-606541.jpeg?auto=compress&w=800" alt="Sacred Journal" style={{width: '100%', borderRadius: '12px', marginBottom: '20px', maxHeight: '300px', objectFit: 'cover'}} />
+                <form onSubmit={saveEntry}>
+                  <div style={{ background:'#fffbeb', padding: '24px', borderRadius: '12px', marginBottom: '16px', border:'1px solid #fde68a' }} >
+                    <textarea
+                      value={journalText}
+                      onChange={e=>setJournalText(e.target.value)}
+                      style={{width:'100%',minHeight:'200px',background:'transparent',border:'none',outline:'none',resize:'none',color:'#78350f',fontFamily:'Alegreya',fontSize:'16px',lineHeight:'1.6'}}
+                      placeholder="Dear Me, Today I choose to become my own lover by..."
+                    />
+                  </div>
+                  <button className="btn" type="submit">Save Entry</button>
+                </form>
+                <button onClick={()=>shuffle('journal')} style={{marginTop:'12px',background:'none',border:'none',color:'#b45309',cursor:'pointer',fontSize:'15px'}}>New Prompt ↻</button>
+              </div>
             </div>
-          </div>
-        </main>
-      </div>
-    )}
+
+            <div className={`panel ${activeTab==='writings'?'active':''}`}>
+              <div className="card">
+                <h2 className="heading" style={{fontSize:'24px',marginBottom:'16px',color:'#44403c'}}>My Writings</h2>
+                {allEntries.length===0?
+                  <p style={{color:'#78716c',fontStyle:'italic'}}>No entries yet. Your voice lives here. Start in the Sacred Journal.</p>
+                  :allEntries.map((e,i)=><div key={i} style={{borderBottom:'1px solid #e7e5e4',padding:'20px 0'}}>
+                    <p style={{fontStyle:'italic',color:'#78716c',fontSize:'15px',marginBottom:'8px'}}>{e.prompt}</p>
+                    <p style={{color:'#44403c',lineHeight:'1.6',whiteSpace:'pre-wrap'}}>{e.content}</p>
+                    <p style={{fontSize:'13px',color:'#a8a29e',marginTop:'8px'}}>{e.date}</p>
+                  </div>)
+                }
+              </div>
+            </div>
+          </main>
+
+          <footer style={{textAlign:'center',padding:'40px 20px',color:'#a8a29e',fontSize:'14px'}}>
+            <p>Day 1520. *No more waiting.* You chose you.</p>
+            {!hasFullAccess && <p style={{marginTop:'8px'}}>Unlock all 84 prompts for $21.21 — the cost of one dinner you never got.</p>}
+          </footer>
+        </div>
+      )}
     </>
   )
 }
